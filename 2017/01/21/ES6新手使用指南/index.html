@@ -24,7 +24,7 @@
 
 
 函数体的写法：函数体代码多了就用他呗，显示写法123let fn3 = ()=&amp;gt;&amp;#123;    console.log(&amp;apos;ss&amp;apo">
-<meta property="og:updated_time" content="2017-01-21T10:12:42.957Z">
+<meta property="og:updated_time" content="2017-01-21T14:58:53.184Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6新手使用指南">
 <meta name="twitter:description" content="表达式写法：123let fn0 = ()=&amp;gt; console.log(&amp;apos;xxxx&amp;apos;);let fn = a=&amp;gt;a;//箭头函数let fn1 = (a,b)=&amp;gt;console.log(a+b);
@@ -188,7 +188,12 @@
 <li>对象字面量<h5 id="作用1：写法简化："><a href="#作用1：写法简化：" class="headerlink" title="作用1：写法简化："></a>作用1：写法简化：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//文艺青年之普通写法</div><div class="line">    var a =1,b=2;</div><div class="line">    var obj=&#123;</div><div class="line">        a:a,b:b</div><div class="line">    &#125;</div><div class="line"></div><div class="line">//es6写法</div><div class="line">    let a =1,b=2;</div><div class="line">    let obj = &#123;a,b&#125;;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h5 id="作用2：牛x之处在于es6可以方便继承啊！再原型属性中添加要继承的，这样可以直接继承。"><a href="#作用2：牛x之处在于es6可以方便继承啊！再原型属性中添加要继承的，这样可以直接继承。" class="headerlink" title="作用2：牛x之处在于es6可以方便继承啊！再原型属性中添加要继承的，这样可以直接继承。"></a>作用2：牛x之处在于es6可以方便继承啊！再原型属性中添加要继承的，这样可以直接继承。</h5>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">    let obj1 = &#123;__proto__:obj&#125;;</div><div class="line">``` </div><div class="line"> ***</div><div class="line"> </div><div class="line">- 模板字符串</div><div class="line"></div><div class="line">```$xslt</div><div class="line">//显然es6再字符串拼接时可以使用``再里面进行类似jquery的选择器进行拼接</div><div class="line">var str = &apos;lisong&apos;;</div><div class="line">var str2 = `lala,$&#123;str&#125;`;</div></pre></td></tr></table></figure>
+<h5 id="作用2：牛x之处在于es6可以方便继承啊！再原型属性中添加要继承的，这样可以直接继承。"><a href="#作用2：牛x之处在于es6可以方便继承啊！再原型属性中添加要继承的，这样可以直接继承。" class="headerlink" title="作用2：牛x之处在于es6可以方便继承啊！再原型属性中添加要继承的，这样可以直接继承。"></a>作用2：牛x之处在于es6可以方便继承啊！再原型属性中添加要继承的，这样可以直接继承。</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let obj1 = &#123;__proto__:obj&#125;;</div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>模板字符串</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//显然es6再字符串拼接时可以使用``再里面进行类似jquery的选择器进行拼接</div><div class="line">var str = &apos;lisong&apos;;</div><div class="line">var str2 = `lala,$&#123;str&#125;`;</div></pre></td></tr></table></figure>
 <hr>
 <ul>
 <li>解构赋值，主要用于react native,作用为将复杂框架对象中需要的组件引入后付给对象.</li>
