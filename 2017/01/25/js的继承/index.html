@@ -6,21 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>ES6箭头函数需要注意的地方 | 不怎么写博客的橘子的博客</title>
+  <title>js的继承 | 不怎么写博客的橘子的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="箭头函数ECMAScript6允许使用箭头（=&amp;gt;）来定义函数，大大减少代码量的同时，提高了不少代码的可读性，逼格也上升了一个档次。像这样：12345let fn = (a,b) =&amp;gt;a+b;//等同于let fn = function(a,b)&amp;#123;    return a+b;&amp;#125;
-但古语云：‘函数无完函数’，箭头函数再使用时有几个需要注意的地方，自己用的时候要注意。">
+  <meta name="description" content="先要有那么一个父类12345678910function Dad (x,y)&amp;#123;    this.x = x;    this.y = y;    this.sleep = function()&amp;#123;        console.log(&amp;apos;zzzzzz&amp;apos;);    &amp;#125;&amp;#125;Dad.prototype.eat = function(food)&amp;#1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ES6箭头函数需要注意的地方">
-<meta property="og:url" content="http://yoursite.com/2017/01/24/ES6箭头函数需要注意的地方/index.html">
+<meta property="og:title" content="js的继承">
+<meta property="og:url" content="http://yoursite.com/2017/01/25/js的继承/index.html">
 <meta property="og:site_name" content="不怎么写博客的橘子的博客">
-<meta property="og:description" content="箭头函数ECMAScript6允许使用箭头（=&amp;gt;）来定义函数，大大减少代码量的同时，提高了不少代码的可读性，逼格也上升了一个档次。像这样：12345let fn = (a,b) =&amp;gt;a+b;//等同于let fn = function(a,b)&amp;#123;    return a+b;&amp;#125;
-但古语云：‘函数无完函数’，箭头函数再使用时有几个需要注意的地方，自己用的时候要注意。">
-<meta property="og:updated_time" content="2017-01-24T09:15:22.671Z">
+<meta property="og:description" content="先要有那么一个父类12345678910function Dad (x,y)&amp;#123;    this.x = x;    this.y = y;    this.sleep = function()&amp;#123;        console.log(&amp;apos;zzzzzz&amp;apos;);    &amp;#125;&amp;#125;Dad.prototype.eat = function(food)&amp;#1">
+<meta property="og:updated_time" content="2017-01-25T08:16:56.119Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ES6箭头函数需要注意的地方">
-<meta name="twitter:description" content="箭头函数ECMAScript6允许使用箭头（=&amp;gt;）来定义函数，大大减少代码量的同时，提高了不少代码的可读性，逼格也上升了一个档次。像这样：12345let fn = (a,b) =&amp;gt;a+b;//等同于let fn = function(a,b)&amp;#123;    return a+b;&amp;#125;
-但古语云：‘函数无完函数’，箭头函数再使用时有几个需要注意的地方，自己用的时候要注意。">
+<meta name="twitter:title" content="js的继承">
+<meta name="twitter:description" content="先要有那么一个父类12345678910function Dad (x,y)&amp;#123;    this.x = x;    this.y = y;    this.sleep = function()&amp;#123;        console.log(&amp;apos;zzzzzz&amp;apos;);    &amp;#125;&amp;#125;Dad.prototype.eat = function(food)&amp;#1">
   
     <link rel="alternative" href="/atom.xml" title="不怎么写博客的橘子的博客" type="application/atom+xml">
   
@@ -136,49 +133,37 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-ES6箭头函数需要注意的地方" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-js的继承" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      ES6箭头函数需要注意的地方
+      js的继承
     </h1>
   
 
         
-        <a href="/2017/01/24/ES6箭头函数需要注意的地方/" class="archive-article-date">
-  	<time datetime="2017-01-24T08:32:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-24</time>
+        <a href="/2017/01/25/js的继承/" class="archive-article-date">
+  	<time datetime="2017-01-25T02:07:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h4><p>ECMAScript6允许使用箭头（=&gt;）来定义函数，大大减少代码量的同时，提高了不少代码的可读性，逼格也上升了一个档次。像这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">let fn = (a,b) =&gt;a+b;</div><div class="line">//等同于</div><div class="line">let fn = function(a,b)&#123;</div><div class="line">    return a+b;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>但古语云：‘函数无完函数’，箭头函数再使用时有几个需要注意的地方，自己用的时候要注意。</p>
-<ul>
-<li>大括号的解释问题<br>函数体代码多了就用他，显示写法，像这样：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let fn3 = (a,b)=&gt;&#123;</div><div class="line">    a = a + b;</div><div class="line">    console.log(&apos;ss&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>当返回是个大括号对象，再箭头右侧时会被解释为代码块，怎么办？此时需要再对象外面加上括号，像这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let fn3 = (a,b)=&gt;(&#123;userName:userName,passWord:passWord&#125;)</div></pre></td></tr></table></figure></p>
-<ul>
-<li>箭头函数的this<br>1.箭头函数中的this为定义时所在的对象，非使用时所在的对象。比如:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function fn() &#123;</div><div class="line">    return () =&gt; &#123;</div><div class="line">        return () =&gt;&#123;</div><div class="line">            return () =&gt;&#123;</div><div class="line">                return this.id</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>上述内层函数多个return ,但都采用了箭头函数的形式，因此this均为定义时所再的fn这个this<br>2.不可进行this的指向改变<br>因为箭头函数根本没有自己的this，也就别指望通过call()/apply()/bind()等方法去改变this了。<br>3.for循环绑定事件<br>绑定事件中循环为每个相关元素事件，使用ES6的let时,使用箭头函数就不要使用this，此时的this为时间函数定义时的window全局。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">ele.onClick = function ()&#123;</div><div class="line">     for(let i = 0;i&lt;xx.length;i++)&#123;</div><div class="line">         this.className = &apos;我是这个元素&apos;;//this为ele</div><div class="line">     &#125;</div><div class="line"> &#125;</div><div class="line"> ele.onClick =&gt;&#123;</div><div class="line">     for(let i = 0;i&lt;xx.length;i++)&#123;</div><div class="line">         this.className = &apos;我是这个元素&apos;;//this为window</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
-<ul>
-<li><p>不可作为构造函数<br>即父类不能采用箭头函数作为constructor,浏览器会友善的告诉你，erro~~</p>
-</li>
-<li><p>不可采用arguments<br>可以采用…arr，即rest参数（获取多余参数，放入数组），ES6中不存在arguments,比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function fn()&#123;</div><div class="line">    setTimeout(()=&gt;&#123;</div><div class="line">        console.log(arguments);</div><div class="line">    &#125;,100);</div><div class="line">&#125;</div><div class="line">//传参给fn</div><div class="line">fn(1.2.3);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>上述最后打印出的arguments为fn 的arguments。</p>
-<ul>
-<li>箭头套箭头<br>上述也有，ES6中的箭头函数，可以嵌套的。上面也有用过。</li>
-</ul>
+        <h4 id="先要有那么一个父类"><a href="#先要有那么一个父类" class="headerlink" title="先要有那么一个父类"></a>先要有那么一个父类</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function Dad (x,y)&#123;</div><div class="line">    this.x = x;</div><div class="line">    this.y = y;</div><div class="line">    this.sleep = function()&#123;</div><div class="line">        console.log(&apos;zzzzzz&apos;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">Dad.prototype.eat = function(food)&#123;</div><div class="line">    console.log(&apos;I am eating&apos;+food);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="一-ES5下可以这么多的继承"><a href="#一-ES5下可以这么多的继承" class="headerlink" title="一. ES5下可以这么多的继承"></a>一. ES5下可以这么多的继承</h2><h4 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h4><p>将父类的实例作为子类的原型，较为简单，但无法实现多继承，子类实例化时，无法向父类的构造函数传值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function Child()&#123;</div><div class="line">&#125;</div><div class="line">Child.prototype = new Dad();</div><div class="line">Child.prototype.constructor = Child;//构造函数指向自己而不是默认的指向父类，避免继承紊乱</div><div class="line">Child.protoytpe.name = &apos;Son&apos;;</div><div class="line">//实例</div><div class="line">var son = new Child();</div></pre></td></tr></table></figure></p>
+<h4 id="构造继承"><a href="#构造继承" class="headerlink" title="构造继承"></a>构造继承</h4><p>使用父类的构造函数来增强子类，等同复制父类实例属性给子类,引入call()方法.<br>这个方法可以实现多继承，但无法继承父类的实例属性和方法，无法复用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function Child(name)&#123;</div><div class="line">    Dad.call(this);</div><div class="line">    this.name = name;</div><div class="line">&#125;</div><div class="line">Child.prototype.constructor = Child;</div><div class="line">//实例</div><div class="line">var son = new Child(son);</div></pre></td></tr></table></figure>
+<h4 id="实例继承"><a href="#实例继承" class="headerlink" title="实例继承"></a>实例继承</h4><p>这个比较有意思，为父类添加新特性，作为子类实例返回。<br>不限制调用方法，但是不支持多继承<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function Child(name)&#123;</div><div class="line">    var instance = new Dad();</div><div class="line">    instance.name = name;</div><div class="line">    return instance;</div><div class="line">&#125;</div><div class="line">//实例</div><div class="line">var son = new Child(son);</div></pre></td></tr></table></figure></p>
+<h4 id="拷贝继承"><a href="#拷贝继承" class="headerlink" title="拷贝继承"></a>拷贝继承</h4><p>即通过for in循环，将父类属性枚举并拷贝，但该方法无法获取父类不可枚举的方法,且太耗性能，基本不推荐<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function Child(name)&#123;</div><div class="line">    var dad = new Dad();</div><div class="line">    for (var key in dad)&#123;</div><div class="line">        Child.protoytpe[key] = dad[key];</div><div class="line">    &#125;</div><div class="line">    Child.prototype.name = name;</div><div class="line">&#125;</div><div class="line">//实例</div><div class="line">var son = new Child(son);</div></pre></td></tr></table></figure></p>
+<h4 id="组合继承（常用方法）"><a href="#组合继承（常用方法）" class="headerlink" title="组合继承（常用方法）"></a>组合继承（常用方法）</h4><p>调用父类构造，继承父类属性，父类实例作为子类原型，可复用，可传参，但调用了两次父类构造函数，内存会消耗一点。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function Child(name)&#123;</div><div class="line">    Dad.call(this);</div><div class="line">    this.name = name;</div><div class="line">&#125;</div><div class="line">Child.prototype = new Dad();</div><div class="line">Child.prototype.constructor = Child;</div><div class="line">//实例</div><div class="line">var son = new Child(son);</div></pre></td></tr></table></figure></p>
+<h4 id="寄生"><a href="#寄生" class="headerlink" title="寄生"></a>寄生</h4><p>寄生的形式，砍掉父类的实例属性，节省了组合继承的内存消耗问题，但实现较为复杂。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function Child(name)&#123;</div><div class="line">    Dad.call(this);</div><div class="line">    this.name = name;</div><div class="line">&#125;</div><div class="line">(function()&#123;</div><div class="line">    var Super = function()&#123;&#125;</div><div class="line">    Super.prototype = Dad.prototype;</div><div class="line">    Child.prototype = new Super();</div><div class="line">&#125;)()</div><div class="line">    Super = null;//节省内存</div><div class="line">    var son = new Child(son);</div></pre></td></tr></table></figure></p>
+<h4 id="proto属性继承"><a href="#proto属性继承" class="headerlink" title="proto属性继承"></a><strong>proto</strong>属性继承</h4><p>由于<strong>proto</strong>属性浏览器不兼容，该继承可以再移动端开发的时候使用。比较容易.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function Child(name)&#123;</div><div class="line">    Child.__proto__ = Dad.prototype;</div><div class="line">    this.name = name;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="一-ES6下可以这样的继承"><a href="#一-ES6下可以这样的继承" class="headerlink" title="一. ES6下可以这样的继承"></a>一. ES6下可以这样的继承</h2><p>ES5的继承实质上是先创造子类的实例对象this,然后将父类的方法添加到子类this上，但是由于ES6的继承机制不同，是先创造父类的实例this,然后用子类的构造修改this.ES6将使用关键词extends，熟悉java编程的应该不陌生，对ES6的样子很像java.<br><figure class="highlight plain"><figcaption><span>Child extends Dad&#123;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">    constructor(x,y,name)&#123;//直接给一个construor方法作为构造方法</div><div class="line">        super(x,y);//父类的构造函数，只有调用super方法才能使用this,因为子类没有自己的this.换句话说，this必须再super方法调用之后使用</div><div class="line">        this.name = name;</div><div class="line">    &#125;</div><div class="line">    eat()&#123;</div><div class="line">        return this.name+super.eat();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//实例</div><div class="line">let son = new Child(son);</div></pre></td></tr></table></figure></p>
 
       
 
@@ -269,7 +254,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/01/24/ES6箭头函数需要注意的地方/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/01/25/js的继承/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -283,18 +268,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/01/25/js的继承/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          js的继承
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/01/23/浏览器现用js引擎/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">浏览器现用js引擎</div>
+    <a href="/2017/01/24/ES6箭头函数需要注意的地方/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ES6箭头函数需要注意的地方</div>
       <i class="icon-circle-right"></i>
     </a>
   
