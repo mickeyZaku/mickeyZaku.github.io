@@ -6,17 +6,36 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017 | 不怎么写博客的橘子的博客</title>
+  <title>居中那件不大不小的事 | 不怎么写博客的橘子的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="偶尔更新">
-<meta property="og:type" content="website">
-<meta property="og:title" content="不怎么写博客的橘子的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2017/page/2/index.html">
+  <meta name="description" content="元素及元素内容的水平/垂直完全居中常被作为考察前端工程师的基本技能，而这项技能目前也是再项目中较为常见的实际应用之一。
+水平居中水平居中的实现相对简单，主要分为html中块级元素和内联元素的居中。
+
+定宽块级元素首先有个div1&amp;lt;div class=&amp;quot;center&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+
+
+div的居中，只需要设置左右margin为auto即可1234.cen">
+<meta property="og:type" content="article">
+<meta property="og:title" content="居中那件不大不小的事">
+<meta property="og:url" content="http://yoursite.com/2017/02/07/居中那件不大不小的事/index.html">
 <meta property="og:site_name" content="不怎么写博客的橘子的博客">
-<meta property="og:description" content="偶尔更新">
+<meta property="og:description" content="元素及元素内容的水平/垂直完全居中常被作为考察前端工程师的基本技能，而这项技能目前也是再项目中较为常见的实际应用之一。
+水平居中水平居中的实现相对简单，主要分为html中块级元素和内联元素的居中。
+
+定宽块级元素首先有个div1&amp;lt;div class=&amp;quot;center&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+
+
+div的居中，只需要设置左右margin为auto即可1234.cen">
+<meta property="og:updated_time" content="2017-02-07T04:12:30.046Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="不怎么写博客的橘子的博客">
-<meta name="twitter:description" content="偶尔更新">
+<meta name="twitter:title" content="居中那件不大不小的事">
+<meta name="twitter:description" content="元素及元素内容的水平/垂直完全居中常被作为考察前端工程师的基本技能，而这项技能目前也是再项目中较为常见的实际应用之一。
+水平居中水平居中的实现相对简单，主要分为html中块级元素和内联元素的居中。
+
+定宽块级元素首先有个div1&amp;lt;div class=&amp;quot;center&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+
+
+div的居中，只需要设置左右margin为auto即可1234.cen">
   
     <link rel="alternative" href="/atom.xml" title="不怎么写博客的橘子的博客" type="application/atom+xml">
   
@@ -132,216 +151,180 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-居中那件不大不小的事" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      居中那件不大不小的事
+    </h1>
+  
+
+        
+        <a href="/2017/02/07/居中那件不大不小的事/" class="archive-article-date">
+  	<time datetime="2017-02-07T02:05:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-07</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>元素及元素内容的水平/垂直完全居中常被作为考察前端工程师的基本技能，而这项技能目前也是再项目中较为常见的实际应用之一。</p>
+<h4 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h4><p>水平居中的实现相对简单，主要分为html中块级元素和内联元素的居中。</p>
+<ol>
+<li>定宽块级元素<br>首先有个div<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;center&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>div的居中，只需要设置左右margin为auto即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.center&#123;</div><div class="line">    width:200px</div><div class="line">    margin: 50px auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>不定宽块级元素<br>由于宽度不定，比如再响应式布局中，如果限制了margin，可能会导致不必要的误差。此时，可将通过3种方法进行居中设置（table/inline/position）<br>还是上述div,再不设置width:200px的情况下，可进行如下3种操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">利用table标签的长度自适应性，再对其进行定宽块级元素(ul/li)的margin操作</div><div class="line">*/</div><div class="line">&lt;div class=&quot;center&quot;&gt;</div><div class="line">    &lt;table&gt;</div><div class="line">        &lt;tbody&gt;</div><div class="line">        &lt;tr&gt;</div><div class="line">            &lt;td&gt;</div><div class="line">                &lt;ul&gt;</div><div class="line">                    &lt;li&gt;小橘子&lt;/li&gt;</div><div class="line">                    &lt;li&gt;小橘子&lt;/li&gt;</div><div class="line">                &lt;/ul&gt;</div><div class="line">            &lt;/td&gt;</div><div class="line">        &lt;/tr&gt;</div><div class="line">        &lt;/tbody&gt;</div><div class="line">    &lt;/table&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">table&#123;</div><div class="line">    marigin:0 auto;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line">    更改display为inline，将父级设置为text-align:center</div><div class="line">*/</div><div class="line">&lt;div class=&quot;center&quot;&gt;</div><div class="line">    &lt;ul&gt;</div><div class="line">        &lt;li&gt;小橘子&lt;/li&gt;</div><div class="line">        &lt;li&gt;小橘子&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">.center&#123;</div><div class="line">    text-aling:center;</div><div class="line">&#125;</div><div class="line">ul&#123;</div><div class="line">    display:inline;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line">    通过position，父级左浮动后，左偏移50%，同时子元素则左偏移-50%。其实此方法也可为定宽元素设置居中，将子元素绝对定位，左偏移-50%，有移动宽度的一半即可。</div><div class="line">*/</div><div class="line">.center&#123;</div><div class="line">    positon:relative;</div><div class="line">    float:left;</div><div class="line">    left:50%;</div><div class="line">&#125;</div><div class="line">ul&#123;</div><div class="line">   position:relative;</div><div class="line">   left:-50%;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>内联元素<br>可以再其父级添加text-align:center；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;center&quot;&gt;</div><div class="line">        &lt;span&gt;小橘子小橘子小橘子&lt;/span&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">.center&#123;</div><div class="line">    ......</div><div class="line">     text-align: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h4><p>垂直居中相对水平居中确是有点棘手，普通的当行元素，你可以通过上下padding值一样来设置居中，但这方法有挺多情况不能用，因此不推荐</p>
+<ol>
+<li>单行内联元素<br>子元素为单行不换行，且父元素高度确定，可以将父元素height和line-height设置为相等<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;center&quot;&gt;</div><div class="line">    &lt;ul&gt;</div><div class="line">        &lt;li&gt;小橘子&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">.center &#123;</div><div class="line">    width: 400px;</div><div class="line">    height: 400px;</div><div class="line">    line-height: 400px;</div><div class="line">    text-align: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>2.多行内联元素<br>第一个方法是跟不定宽块级元素table方法居中使用相同，套table-&gt;tbody-&gt;tr-&gt;td，然后引入垂直居中vertical-align：middle,这里不作演示。<br>另外一个是使用table-cell显示，但此方法再ie6~8不兼容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.center &#123;</div><div class="line">    width: 400px;</div><div class="line">    height: 400px;</div><div class="line">    display: table-cell;</div><div class="line">    vertical-align: middle;/*使用table-cell以激活table-cell*/</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>块级元素垂直居中</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">元素高度已知的情况下</div><div class="line">*/</div><div class="line">.center &#123;</div><div class="line">    width: 400px;</div><div class="line">    height: 400px;</div><div class="line">    position:relative;</div><div class="line">    border: 2px solid;</div><div class="line">&#125;</div><div class="line">ul&#123;</div><div class="line">    height: 200px;</div><div class="line">    width: 200px;</div><div class="line">    position: absolute;</div><div class="line">    top:50%;</div><div class="line">    margin-top:-100px;/*即下降高度的一半*/</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line">高度未知的情况下，可以使用CSS3的transform属性</div><div class="line">*/</div><div class="line">ul&#123;</div><div class="line">    。。。。省略</div><div class="line">    transform:translateY(-50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="同时水平和垂直居中"><a href="#同时水平和垂直居中" class="headerlink" title="同时水平和垂直居中"></a>同时水平和垂直居中</h4><p>元素存在宽度和高度，说明他已经是个块级或者伪块级了，可以使用position方法，关键代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.center&#123;</div><div class="line">    positon:relative;</div><div class="line">&#125;</div><div class="line">ul&#123;</div><div class="line">    width:200px;</div><div class="line">    height:200px;</div><div class="line">    positon:absolute;</div><div class="line">    top:50%;</div><div class="line">    left:50%;</div><div class="line">    margin:-100px 0 0 -100px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>元素宽度和高度未知的情况下，引用transform也可进行水平和垂直同时居中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">......省略</div><div class="line">transfrom:translate(-50%,-50%);</div></pre></td></tr></table></figure></p>
+<h4 id="特殊的flex布局"><a href="#特殊的flex布局" class="headerlink" title="特殊的flex布局"></a>特殊的flex布局</h4><p>使用CSS3种的flex布局，进行这些居中就方便和快捷多了。目前还不能很好的兼容再所有浏览器中，引入f；flex布局需要声明浏览器，比如display:-webkit-flex，但此是趋势。flex布局较为复杂，仅介绍与居中有关的几个属性。</p>
+<ol>
+<li>justify-content:内容相对于主轴的对齐方式，值包括了start(相对主轴开始对齐)/end(相对主轴结束对齐)/center(主轴中对齐，主轴为横轴则为居中，主轴为纵轴，则为垂直对齐)/space-between(两端对其)/space-around(间隔相等对齐)</li>
+<li>align-item：相对交叉轴的对齐方式，值包括了flex-start(交叉轴的起点对齐)/flex-end（交叉轴的终点对齐）/flex-center(交叉轴的中点对齐)/stretch（默认，占满）/baseline（第一行文字基线对齐）</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/23/浏览器现用js引擎/" class="archive-article-date">
-  	<time datetime="2017-01-23T14:49:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/23/浏览器现用js引擎/">浏览器现用js引擎</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/02/07/居中那件不大不小的事/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/21/ES6新手使用指南/" class="archive-article-date">
-  	<time datetime="2017-01-21T08:31:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-21</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/21/ES6新手使用指南/">ES6新手使用指南</a>
-    </h1>
+  
+    <a href="/2017/02/06/再网上看到的，试着敲了一遍，弥补我不堪的css/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">再网上看到的，试着敲了一遍，弥补我不堪的css</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/21/css的一些新特性脑图汇总/" class="archive-article-date">
-  	<time datetime="2017-01-21T06:59:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/21/css的一些新特性脑图汇总/">脑图：css3的一些新特性</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/20/一年喵生/" class="archive-article-date">
-  	<time datetime="2017-01-20T10:19:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/20/一年喵生/">一年喵生</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">life</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/19/test-hexo-git/" class="archive-article-date">
-  	<time datetime="2017-01-19T02:16:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/19/test-hexo-git/">test_hexo+git</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Technology</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2017/">&laquo; Prev</a><a class="page-number" href="/archives/2017/">1</a><span class="page-number current">2</span>
-    </nav>
-  
 
 
           </div>
@@ -364,8 +347,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
