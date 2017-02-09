@@ -134,6 +134,78 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-常用正则表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/09/常用正则表达式/">常用正则表达式</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/09/常用正则表达式/" class="archive-article-date">
+  	<time datetime="2017-02-09T04:19:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>记录几个常用的正则表达式，备用，一直updating $ adding</p>
+<h4 id="匹配中文字符"><a href="#匹配中文字符" class="headerlink" title="匹配中文字符"></a>匹配中文字符</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 匹配中文字符的标准写法，肯定记不住，用的是unicode。</span></div><div class="line">/[\u4e00-\u9fa5]/</div><div class="line"><span class="comment">//同样的引申一下，匹配中文姓名的正则为</span></div><div class="line">/^[\u4e00-\u9fa5]&#123;<span class="number">2</span>,<span class="number">4</span>&#125;/</div></pre></td></tr></table></figure>
+<p>值得一提的是，ES5之前的并不能完全支持unicode值，ES6中添加了u字符，使得这成为了可能</p>
+<h4 id="匹配双字节字符，包括中文"><a href="#匹配双字节字符，包括中文" class="headerlink" title="匹配双字节字符，包括中文"></a>匹配双字节字符，包括中文</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/[^\x00-\xff]/</div></pre></td></tr></table></figure>
+<h4 id="匹配空白行"><a href="#匹配空白行" class="headerlink" title="匹配空白行"></a>匹配空白行</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/\n\s*\r/</div></pre></td></tr></table></figure>
+<h4 id="匹配email地址"><a href="#匹配email地址" class="headerlink" title="匹配email地址"></a>匹配email地址</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//一般写法</div><div class="line"> /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]&#123;2,4&#125;)+$/</div><div class="line">//详细大神写法，这个更加详细，?:表示不会被捕捉。</div><div class="line">/[\w!#$%&amp;'*+/=?^_`&#123;|&#125;~-]+(?:\.[\w!#$%&amp;'*+/=?^_`&#123;|&#125;~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/</div></pre></td></tr></table></figure>
+<h4 id="匹配网址url"><a href="#匹配网址url" class="headerlink" title="匹配网址url"></a>匹配网址url</h4><p>url比较复杂，这里只写匹配普通http协议的网址<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;amp;:<span class="regexp">/~\+#]*[\w\-\@?^=%&amp;amp;/~\+#])?/</span></div></pre></td></tr></table></figure></p>
+<h4 id="匹配有效数字"><a href="#匹配有效数字" class="headerlink" title="匹配有效数字"></a>匹配有效数字</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^[+-]?(\d|([<span class="number">1</span><span class="number">-9</span>]+))(\.\d+)?$/</div></pre></td></tr></table></figure>
+<h4 id="匹配国内电话"><a href="#匹配国内电话" class="headerlink" title="匹配国内电话"></a>匹配国内电话</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/\d&#123;<span class="number">3</span>&#125;-\d&#123;<span class="number">8</span>&#125;|\d&#123;<span class="number">4</span>&#125;-\&#123;<span class="number">7</span>,<span class="number">8</span>&#125;/</div></pre></td></tr></table></figure>
+<h4 id="匹配qq"><a href="#匹配qq" class="headerlink" title="匹配qq"></a>匹配qq</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/[<span class="number">1</span><span class="number">-9</span>][<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">4</span>,&#125;/</div></pre></td></tr></table></figure>
+<h4 id="身份证号"><a href="#身份证号" class="headerlink" title="身份证号"></a>身份证号</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^(\d&#123;<span class="number">6</span>&#125;)(\d&#123;<span class="number">4</span>&#125;)(\d&#123;<span class="number">2</span>&#125;)(\d&#123;<span class="number">2</span>&#125;)(\d&#123;<span class="number">3</span>&#125;)([<span class="number">0</span><span class="number">-9</span>]|X)$/</div></pre></td></tr></table></figure>
+<h4 id="匹配年月日"><a href="#匹配年月日" class="headerlink" title="匹配年月日"></a>匹配年月日</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/([<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">3</span>&#125;[<span class="number">1</span><span class="number">-9</span>]|[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">2</span>&#125;[<span class="number">1</span><span class="number">-9</span>][<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">1</span>&#125;|[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">1</span>&#125;[<span class="number">1</span><span class="number">-9</span>][<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">2</span>&#125;|[<span class="number">1</span><span class="number">-9</span>][<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">3</span>&#125;)-(((<span class="number">0</span>[<span class="number">13578</span>]|<span class="number">1</span>[<span class="number">02</span>])-(<span class="number">0</span>[<span class="number">1</span><span class="number">-9</span>]|[<span class="number">12</span>][<span class="number">0</span><span class="number">-9</span>]|<span class="number">3</span>[<span class="number">01</span>]))|((<span class="number">0</span>[<span class="number">469</span>]|<span class="number">11</span>)-(<span class="number">0</span>[<span class="number">1</span><span class="number">-9</span>]|[<span class="number">12</span>][<span class="number">0</span><span class="number">-9</span>]|<span class="number">30</span>))|(<span class="number">02</span>-(<span class="number">0</span>[<span class="number">1</span><span class="number">-9</span>]|[<span class="number">1</span>][<span class="number">0</span><span class="number">-9</span>]|<span class="number">2</span>[<span class="number">0</span><span class="number">-8</span>])))/</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/09/常用正则表达式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-css优化原则" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -868,80 +940,6 @@
 
 
   
-    <article id="post-js的继承" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/25/js的继承/">js的继承</a>
-    </h1>
-  
-
-        
-        <a href="/2017/01/25/js的继承/" class="archive-article-date">
-  	<time datetime="2017-01-25T02:07:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="先要有那么一个父类"><a href="#先要有那么一个父类" class="headerlink" title="先要有那么一个父类"></a>先要有那么一个父类</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function Dad (x,y)&#123;</div><div class="line">    this.x = 100;</div><div class="line">    this.y = 200;</div><div class="line">    this.sleep = function()&#123;</div><div class="line">        console.log(&apos;zzzzzz&apos;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">Dad.prototype.eat = function(food)&#123;</div><div class="line">    return &apos;I am eating&apos;+food;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="一-ES5下可以这么多的继承"><a href="#一-ES5下可以这么多的继承" class="headerlink" title="一. ES5下可以这么多的继承"></a>一. ES5下可以这么多的继承</h2><h4 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h4><p>将父类的实例作为子类的原型，较为简单，但无法实现多继承，子类实例化时，无法向父类的构造函数传值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function Child()&#123;</div><div class="line">&#125;</div><div class="line">Child.prototype = new Dad();</div><div class="line">Child.prototype.constructor = Child;//构造函数指向自己而不是默认的指向父类，避免继承紊乱</div><div class="line">Child.protoytpe.name = &apos;Son&apos;;</div><div class="line">//实例</div><div class="line">var son = new Child();</div></pre></td></tr></table></figure></p>
-<h4 id="构造继承"><a href="#构造继承" class="headerlink" title="构造继承"></a>构造继承</h4><p>使用父类的构造函数来增强子类，等同复制父类实例属性给子类,引入call()方法.<br>这个方法可以实现多继承，但无法继承父类的实例属性和方法，无法复用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function Child(x,y,name)&#123;</div><div class="line">    Dad.call(this);</div><div class="line">    this.name = name;</div><div class="line"> </div><div class="line">&#125;</div><div class="line">Child.prototype.constructor = Child;</div><div class="line">//实例</div><div class="line">var son = new Child(son);</div></pre></td></tr></table></figure>
-<h4 id="实例继承"><a href="#实例继承" class="headerlink" title="实例继承"></a>实例继承</h4><p>这个比较有意思，为父类添加新特性，作为子类实例返回。<br>不限制调用方法，但是不支持多继承<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function Child(name)&#123;</div><div class="line">    var instance = new Dad();</div><div class="line">    instance.name = name;</div><div class="line">    return instance;</div><div class="line">&#125;</div><div class="line">//实例</div><div class="line">var son = new Child(son);</div></pre></td></tr></table></figure></p>
-<h4 id="拷贝继承"><a href="#拷贝继承" class="headerlink" title="拷贝继承"></a>拷贝继承</h4><p>即通过for in循环，将父类属性枚举并拷贝，但该方法无法获取父类不可枚举的方法,且太耗性能，基本不推荐<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function Child(name)&#123;</div><div class="line">    var dad = new Dad();</div><div class="line">    for (var key in dad)&#123;</div><div class="line">        Child.protoytpe[key] = dad[key];</div><div class="line">    &#125;</div><div class="line">    Child.prototype.name = name;</div><div class="line">&#125;</div><div class="line">//实例</div><div class="line">var son = new Child(son);</div></pre></td></tr></table></figure></p>
-<h4 id="组合继承（常用方法）"><a href="#组合继承（常用方法）" class="headerlink" title="组合继承（常用方法）"></a>组合继承（常用方法）</h4><p>调用父类构造，继承父类属性，父类实例作为子类原型，可复用，可传参，但调用了两次父类构造函数，内存会消耗一点。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function Child(name)&#123;</div><div class="line">    Dad.call(this);</div><div class="line">    this.name = name;</div><div class="line">&#125;</div><div class="line">Child.prototype = new Dad();</div><div class="line">Child.prototype.constructor = Child;</div><div class="line">//实例</div><div class="line">var son = new Child(son);</div></pre></td></tr></table></figure></p>
-<h4 id="寄生"><a href="#寄生" class="headerlink" title="寄生"></a>寄生</h4><p>寄生的形式，砍掉父类的实例属性，节省了组合继承的内存消耗问题，但实现较为复杂。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function Child(name)&#123;</div><div class="line">    Dad.call(this);</div><div class="line">    this.name = name;</div><div class="line">&#125;</div><div class="line">(function()&#123;</div><div class="line">    var Super = function()&#123;&#125;</div><div class="line">    Super.prototype = Dad.prototype;</div><div class="line">    Child.prototype = new Super();</div><div class="line">&#125;)()</div><div class="line">    Super = null;//节省内存</div><div class="line">    var son = new Child(son);</div></pre></td></tr></table></figure></p>
-<h4 id="proto属性继承"><a href="#proto属性继承" class="headerlink" title="proto属性继承"></a><strong>proto</strong>属性继承</h4><p>由于<strong>proto</strong>属性浏览器不兼容，该继承可以再移动端开发的时候使用。比较容易.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function Child(name)&#123;</div><div class="line">     this.name = name;</div><div class="line">     Dad.call(this);</div><div class="line"> &#125;</div><div class="line">//实例</div><div class="line">var son = new Child(&apos;son&apos;);</div><div class="line">son.__proto__ = Dad.prototype;</div></pre></td></tr></table></figure></p>
-<h2 id="一-ES6下可以这样的继承"><a href="#一-ES6下可以这样的继承" class="headerlink" title="一. ES6下可以这样的继承"></a>一. ES6下可以这样的继承</h2><p>ES5的继承实质上是先创造子类的实例对象this,然后将父类的方法添加到子类this上，但是由于ES6的继承机制不同，是先创造父类的实例this,然后用子类的构造修改this.</p>
-<h4 id="extends-关键词继承"><a href="#extends-关键词继承" class="headerlink" title="extends 关键词继承"></a>extends 关键词继承</h4><p>ES6将使用关键词extends，熟悉java编程的应该不陌生，对ES6的样子很像java.<br><figure class="highlight plain"><figcaption><span>Child extends Dad&#123;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">    constructor(x,y,name)&#123;//直接给一个construor方法作为构造方法</div><div class="line">        super(x,y);//父类的构造函数，只有调用super方法才能使用this,因为子类没有自己的this.换句话说，this必须再super方法调用之后使用</div><div class="line">        this.name = name;</div><div class="line">    &#125;</div><div class="line">    eat()&#123;</div><div class="line">        return this.name+super.eat();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//实例</div><div class="line">let son = new Child(son);</div></pre></td></tr></table></figure></p>
-<h4 id="proto继承"><a href="#proto继承" class="headerlink" title="proto继承"></a><strong>proto</strong>继承</h4><p>ES6可以直接再定义对象时直接通过属性进行继承<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">son = &#123;__proto__:Dad&#125;;</div></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/25/js的继承/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1035,11 +1033,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Technology</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color1">Technology</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1047,11 +1045,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">life</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color5">life</a>
               </li>
             
             <div class="clearfix"></div>
