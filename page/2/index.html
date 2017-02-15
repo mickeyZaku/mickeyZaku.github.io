@@ -134,6 +134,77 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-css左边竖条实现方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/29/css左边竖条实现方法/">css左边竖条实现方法</a>
+    </h1>
+  
+
+        
+        <a href="/2017/01/29/css左边竖条实现方法/" class="archive-article-date">
+  	<time datetime="2017-01-29T00:57:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>css中左边条是一个常见且常用的样式，比如：<br><img src="http://p1.bqimg.com/4851/b9d7753843a9a787.png" alt="左边条"></p>
+<h4 id="首先得有个盒子"><a href="#首先得有个盒子" class="headerlink" title="首先得有个盒子"></a>首先得有个盒子</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;&lt;/div&gt;</div><div class="line">//样式</div><div class="line">div&#123;</div><div class="line">    width: 500px;</div><div class="line">    height:100px;</div><div class="line">    margin: 400px auto;</div><div class="line">    background-color: #6e8095;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样子就是一个灰色的大盒子，其他啥也木有</p>
+<h4 id="border-left"><a href="#border-left" class="headerlink" title="border-left"></a>border-left</h4><p>这应该是最常用的加左边框的样式了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">div&#123;</div><div class="line">    border-left: 5px solid deeppink;</div><div class="line">    box-sizing: border-box;//边框创建再元素里面</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h4><p>使用after或者before,也可以轻松实现此功能，伪类涉及到定位，再div样式中加入position属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">div&#123;</div><div class="line">    .......</div><div class="line">    position:relative;</div><div class="line">&#125;</div><div class="line">div:after&#123;</div><div class="line">    content: &quot;&quot;;</div><div class="line">    width: 5px;</div><div class="line">    height: 100px;</div><div class="line">    position: absolute;</div><div class="line">    top:0; </div><div class="line">    left: 0;</div><div class="line">    background-color: deeppink;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="box-shadow"><a href="#box-shadow" class="headerlink" title="box-shadow"></a>box-shadow</h4><p>使用盒阴影一般都是给盒子增加阴影呈现立体效果，参数包括水平/竖直阴影位置、模糊距离、阴影尺寸、颜色、修改位内阴影等。可以采用两种方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//外阴影会影响margin</div><div class="line">div&#123;</div><div class="line">    .......</div><div class="line">    box-shadow: -5px 0px 0 0 deeppink;</div><div class="line">&#125;</div><div class="line">//内阴影</div><div class="line">div&#123;</div><div class="line">    ......</div><div class="line">    box-shadow: inset 5px 0px 0 0 deeppink;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="drop-shadow"><a href="#drop-shadow" class="headerlink" title="drop-shadow"></a>drop-shadow</h4><p>css3新特性，filter滤镜中的一个，用于生成阴影<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">div&#123;</div><div class="line">    .....</div><div class="line">    filter:drop-shadow(-5px 0 0 deeppink)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="linearGradient"><a href="#linearGradient" class="headerlink" title="linearGradient"></a>linearGradient</h4><p>css3新特性，线性渐变<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">div&#123;</div><div class="line">    ......</div><div class="line">    background-image:linearGradient(90deg,deeppink 0px,deepink 5px, transparent 5px);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="outline"><a href="#outline" class="headerlink" title="outline"></a>outline</h4><p>outline——轮廓，绘制元素周边的线，突出元素的作用，效率较低，尽量别选<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">div&#123;</div><div class="line">    outline:5px solid deeppink;</div><div class="line">&#125;</div><div class="line">div&#123;</div><div class="line">    position:absolute;</div><div class="line">    content:&quot;&quot;;</div><div class="line">    top:-5px;</div><div class="line">    bottom:-5px;</div><div class="line">    right:-5px;</div><div class="line">    left:0;</div><div class="line">    background:#ddd;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="scrollbar"><a href="#scrollbar" class="headerlink" title="scrollbar"></a>scrollbar</h4><p>滚动条的样式可以吗？可以，来个大大的滚动条。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">div&#123;</div><div class="line">    width:505px;</div><div class="line">    background:deeppink;</div><div class="line">    overflow-y:scroll;</div><div class="line">&#125;</div><div class="line">div::-webkit-scrollbar&#123;</div><div class="line">    width:500px;</div><div class="line">    background-color:#ddd;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/01/29/css左边竖条实现方法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-new-都干了些啥" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -951,6 +1022,10 @@ branch: master
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">life</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Date对象的方法</a>
               </li>
             
             <div class="clearfix"></div>
