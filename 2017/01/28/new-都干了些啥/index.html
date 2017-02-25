@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="不怎么写博客的橘子的博客">
 <meta property="og:description" content="让人开心的‘new’new 是一个非常不错的词，3个字母，不长却代表着美好，比如1234happy new yeartake on my new clothes/shirt/shoes etc.My girlfriend never buy anything new ！！。。。。
 逢年过节，七大姑八大姨问：你有对象了吗。答：我工作的时候经常有新对象（var xx = new Object()）;">
-<meta property="og:updated_time" content="2017-02-15T04:16:26.720Z">
+<meta property="og:updated_time" content="2017-02-25T06:11:12.239Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="new 都干了些啥">
 <meta name="twitter:description" content="让人开心的‘new’new 是一个非常不错的词，3个字母，不长却代表着美好，比如1234happy new yeartake on my new clothes/shirt/shoes etc.My girlfriend never buy anything new ！！。。。。
@@ -158,7 +158,7 @@
       
         <h4 id="让人开心的‘new’"><a href="#让人开心的‘new’" class="headerlink" title="让人开心的‘new’"></a>让人开心的‘new’</h4><p>new 是一个非常不错的词，3个字母，不长却代表着美好，比如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">happy new year</div><div class="line">take on my new clothes/shirt/shoes etc.</div><div class="line">My girlfriend never buy anything new ！！</div><div class="line">。。。。</div></pre></td></tr></table></figure></p>
 <p>逢年过节，七大姑八大姨问：你有对象了吗。答：我工作的时候经常有新对象（var xx = new Object()）;</p>
-<h4 id="Js-的-new-都干了啥"><a href="#Js-的-new-都干了啥" class="headerlink" title="Js 的 new 都干了啥"></a>Js 的 new 都干了啥</h4><p>那 执行new Object()时，浏览器引擎再幕后都默默作了什么呢。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var son = new Child(&apos;son&apos;);    （1）</div></pre></td></tr></table></figure></p>
+<h4 id="Js-的-new-都干了啥"><a href="#Js-的-new-都干了啥" class="headerlink" title="Js 的 new 都干了啥"></a>Js 的 new 都干了啥</h4><p>执行new Object()时，浏览器引擎再幕后都默默作了什么呢。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var son = new Child(&apos;son&apos;);    （1）</div></pre></td></tr></table></figure></p>
 <p>简单来说，短短的代码（1）中，new 大概作了这么几件事情。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//创建一个空对象</div><div class="line">var obj = &#123;&#125;;</div><div class="line"></div><div class="line">//把obj的私有属性__proto__ 指向Child的原型prototype，建立obj对象的原型链：obj=&gt;Child.prototype=&gt;Object.prototype=&gt;null,使obj可以使用原型链上的方法</div><div class="line">obj.__proto__ = Child.prototype;</div><div class="line"></div><div class="line">//调用call(),将obj替换Child类中的this,并传入&apos;son&apos;参数，执行父类Child,相当于赋值私有属性，obj拥有了Child私有属性和name = &apos;son&apos;的属性，并将其赋值给result</div><div class="line">var result = Child.call(obj,&quot;son&quot;);</div><div class="line"></div><div class="line">//判断result 的类型，如果不符合条件（非对象或者与obj不同），就返回obj，否则返回result。</div><div class="line">return typeof result === &apos;obj&apos;? result : obj;</div></pre></td></tr></table></figure></p>
 <p>son其实就是result，实例化成功。</p>
 
@@ -380,10 +380,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
@@ -396,6 +392,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
@@ -404,7 +404,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
             
             <div class="clearfix"></div>
