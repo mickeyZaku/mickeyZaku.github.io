@@ -134,6 +134,81 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-css优化原则" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/08/css优化原则/">css优化原则</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/08/css优化原则/" class="archive-article-date">
+  	<time datetime="2017-02-08T01:56:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如何书写更加整洁的css代码，遵循几项原则：</p>
+<h4 id="代码重置"><a href="#代码重置" class="headerlink" title="代码重置"></a>代码重置</h4><p>总有人说你们写CSS的时候有点不道德，上来就把别人的默认padding/margin啥的都干掉了，等用的着的时候又贱贱的加上。去掉这些默认样式一个是为了后面的代码容易操作，另一方面也为消除不同浏览器默认样式不同的影响。<br>一般的都会包括这么几个重置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">body, h1, h2, h3, h4, h5, h6, hr, p, blockquote,</div><div class="line">dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td, img &#123;</div><div class="line">    border: medium none;</div><div class="line">    margin: 0;</div><div class="line">    padding: 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/** 设置默认字体 **/</div><div class="line">body, button, input, select, textarea &#123;</div><div class="line">    font: 12px/1.5 &apos;宋体&apos;, tahoma, Srial, helvetica, sans-serif;</div><div class="line">&#125;</div><div class="line"></div><div class="line">h1, h2, h3, h4, h5, h6 &#123;</div><div class="line">    font-size: 100%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">em &#123;</div><div class="line">    font-style: normal;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/** 重置列表样式 **/</div><div class="line">ul, ol &#123;</div><div class="line">    list-style: none;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/** 重置超链接元素 **/</div><div class="line">a &#123;</div><div class="line">    text-decoration: none;</div><div class="line">    color: #333;</div><div class="line">&#125;</div><div class="line"></div><div class="line">a:hover &#123;</div><div class="line">    text-decoration: underline;</div><div class="line">    color: #F40;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/** 重置图片元素 **/</div><div class="line">img &#123;</div><div class="line">    border: 0px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/** 重置表格元素 **/</div><div class="line">table &#123;</div><div class="line">    border-collapse: collapse;</div><div class="line">    border-spacing: 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="使用缩写"><a href="#使用缩写" class="headerlink" title="使用缩写"></a>使用缩写</h4><p>缩写可以减少css文件的大小，并增加可读性和可维护性。然而并非所有值都可以缩写，浏览器读取缩写时，会将所有项都设置一遍，会消耗一定的性能。常用缩写包括：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/*盒子模型缩写*/</div><div class="line">div&#123;</div><div class="line">    padding:10px;/*4个内边距均为10px*/</div><div class="line">    padding:10px 20px;/*上下均为10px,左右均为20px*/</div><div class="line">    padding:10px 20px 30px;/*上下分别为10/30px,左右均为20px*/</div><div class="line">&#125;</div><div class="line">/*16进制颜色*/</div><div class="line">li&#123;</div><div class="line">    color: #000;/*原色#000000*/</div><div class="line">    background-color: #389;/*原色为#338899*/</div><div class="line">&#125;</div><div class="line">/*字体*/</div><div class="line">body&#123;</div><div class="line">    font:italic  small-caps  bold  12px/1.5em  &quot;宋体&quot;,sans-serif;/*至少指定size、family*/</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>不需要全部属性都设定时，尽量不用缩写，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">div&#123;margin-left:auto;margin-right:auto;&#125;/*不考虑上下边距，仅水平居中*/</div></pre></td></tr></table></figure></p>
+<h4 id="避免性能消耗属性"><a href="#避免性能消耗属性" class="headerlink" title="避免性能消耗属性"></a>避免性能消耗属性</h4><p>expression表达式/filter滤镜，这两者再IE中已经得到较好的支持，但确实是个耗性能的属性，谨慎使用，除非需求要求，比如再opacity（透明度）时，兼容ie6~8必须使用filter，这时需求大于一切。</p>
+<h4 id="选择器合并"><a href="#选择器合并" class="headerlink" title="选择器合并"></a>选择器合并</h4><p>选择器合并已经是常见的基本代码规范，再相同功能，如background采用同一张图片时，可将选择器合并，避免同一种属性反复写，默认属性重置也是这个道理。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">div .first,.second,.third,.fourth&#123;</div><div class="line">    background:url(../xx/xx.png) no-repeat 900px 900px; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="CSS做更多的事情"><a href="#CSS做更多的事情" class="headerlink" title="CSS做更多的事情"></a>CSS做更多的事情</h4><p>能用CSS实现的事情，尽量避免使用js。</p>
+<ol>
+<li>再不兼容低版本浏览器的情况下（移动开发），完全可以采用CSS3的动画等来实现，而不是采用js。</li>
+<li>视觉变化，使用CSS控制className</li>
+<li>设置多节点样式，避免使用js时的浏览器多次渲染耗性能</li>
+</ol>
+<h4 id="清晰的注释"><a href="#清晰的注释" class="headerlink" title="清晰的注释"></a>清晰的注释</h4><p>将每一个模块用注释隔开，增加可读性。哪怕是header/nav/footer这样简单的分隔。</p>
+<h4 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h4><p>套用工具喽，比如gulp，将多余空格去除。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/08/css优化原则/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-居中那件不大不小的事" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -867,90 +942,6 @@
 
 
   
-    <article id="post-ES6箭头函数需要注意的地方" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/24/ES6箭头函数需要注意的地方/">ES6箭头函数需要注意的地方</a>
-    </h1>
-  
-
-        
-        <a href="/2017/01/24/ES6箭头函数需要注意的地方/" class="archive-article-date">
-  	<time datetime="2017-01-24T08:32:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h4><p>ECMAScript6允许使用箭头（=&gt;）来定义函数，大大减少代码量的同时，提高了不少代码的可读性，逼格也上升了一个档次。像这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">let fn = (a,b) =&gt;a+b;</div><div class="line">//等同于</div><div class="line">let fn = function(a,b)&#123;</div><div class="line">    return a+b;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>但古语云：‘函数无完函数’，箭头函数再使用时有几个需要注意的地方，自己用的时候要注意。</p>
-<ul>
-<li>大括号的解释问题<br>函数体代码多了就用他，显示写法，像这样：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let fn3 = (a,b)=&gt;&#123;</div><div class="line">    a = a + b;</div><div class="line">    console.log(&apos;ss&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>当返回是个大括号对象，再箭头右侧时会被解释为代码块，怎么办？此时需要再对象外面加上括号，像这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let fn3 = (a,b)=&gt;(&#123;userName:userName,passWord:passWord&#125;)</div></pre></td></tr></table></figure></p>
-<ul>
-<li>箭头函数的this<br>1.箭头函数中的this为定义时所在的对象，非使用时所在的对象。比如:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function fn() &#123;</div><div class="line">    return () =&gt; &#123;</div><div class="line">        return () =&gt;&#123;</div><div class="line">            return () =&gt;&#123;</div><div class="line">                return this.id</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>上述内层函数多个return ,但都采用了箭头函数的形式，因此this均为定义时所再的fn这个this<br>2.不可进行this的指向改变<br>因为箭头函数根本没有自己的this，也就别指望通过call()/apply()/bind()等方法去改变this了。<br>3.for循环绑定事件<br>绑定事件中循环为每个相关元素事件，使用ES6的let时,使用箭头函数就不要使用this，此时的this为时间函数定义时的window全局。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">ele.onClick = function ()&#123;</div><div class="line">     for(let i = 0;i&lt;xx.length;i++)&#123;</div><div class="line">         this.className = &apos;我是这个元素&apos;;//this为ele</div><div class="line">     &#125;</div><div class="line"> &#125;</div><div class="line"> ele.onClick =&gt;&#123;</div><div class="line">     for(let i = 0;i&lt;xx.length;i++)&#123;</div><div class="line">         this.className = &apos;我是这个元素&apos;;//this为window</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
-<ul>
-<li><p>不可作为构造函数<br>即父类不能采用箭头函数作为constructor,浏览器会友善的告诉你，erro~~</p>
-</li>
-<li><p>不可采用arguments<br>可以采用…arr，即rest参数（获取多余参数，放入数组），ES6中不存在arguments,比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function fn()&#123;</div><div class="line">    setTimeout(()=&gt;&#123;</div><div class="line">        console.log(arguments);</div><div class="line">    &#125;,100);</div><div class="line">&#125;</div><div class="line">//传参给fn</div><div class="line">fn(1.2.3);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>上述最后打印出的arguments为fn 的arguments。</p>
-<ul>
-<li>箭头套箭头<br>上述也有，ES6中的箭头函数，可以嵌套的。上面也有用过。</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/24/ES6箭头函数需要注意的地方/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1044,14 +1035,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Technology</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
@@ -1060,7 +1043,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Technology</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">

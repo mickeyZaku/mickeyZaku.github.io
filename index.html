@@ -134,6 +134,94 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-改变你的this" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/01/改变你的this/">改变你的this</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/01/改变你的this/" class="archive-article-date">
+  	<time datetime="2017-03-01T05:52:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>函数绑定一般采用函数共有父类的原型Function.prototype 上，包括了 call/apply/bind的几个方法,这些方为公有方法。<br>这几个方法的共同点就是，改变函数执行时的this,同时传入参数并执行函数。</p>
+<h4 id="call"><a href="#call" class="headerlink" title="call"></a>call</h4><p>其中最为常用的事call方法，其执行步骤为：</p>
+<ol>
+<li>通过函数类的实例进行调用Function.prototype上的call方法；</li>
+<li>将调用call的方法函数中的this修改为call的第一个参数；</li>
+<li>第二个参数开始为向函数实例传递的参数并执行；<br>代码如下<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">print</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj = &#123;&#125;;</div><div class="line">obj.printThis = print;</div><div class="line"></div><div class="line">print();<span class="comment">//window</span></div><div class="line">obj.printThis();<span class="comment">//obj</span></div><div class="line">print().call(<span class="built_in">document</span>.body)<span class="comment">//this改为dody后执行，控制台输出body</span></div><div class="line"></div><div class="line">div.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  print.call(<span class="built_in">document</span>.body);<span class="comment">//绑定事件的this转变</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>需要注意的是，严格模式下（use strict），因为ES6默认就是严格模式，所以严格模式用的越来越多：</p>
+<ol>
+<li>call如果传入 null和undefined，this就是null和 undefine；非严格模式下，则为window。</li>
+<li>同样的，在严格模式下执行window执行函数this为undefined，包括自执行函数和无行为主体的函数执行。</li>
+</ol>
+<h4 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h4><p>apply与call相似，调用时可以将调用函数的this进行改变并执行调用他的函数。apply的第一个参数与call相同的作用，apply的第二个参数则为一个数组，将数组的每一项作为调用函数的参数，挨个执行。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num1,num2</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(num1+num2);</div><div class="line">&#125;</div><div class="line"></div><div class="line">sum.apply(<span class="literal">null</span>,[<span class="number">1</span>,<span class="number">2</span>]);<span class="comment">//3</span></div><div class="line"><span class="built_in">Math</span>.max.apply(<span class="literal">null</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]);<span class="comment">//取数组中的最大值</span></div></pre></td></tr></table></figure></p>
+<h4 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h4><p>与call和apply相似，其参数的意义与call相同，只是bind并不会执行函数，而是将更换了this的函数作为返回值,！！！需要注意的是此方法并不兼容所有浏览器<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num1,num2</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(num1+num2);</div><div class="line">&#125;</div><div class="line"></div><div class="line">sum.bind(<span class="literal">null</span>,<span class="number">1</span>,<span class="number">2</span>);<span class="comment">//sum()&#123;...&#125;</span></div><div class="line">sum.bind(<span class="literal">null</span>)(<span class="number">1</span>,<span class="number">2</span>);<span class="comment">//3</span></div></pre></td></tr></table></figure></p>
+<h4 id="Object-prototype-toString-call"><a href="#Object-prototype-toString-call" class="headerlink" title="Object.prototype.toString.call"></a>Object.prototype.toString.call</h4><p>相当于把toString方法中的this修改，Object.prototype.toString 方法会打印出一个‘[object Object]’的字符串，而第二项则为其中的this。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="literal">null</span>);<span class="comment">//'[object Null]'</span></div><div class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="literal">undefined</span>);<span class="comment">//'[object Undefined]'</span></div><div class="line"><span class="built_in">Object</span>.prototype.toString.call(&#123;&#125;);<span class="comment">//'[object Object]'</span></div><div class="line"><span class="built_in">Object</span>.prototype.toString.call([]);<span class="comment">//'[object Array]'</span></div><div class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="number">3</span>);<span class="comment">//'[object Number]'</span></div></pre></td></tr></table></figure></p>
+<h4 id="ES7"><a href="#ES7" class="headerlink" title="ES7"></a>ES7</h4><p>目前作为ES7的一项提案，函数绑定可以直接采用并排的双冒号（::）来代替，虽然只是提议，但目前Babel转码已经支持。</p>
+<ol>
+<li><p>不添加参数的情况下，“：：”的意思同bind相同，如果有参数，则等同于apply</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">foo:: bar;</div><div class="line"><span class="comment">//等同</span></div><div class="line">bar.bind(foo);</div><div class="line">foo::bar(...arguments);</div><div class="line"><span class="comment">//等同于</span></div><div class="line">foo.apply(foo,argurments);</div></pre></td></tr></table></figure>
+</li>
+<li><p>如果双冒号左边为空，右边为一个对象的方法，则等同于将该方法绑定在该对象上</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">::obj.foo;</div><div class="line"><span class="comment">//等同于</span></div><div class="line">obj::obj.foo;</div><div class="line"><span class="comment">//等同于</span></div><div class="line">obj.foo.bind(obj);</div></pre></td></tr></table></figure>
+</li>
+<li><p>双冒号的返回还是元对象，可采用链式写法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">obj.foo::(<span class="string">'p'</span>)::(<span class="string">'html'</span>)</div></pre></td></tr></table></figure></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/01/改变你的this/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-js严格模式简述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -807,81 +895,6 @@
 
 
   
-    <article id="post-css优化原则" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/08/css优化原则/">css优化原则</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/08/css优化原则/" class="archive-article-date">
-  	<time datetime="2017-02-08T01:56:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>如何书写更加整洁的css代码，遵循几项原则：</p>
-<h4 id="代码重置"><a href="#代码重置" class="headerlink" title="代码重置"></a>代码重置</h4><p>总有人说你们写CSS的时候有点不道德，上来就把别人的默认padding/margin啥的都干掉了，等用的着的时候又贱贱的加上。去掉这些默认样式一个是为了后面的代码容易操作，另一方面也为消除不同浏览器默认样式不同的影响。<br>一般的都会包括这么几个重置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">body, h1, h2, h3, h4, h5, h6, hr, p, blockquote,</div><div class="line">dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td, img &#123;</div><div class="line">    border: medium none;</div><div class="line">    margin: 0;</div><div class="line">    padding: 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/** 设置默认字体 **/</div><div class="line">body, button, input, select, textarea &#123;</div><div class="line">    font: 12px/1.5 &apos;宋体&apos;, tahoma, Srial, helvetica, sans-serif;</div><div class="line">&#125;</div><div class="line"></div><div class="line">h1, h2, h3, h4, h5, h6 &#123;</div><div class="line">    font-size: 100%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">em &#123;</div><div class="line">    font-style: normal;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/** 重置列表样式 **/</div><div class="line">ul, ol &#123;</div><div class="line">    list-style: none;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/** 重置超链接元素 **/</div><div class="line">a &#123;</div><div class="line">    text-decoration: none;</div><div class="line">    color: #333;</div><div class="line">&#125;</div><div class="line"></div><div class="line">a:hover &#123;</div><div class="line">    text-decoration: underline;</div><div class="line">    color: #F40;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/** 重置图片元素 **/</div><div class="line">img &#123;</div><div class="line">    border: 0px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/** 重置表格元素 **/</div><div class="line">table &#123;</div><div class="line">    border-collapse: collapse;</div><div class="line">    border-spacing: 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="使用缩写"><a href="#使用缩写" class="headerlink" title="使用缩写"></a>使用缩写</h4><p>缩写可以减少css文件的大小，并增加可读性和可维护性。然而并非所有值都可以缩写，浏览器读取缩写时，会将所有项都设置一遍，会消耗一定的性能。常用缩写包括：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/*盒子模型缩写*/</div><div class="line">div&#123;</div><div class="line">    padding:10px;/*4个内边距均为10px*/</div><div class="line">    padding:10px 20px;/*上下均为10px,左右均为20px*/</div><div class="line">    padding:10px 20px 30px;/*上下分别为10/30px,左右均为20px*/</div><div class="line">&#125;</div><div class="line">/*16进制颜色*/</div><div class="line">li&#123;</div><div class="line">    color: #000;/*原色#000000*/</div><div class="line">    background-color: #389;/*原色为#338899*/</div><div class="line">&#125;</div><div class="line">/*字体*/</div><div class="line">body&#123;</div><div class="line">    font:italic  small-caps  bold  12px/1.5em  &quot;宋体&quot;,sans-serif;/*至少指定size、family*/</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>不需要全部属性都设定时，尽量不用缩写，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">div&#123;margin-left:auto;margin-right:auto;&#125;/*不考虑上下边距，仅水平居中*/</div></pre></td></tr></table></figure></p>
-<h4 id="避免性能消耗属性"><a href="#避免性能消耗属性" class="headerlink" title="避免性能消耗属性"></a>避免性能消耗属性</h4><p>expression表达式/filter滤镜，这两者再IE中已经得到较好的支持，但确实是个耗性能的属性，谨慎使用，除非需求要求，比如再opacity（透明度）时，兼容ie6~8必须使用filter，这时需求大于一切。</p>
-<h4 id="选择器合并"><a href="#选择器合并" class="headerlink" title="选择器合并"></a>选择器合并</h4><p>选择器合并已经是常见的基本代码规范，再相同功能，如background采用同一张图片时，可将选择器合并，避免同一种属性反复写，默认属性重置也是这个道理。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">div .first,.second,.third,.fourth&#123;</div><div class="line">    background:url(../xx/xx.png) no-repeat 900px 900px; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="CSS做更多的事情"><a href="#CSS做更多的事情" class="headerlink" title="CSS做更多的事情"></a>CSS做更多的事情</h4><p>能用CSS实现的事情，尽量避免使用js。</p>
-<ol>
-<li>再不兼容低版本浏览器的情况下（移动开发），完全可以采用CSS3的动画等来实现，而不是采用js。</li>
-<li>视觉变化，使用CSS控制className</li>
-<li>设置多节点样式，避免使用js时的浏览器多次渲染耗性能</li>
-</ol>
-<h4 id="清晰的注释"><a href="#清晰的注释" class="headerlink" title="清晰的注释"></a>清晰的注释</h4><p>将每一个模块用注释隔开，增加可读性。哪怕是header/nav/footer这样简单的分隔。</p>
-<h4 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h4><p>套用工具喽，比如gulp，将多余空格去除。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/08/css优化原则/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -975,14 +988,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Technology</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
@@ -991,7 +996,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Technology</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
