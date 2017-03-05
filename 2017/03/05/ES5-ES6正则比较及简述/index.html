@@ -8,25 +8,25 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>ES5/ES6正则比较及简述 | 不怎么写博客的橘子的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="####正则表达式regExp(regular expression),即规则表达式的英文缩写其一般的用法是：
+  <meta name="description" content="正则表达式regExp(regular expression),即规则表达式的英文缩写其一般的用法是：
 
 验证字符串是否符合正则所制定的规则，比如注册表单中各项填写规则的验证；
-把符合规则的字符串部分从字符串捕获；由于正则为引用数据类型，所以声明方式可以是字面量也可以是实例声明：123var reg = /\d/;var reg = new RegExp(&apos;\d&apos;);//es5中参数必须是">
+把符合规则的字符串部分从字符串捕获；由于正则为引用数据类型，所以声明方式可以是字面量也可以是实例声明：123var reg = /\d/;var reg = new RegExp(&apos;\d&apos;);//es5中参数必须是字符串，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES5/ES6正则比较及简述">
 <meta property="og:url" content="http://yoursite.com/2017/03/05/ES5-ES6正则比较及简述/index.html">
 <meta property="og:site_name" content="不怎么写博客的橘子的博客">
-<meta property="og:description" content="####正则表达式regExp(regular expression),即规则表达式的英文缩写其一般的用法是：
+<meta property="og:description" content="正则表达式regExp(regular expression),即规则表达式的英文缩写其一般的用法是：
 
 验证字符串是否符合正则所制定的规则，比如注册表单中各项填写规则的验证；
-把符合规则的字符串部分从字符串捕获；由于正则为引用数据类型，所以声明方式可以是字面量也可以是实例声明：123var reg = /\d/;var reg = new RegExp(&apos;\d&apos;);//es5中参数必须是">
-<meta property="og:updated_time" content="2017-03-05T04:29:07.850Z">
+把符合规则的字符串部分从字符串捕获；由于正则为引用数据类型，所以声明方式可以是字面量也可以是实例声明：123var reg = /\d/;var reg = new RegExp(&apos;\d&apos;);//es5中参数必须是字符串，">
+<meta property="og:updated_time" content="2017-03-05T04:41:05.176Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES5/ES6正则比较及简述">
-<meta name="twitter:description" content="####正则表达式regExp(regular expression),即规则表达式的英文缩写其一般的用法是：
+<meta name="twitter:description" content="正则表达式regExp(regular expression),即规则表达式的英文缩写其一般的用法是：
 
 验证字符串是否符合正则所制定的规则，比如注册表单中各项填写规则的验证；
-把符合规则的字符串部分从字符串捕获；由于正则为引用数据类型，所以声明方式可以是字面量也可以是实例声明：123var reg = /\d/;var reg = new RegExp(&apos;\d&apos;);//es5中参数必须是">
+把符合规则的字符串部分从字符串捕获；由于正则为引用数据类型，所以声明方式可以是字面量也可以是实例声明：123var reg = /\d/;var reg = new RegExp(&apos;\d&apos;);//es5中参数必须是字符串，">
   
     <link rel="alternative" href="/atom.xml" title="不怎么写博客的橘子的博客" type="application/atom+xml">
   
@@ -162,7 +162,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>####正则表达式<br>regExp(regular expression),即规则表达式的英文缩写其一般的用法是：</p>
+        <h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><p>regExp(regular expression),即规则表达式的英文缩写其一般的用法是：</p>
 <ol>
 <li>验证字符串是否符合正则所制定的规则，比如注册表单中各项填写规则的验证；</li>
 <li>把符合规则的字符串部分从字符串捕获；<br>由于正则为引用数据类型，所以声明方式可以是字面量也可以是实例声明：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/\d/</span>;</div><div class="line"><span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\d'</span>);<span class="comment">//es5中参数必须是字符串，</span></div><div class="line"><span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="regexp">/\d/</span>);<span class="comment">/// Es6中可以直接放正则了</span></div></pre></td></tr></table></figure>
@@ -175,8 +175,7 @@
 <li>属性：flags 正则的修饰符（ES6）；source 返回正则的正文；lastIndex 下一次匹配正则时的位置exec用<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/\d/.test(<span class="string">'124'</span>);<span class="comment">//true</span></div><div class="line">/\d/.exec(<span class="string">'123'</span>)<span class="comment">//["1", index: 0, input: "123"]</span></div></pre></td></tr></table></figure>
 </li>
 </ol>
-<h4 id="正则表达式特殊字符"><a href="#正则表达式特殊字符" class="headerlink" title="正则表达式特殊字符"></a>正则表达式特殊字符</h4><p>正则需要使用特殊字符，来控制。<br>|字符|描述<br>|-|-|<br>|\d|0~9之间的任意一个数字|<br>|\D|非0~9之间的任意一个数字|<br>|\w|任何非单词字符（a-zA-Z0-9<em>）|<br>|\W|非任何非单词字符（a-zA-Z0-9</em>）|<br>|\s|空格或者空白|<br>|\S|非空格或者空白|<br>|\b|边界,包括双引号和空格和‘—’‘%’等等特殊字符也会视为边界（数字结尾/\d\b/）|<br>|\B|非边界,包括双引号和空格和‘—’‘%’等等特殊字符也会视为边界|<br>|\n|换行付|<br>|\r|匹配回车|<br>|\R|陪陪非回车|<br>|.|匹配除换行以外的任意字符|<br>|^|范围限制起始|<br>|$|范围限制结尾|<br>|.|转义.|<br>||转义|<br>|{n}|出现n个|<br>|{n,}|至少出现n个|<br>|{n，m}|出现n-m个|<br>|*|0到多个|<br>|+|1到多个|<br>|？|0或者1个|<br>|x|y|x或者y中的一个|<br>|()|包含的小正则表达式，提升优先级|<br>|[xyz]|x或者y或者z中的一个|<br>|[^xyz]|只要有一个非x/y/z就行|<br>|[0-9a-zA-Z]|0-9中的一个，或者a-z及A-Z中的一个|<br>|[.]|代表’.’本身|</p>
-<p>点击查看<a href="https://mickeyzaku.github.io/2017/02/09/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" target="_blank" rel="external">常用正则表达式</a></p>
+<h4 id="正则表达式特殊字符"><a href="#正则表达式特殊字符" class="headerlink" title="正则表达式特殊字符"></a>正则表达式特殊字符</h4><p>正则需要使用特殊字符，来控制(为啥不支持mk表格语法呢？):<br>|字符|描述|<br>|-|-|<br>|\d|0~9之间的任意一个数字|<br>|\D|非0~9之间的任意一个数字|<br>|\w|任何非单词字符（a-zA-Z0-9<em>）|<br>|\W|非任何非单词字符（a-zA-Z0-9</em>）|<br>|\s|空格或者空白|<br>|\S|非空格或者空白|<br>|\b|边界,包括双引号和空格和‘—’‘%’等等特殊字符也会视为边界（数字结尾/\d\b/）|<br>|\B|非边界,包括双引号和空格和‘—’‘%’等等特殊字符也会视为边界|<br>|\n|换行付|<br>|\r|匹配回车|<br>|\R|陪陪非回车|<br>|.|匹配除换行以外的任意字符|<br>|^|范围限制起始|<br>|$|范围限制结尾|<br>|.|转义.|<br>|||转义|<br>|{n}|出现n个|<br>|{n,}|至少出现n个|<br>|{n，m}|出现n-m个|<br>|*|0到多个|<br>|+|1到多个|<br>|？|0或者1个|<br>|x|y|x或者y中的一个|<br>|()|包含的小正则表达式，提升优先级|<br>|[xyz]|x或者y或者z中的一个|<br>|[^xyz]|只要有一个非x/y/z就行|<br>|[0-9a-zA-Z]|0-9中的一个，或者a-z及A-Z中的一个|<br>|[.]|代表’.’本身|<br>|g|全局|<br>|i|忽略大小写|<br>|m|多行匹配|<br>点击查看<a href="https://mickeyzaku.github.io/2017/02/09/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" target="_blank" rel="external">常用正则表达式</a></p>
 <h4 id="ES6正则补充"><a href="#ES6正则补充" class="headerlink" title="ES6正则补充"></a>ES6正则补充</h4><h4 id="‘u’修饰符"><a href="#‘u’修饰符" class="headerlink" title="‘u’修饰符"></a>‘u’修饰符</h4><p>Es6中增加‘u’修饰符，主要为了补充ES5中大于‘\uFFFF’的Unicode字符,‘u’的出现使得中文的匹配中更加合理<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^.&amp;<span class="regexp">/u.test('李')/</span><span class="regexp">/true，ES5下或者不加‘u’时为false</span></div></pre></td></tr></table></figure></p>
 <p>包括‘.’、量词、预定义，使用修饰符‘u’之后可以较好的匹配大unicode。</p>
 <h4 id="‘y’修饰符"><a href="#‘y’修饰符" class="headerlink" title="‘y’修饰符"></a>‘y’修饰符</h4><p>‘y’修饰符不好理解，其作用与‘g’相似，表示全局匹配，不同在于‘y’修饰符有粘连的意思，‘g’只要剩余位置中存在匹配就行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">"aa_a"</span>;</div><div class="line"><span class="keyword">var</span> reg1 = <span class="regexp">/a+/g</span>;</div><div class="line"><span class="keyword">var</span> reg2 = <span class="regexp">/a+/y</span>;</div><div class="line"><span class="keyword">var</span> reg3 = <span class="regexp">/a+\w/y</span>;</div><div class="line"></div><div class="line">reg1.exec(s);<span class="comment">//‘aa’</span></div><div class="line">reg2.exec(s);<span class="comment">//'aa'</span></div><div class="line">reg3.exec(s);<span class="comment">//'aa_'</span></div><div class="line"></div><div class="line">reg1.exec(s);<span class="comment">//'a'</span></div><div class="line">reg2.exec(s);<span class="comment">//null</span></div><div class="line">reg3.exec(s);<span class="comment">//'a_'</span></div></pre></td></tr></table></figure></p>
@@ -397,7 +396,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -405,15 +404,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
