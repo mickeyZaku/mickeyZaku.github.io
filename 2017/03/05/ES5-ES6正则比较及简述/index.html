@@ -6,21 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>浏览器版本判断 | 不怎么写博客的橘子的博客</title>
+  <title>ES5/ES6正则比较及简述 | 不怎么写博客的橘子的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="浏览器版本大多搞后台/数据库开发的，每当你劝他们改干前端的时候，他们的理由必须包含“不喜欢前端开发各种浏览器的兼容问题，我们就一套代码。”有没有无言以对，这句戳中前端小伙伴们膝盖的话，道出了前端开发日常中最需要解决的问题，至少再完成浏览器大一统前，你只得这样做。
-常见浏览器版本浏览器版本其实不能按照厂家来分，因为最重要的是要看浏览器的内核，主要有那么几种：IE的Trident(IE6、IE7、IE">
+  <meta name="description" content="偶尔更新">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浏览器版本判断">
-<meta property="og:url" content="http://yoursite.com/2017/02/20/浏览器版本判断/index.html">
+<meta property="og:title" content="ES5/ES6正则比较及简述">
+<meta property="og:url" content="http://yoursite.com/2017/03/05/ES5-ES6正则比较及简述/index.html">
 <meta property="og:site_name" content="不怎么写博客的橘子的博客">
-<meta property="og:description" content="浏览器版本大多搞后台/数据库开发的，每当你劝他们改干前端的时候，他们的理由必须包含“不喜欢前端开发各种浏览器的兼容问题，我们就一套代码。”有没有无言以对，这句戳中前端小伙伴们膝盖的话，道出了前端开发日常中最需要解决的问题，至少再完成浏览器大一统前，你只得这样做。
-常见浏览器版本浏览器版本其实不能按照厂家来分，因为最重要的是要看浏览器的内核，主要有那么几种：IE的Trident(IE6、IE7、IE">
-<meta property="og:updated_time" content="2017-02-20T03:46:52.890Z">
+<meta property="og:description" content="偶尔更新">
+<meta property="og:updated_time" content="2017-03-05T03:42:33.257Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浏览器版本判断">
-<meta name="twitter:description" content="浏览器版本大多搞后台/数据库开发的，每当你劝他们改干前端的时候，他们的理由必须包含“不喜欢前端开发各种浏览器的兼容问题，我们就一套代码。”有没有无言以对，这句戳中前端小伙伴们膝盖的话，道出了前端开发日常中最需要解决的问题，至少再完成浏览器大一统前，你只得这样做。
-常见浏览器版本浏览器版本其实不能按照厂家来分，因为最重要的是要看浏览器的内核，主要有那么几种：IE的Trident(IE6、IE7、IE">
+<meta name="twitter:title" content="ES5/ES6正则比较及简述">
+<meta name="twitter:description" content="偶尔更新">
   
     <link rel="alternative" href="/atom.xml" title="不怎么写博客的橘子的博客" type="application/atom+xml">
   
@@ -136,32 +133,27 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-浏览器版本判断" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-ES5-ES6正则比较及简述" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      浏览器版本判断
+      ES5/ES6正则比较及简述
     </h1>
   
 
         
-        <a href="/2017/02/20/浏览器版本判断/" class="archive-article-date">
-  	<time datetime="2017-02-20T02:48:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-20</time>
+        <a href="/2017/03/05/ES5-ES6正则比较及简述/" class="archive-article-date">
+  	<time datetime="2017-03-05T03:41:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="浏览器版本"><a href="#浏览器版本" class="headerlink" title="浏览器版本"></a>浏览器版本</h4><p>大多搞后台/数据库开发的，每当你劝他们改干前端的时候，他们的理由必须包含“不喜欢前端开发各种浏览器的兼容问题，我们就一套代码。”有没有无言以对，这句戳中前端小伙伴们膝盖的话，道出了前端开发日常中最需要解决的问题，至少再完成浏览器大一统前，你只得这样做。</p>
-<h4 id="常见浏览器版本"><a href="#常见浏览器版本" class="headerlink" title="常见浏览器版本"></a>常见浏览器版本</h4><p>浏览器版本其实不能按照厂家来分，因为最重要的是要看浏览器的内核，主要有那么几种：IE的Trident(IE6、IE7、IE8（Trident 4.0）、IE9（Trident 5.0）、IE10（Trident 6.0）； 360安全浏览器（1.0-5.0为Trident，6.0为Trident+Webkit，7.0为Trident+Blink）猎豹极轻浏览器，360极速浏览器（7.5之前为Trident+Webkit，7.5为Trident+Blink）),早起版本与w3c有些脱节，某种意义上，IE10以下都需要考虑兼容；Gecko，Mozilla FireFox(火狐浏览器) 自家开发的内核，不过新推出的Brave,已经采用BLink/v8，不知道是不是要搞事情；Webkit(Safari内核,Chrome内核原型,开源)，目前safari和google自家安卓都在用，市场份额逐年提升，移动端和pc端的大佬。<br>当然，现阶段blink/v8（排版+脚本加载）双引擎是个趋势，好多浏览器已经开始选择了。<br>生在这个时代就要有这个时代的作为，判断浏览器版本，从而做到兼容是前端的一大责任，套用一句广告词，‘原来生活可以更美的’</p>
-<h4 id="pc端"><a href="#pc端" class="headerlink" title="pc端"></a>pc端</h4><p>js中非常重要的方法：window.navigator.userAgent，这个属性可以将浏览器信息返回，详细过程再代码中进行注释<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getBrowserInfo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> oInfo = &#123;&#125;;<span class="comment">//Info:对象，存储浏览器信息</span></div><div class="line">    <span class="keyword">var</span> str = <span class="built_in">window</span>.navigator.userAgent.toLowerCase();<span class="comment">//str:userAgent获取相关信息</span></div><div class="line">    <span class="comment">//bReg:浏览器信息匹配正则,小正则1是浏览器类型，小正则2版本号</span></div><div class="line">    <span class="keyword">var</span> bReg = <span class="regexp">/(msie|firefox|chrome|opera|version).*?([\d.]+)/</span>;</div><div class="line">    <span class="keyword">var</span> infoArr = str.match(bReg);</div><div class="line">    oInfo.browser = infoArr[<span class="number">1</span>].replace(<span class="regexp">/version/</span>, <span class="string">"safari"</span>);<span class="comment">//小正则1正确输出safari的处理</span></div><div class="line">    oInfo.ver = infoArr[<span class="number">2</span>];</div><div class="line">    <span class="keyword">return</span> oInfo;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> broInfo = getBrowserInfo();</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"浏览器："</span>+broInfo.browser);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">" 版本："</span>+broInfo.ver);</div></pre></td></tr></table></figure></p>
-<p>上述运行结果，以上述运行结果，chrome 58.0.3000.4为例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">浏览器：chrome</div><div class="line">版本：58.0.3000.4</div></pre></td></tr></table></figure></p>
-<h4 id="加上移动端"><a href="#加上移动端" class="headerlink" title="加上移动端"></a>加上移动端</h4><p>如果不只是判断兼容，甚至手机操作系统等信息，或者用于初步安全控制，可以将上述代码中添加更多信息，核心依然是 navigator,还未作进一步封装和优化。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> browser = &#123;</div><div class="line">    <span class="attr">versions</span>: ~<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> broInfo = navigator.userAgent;</div><div class="line">        <span class="keyword">return</span> &#123; <span class="comment">//移动终端浏览器版本信息</span></div><div class="line">            trident: broInfo.indexOf(<span class="string">'Trident'</span>) &gt; <span class="number">-1</span>, <span class="comment">//IE内核</span></div><div class="line">            presto: broInfo.indexOf(<span class="string">'Presto'</span>) &gt; <span class="number">-1</span>, <span class="comment">//opera老版本内核</span></div><div class="line">            webKit: broInfo.indexOf(<span class="string">'AppleWebKit'</span>) &gt; <span class="number">-1</span>, <span class="comment">//苹果、谷歌内核</span></div><div class="line">            gecko: broInfo.indexOf(<span class="string">'Gecko'</span>) &gt; <span class="number">-1</span> &amp;&amp; broInfo.indexOf(<span class="string">'KHTML'</span>) == <span class="number">-1</span>, <span class="comment">//火狐内核</span></div><div class="line">            mobile: !!broInfo.match(<span class="regexp">/AppleWebKit.*Mobile.*/</span>), <span class="comment">//是否为移动终端</span></div><div class="line">            ios: !!broInfo.match(<span class="regexp">/\(i[^;]+;( U;)? CPU.+Mac OS X/</span>), <span class="comment">//ios终端</span></div><div class="line">            android: broInfo.indexOf(<span class="string">'Android'</span>) &gt; <span class="number">-1</span> || broInfo.indexOf(<span class="string">'Linux'</span>) &gt; <span class="number">-1</span>, <span class="comment">//android终端或uc浏览器</span></div><div class="line">            iPhone: broInfo.indexOf(<span class="string">'iPhone'</span>) &gt; <span class="number">-1</span>, <span class="comment">//是否为iPhone</span></div><div class="line">            iPad: broInfo.indexOf(<span class="string">'iPad'</span>) &gt; <span class="number">-1</span>, <span class="comment">//是否iPad</span></div><div class="line">            webApp: broInfo.indexOf(<span class="string">'Safari'</span>) == <span class="number">-1</span> <span class="comment">//是否web应该程序，没有头部与底部</span></div><div class="line">        &#125;;</div><div class="line">    &#125;(),</div><div class="line">    <span class="attr">language</span>: (navigator.browserLanguage || navigator.language).toLowerCase()</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"语言版本: "</span> + browser.language);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">" 是否为移动终端: "</span> + browser.versions.mobile);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">" ios终端: "</span> + browser.versions.ios);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">" android终端: "</span> + browser.versions.android);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">" 是否为iPhone: "</span> + browser.versions.iPhone);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">" 是否iPad: "</span> + browser.versions.iPad);</div></pre></td></tr></table></figure></p>
-
+        
       
 
       
@@ -195,7 +187,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Technology</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
         		</li>
       		
 		</ul>
@@ -251,7 +243,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/02/20/浏览器版本判断/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/05/ES5-ES6正则比较及简述/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -265,18 +257,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/02/25/有趣的css3菜单/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          &#39;有趣的css3菜单&#39;
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/02/17/boostrap模态框简述/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">boostrap模态框简述</div>
+    <a href="/2017/03/01/改变你的this/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">改变你的this</div>
       <i class="icon-circle-right"></i>
     </a>
   

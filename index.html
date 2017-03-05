@@ -134,6 +134,67 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ES5-ES6正则比较及简述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/05/ES5-ES6正则比较及简述/">ES5/ES6正则比较及简述</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/05/ES5-ES6正则比较及简述/" class="archive-article-date">
+  	<time datetime="2017-03-05T03:41:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/05/ES5-ES6正则比较及简述/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-改变你的this" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -823,78 +884,6 @@
 
 
   
-    <article id="post-常用正则表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/09/常用正则表达式/">常用正则表达式</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/09/常用正则表达式/" class="archive-article-date">
-  	<time datetime="2017-02-09T04:19:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>记录几个常用的正则表达式，备用，一直updating $ adding</p>
-<h4 id="匹配中文字符"><a href="#匹配中文字符" class="headerlink" title="匹配中文字符"></a>匹配中文字符</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 匹配中文字符的标准写法，肯定记不住，用的是unicode。</span></div><div class="line">/[\u4e00-\u9fa5]/</div><div class="line"><span class="comment">//同样的引申一下，匹配中文姓名的正则为</span></div><div class="line">/^[\u4e00-\u9fa5]&#123;<span class="number">2</span>,<span class="number">4</span>&#125;/</div></pre></td></tr></table></figure>
-<p>值得一提的是，ES5之前的并不能完全支持unicode值，ES6中添加了u字符，使得这成为了可能</p>
-<h4 id="匹配双字节字符，包括中文"><a href="#匹配双字节字符，包括中文" class="headerlink" title="匹配双字节字符，包括中文"></a>匹配双字节字符，包括中文</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/[^\x00-\xff]/</div></pre></td></tr></table></figure>
-<h4 id="匹配空白行"><a href="#匹配空白行" class="headerlink" title="匹配空白行"></a>匹配空白行</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/\n\s*\r/</div></pre></td></tr></table></figure>
-<h4 id="匹配email地址"><a href="#匹配email地址" class="headerlink" title="匹配email地址"></a>匹配email地址</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//一般写法</div><div class="line"> /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]&#123;2,4&#125;)+$/</div><div class="line">//详细大神写法，这个更加详细，?:表示不会被捕捉。</div><div class="line">/[\w!#$%&amp;'*+/=?^_`&#123;|&#125;~-]+(?:\.[\w!#$%&amp;'*+/=?^_`&#123;|&#125;~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/</div></pre></td></tr></table></figure>
-<h4 id="匹配网址url"><a href="#匹配网址url" class="headerlink" title="匹配网址url"></a>匹配网址url</h4><p>url比较复杂，这里只写匹配普通http协议的网址<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;amp;:<span class="regexp">/~\+#]*[\w\-\@?^=%&amp;amp;/~\+#])?/</span></div></pre></td></tr></table></figure></p>
-<h4 id="匹配有效数字"><a href="#匹配有效数字" class="headerlink" title="匹配有效数字"></a>匹配有效数字</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^[+-]?(\d|([<span class="number">1</span><span class="number">-9</span>]+))(\.\d+)?$/</div></pre></td></tr></table></figure>
-<h4 id="匹配国内电话"><a href="#匹配国内电话" class="headerlink" title="匹配国内电话"></a>匹配国内电话</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/\d&#123;<span class="number">3</span>&#125;-\d&#123;<span class="number">8</span>&#125;|\d&#123;<span class="number">4</span>&#125;-\&#123;<span class="number">7</span>,<span class="number">8</span>&#125;/</div></pre></td></tr></table></figure>
-<h4 id="匹配qq"><a href="#匹配qq" class="headerlink" title="匹配qq"></a>匹配qq</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/[<span class="number">1</span><span class="number">-9</span>][<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">4</span>,&#125;/</div></pre></td></tr></table></figure>
-<h4 id="身份证号"><a href="#身份证号" class="headerlink" title="身份证号"></a>身份证号</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^(\d&#123;<span class="number">6</span>&#125;)(\d&#123;<span class="number">4</span>&#125;)(\d&#123;<span class="number">2</span>&#125;)(\d&#123;<span class="number">2</span>&#125;)(\d&#123;<span class="number">3</span>&#125;)([<span class="number">0</span><span class="number">-9</span>]|X)$/</div></pre></td></tr></table></figure>
-<h4 id="匹配年月日"><a href="#匹配年月日" class="headerlink" title="匹配年月日"></a>匹配年月日</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/([<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">3</span>&#125;[<span class="number">1</span><span class="number">-9</span>]|[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">2</span>&#125;[<span class="number">1</span><span class="number">-9</span>][<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">1</span>&#125;|[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">1</span>&#125;[<span class="number">1</span><span class="number">-9</span>][<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">2</span>&#125;|[<span class="number">1</span><span class="number">-9</span>][<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">3</span>&#125;)-(((<span class="number">0</span>[<span class="number">13578</span>]|<span class="number">1</span>[<span class="number">02</span>])-(<span class="number">0</span>[<span class="number">1</span><span class="number">-9</span>]|[<span class="number">12</span>][<span class="number">0</span><span class="number">-9</span>]|<span class="number">3</span>[<span class="number">01</span>]))|((<span class="number">0</span>[<span class="number">469</span>]|<span class="number">11</span>)-(<span class="number">0</span>[<span class="number">1</span><span class="number">-9</span>]|[<span class="number">12</span>][<span class="number">0</span><span class="number">-9</span>]|<span class="number">30</span>))|(<span class="number">02</span>-(<span class="number">0</span>[<span class="number">1</span><span class="number">-9</span>]|[<span class="number">1</span>][<span class="number">0</span><span class="number">-9</span>]|<span class="number">2</span>[<span class="number">0</span><span class="number">-8</span>])))/</div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/09/常用正则表达式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1000,15 +989,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
               </li>
              
               <li class="article-tag-list-item">
