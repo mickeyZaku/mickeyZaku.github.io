@@ -20,7 +20,7 @@
 
 验证字符串是否符合正则所制定的规则，比如注册表单中各项填写规则的验证；
 把符合规则的字符串部分从字符串捕获；由于正则为引用数据类型，所以声明方式可以是字面量也可以是实例声明：123var reg = /\d/;var reg = new RegExp(&apos;\d&apos;);//es5中参数必须是字符串，">
-<meta property="og:updated_time" content="2017-03-05T09:18:41.461Z">
+<meta property="og:updated_time" content="2017-03-05T09:34:22.085Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES5/ES6正则比较及简述">
 <meta name="twitter:description" content="正则表达式regExp(regular expression),即规则表达式的英文缩写其一般的用法是：
@@ -172,7 +172,7 @@
 <ol>
 <li>test()表示匹配</li>
 <li>exec()表示捕获</li>
-<li>属性：flags 正则的修饰符（ES6）；source 返回正则的正文；lastIndex 下一次匹配正则时的位置，exec用；$n:再RegExp上可以使用的属性，n为第几个小正则最后被使用（包括匹配和捕获）的分组的内容；</li>
+<li>属性：flags 正则的修饰符（ES6）；source 返回正则的正文；lastIndex 下一次匹配正则时的位置，exec用；$n:再RegExp上可以使用的属性，n为第几个小正则最后被使用（包括匹配和捕获）的分组的内容,再replace等方法中，直接用$n简写；</li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/\d/.test(<span class="string">'124'</span>);<span class="comment">//true</span></div><div class="line">/\d/.exec(<span class="string">'123'</span>)<span class="comment">//["1", index: 0, input: "123"]</span></div></pre></td></tr></table></figure>
 <h4 id="String-方法与正则一起使用"><a href="#String-方法与正则一起使用" class="headerlink" title="String 方法与正则一起使用"></a>String 方法与正则一起使用</h4><ol>
@@ -181,7 +181,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/(\d)(\d)\1\2/==&gt;匹配abab，</div><div class="line">/(\d(2))(\d)\1\2/==&gt;匹配\d2\d\d2;</div></pre></td></tr></table></figure>
 <ol>
 <li>split：返回一个数组，按照一个正则来拆分字符串，忽略g和lastindex属性</li>
-<li>replace：参数1 正则表达式，参数2 要替换的项目,如果是函数，则替换为函数返回值<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">"firefox chrome msie"</span>;</div><div class="line">str = str.replace(<span class="string">'/^msie$/'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">a,b,c,d</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">'ie'</span>;</div><div class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);<span class="comment">//参数2中的arguments:[大正则匹配返回，小正则返回，index,input]</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<li>replace：参数1 正则表达式，参数2 要替换的项目,如果是函数，则替换为函数返回值<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">"firefox chrome msie"</span>;</div><div class="line">str = str.replace(<span class="string">'/^msie$/'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">a,b,c,d</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">'ie'</span>;</div><div class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);<span class="comment">//参数2中的arguments:[大正则匹配返回，小正则返回，index,input]</span></div><div class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[n]);<span class="comment">//可用于遍历</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <h4 id="正则表达式特殊字符"><a href="#正则表达式特殊字符" class="headerlink" title="正则表达式特殊字符"></a>正则表达式特殊字符</h4><p>正则需要使用特殊字符，来控制(为啥不支持mk表格语法呢？):<br>|字符|描述|<br>|-|-|<br>|\d|0~9之间的任意一个数字|<br>|\D|非0~9之间的任意一个数字|<br>|\w|任何非单词字符（a-zA-Z0-9<em>）|<br>|\W|非任何非单词字符（a-zA-Z0-9</em>）|<br>|\s|空格或者空白|<br>|\S|非空格或者空白|<br>|\b|边界,包括双引号和空格和‘—’‘%’等等特殊字符也会视为边界（数字结尾/\d\b/）|<br>|\B|非边界,包括双引号和空格和‘—’‘%’等等特殊字符也会视为边界|<br>|\n|换行付|<br>|\r|匹配回车|<br>|\R|陪陪非回车|<br>|.|匹配除换行以外的任意字符|<br>|^|范围限制起始|<br>|$|范围限制结尾|<br>|.|转义.|<br>|||转义|<br>|{n}|出现n个|<br>|{n,}|至少出现n个|<br>|{n，m}|出现n-m个|<br>|*|0到多个|<br>|+|1到多个|<br>|？|0或者1个|<br>|x|y|x或者y中的一个|<br>|()|包含的小正则表达式，提升优先级|<br>|[xyz]|x或者y或者z中的一个|<br>|[^xyz]|只要有一个非x/y/z就行|<br>|[0-9a-zA-Z]|0-9中的一个，或者a-z及A-Z中的一个|<br>|[.]|代表’.’本身|<br>|g|全局|<br>|i|忽略大小写|<br>|m|多行匹配|<br>点击查看<a href="https://mickeyzaku.github.io/2017/02/09/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" target="_blank" rel="external">常用正则表达式</a></p>
@@ -295,6 +295,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2017/03/07/Boostrap响应式导航栏/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Bootstrap响应式导航栏
+        
+      </div>
+    </a>
+  
   
     <a href="/2017/03/01/改变你的this/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">改变你的this</div>
@@ -401,7 +410,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -410,10 +427,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Technology</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
