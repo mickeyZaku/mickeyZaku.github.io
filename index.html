@@ -134,6 +134,79 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-浏览器兼容写法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/11/浏览器兼容写法/">浏览器兼容写法</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/11/浏览器兼容写法/" class="archive-article-date">
+  	<time datetime="2017-03-11T07:36:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="还是浏览器兼容的问题"><a href="#还是浏览器兼容的问题" class="headerlink" title="还是浏览器兼容的问题"></a>还是浏览器兼容的问题</h4><p>浏览器版本其实不能按照厂家来分，因为最重要的是要看浏览器的内核，主要有那么几种：IE的Trident(IE6、IE7、IE8（Trident 4.0）、IE9（Trident 5.0）、IE10（Trident 6.0）； 360安全浏览器（1.0-5.0为Trident，6.0为Trident+Webkit，7.0为Trident+Blink）猎豹极轻浏览器，360极速浏览器（7.5之前为Trident+Webkit，7.5为Trident+Blink）),早起版本与w3c有些脱节，某种意义上，IE10以下都需要考虑兼容；Gecko，Mozilla FireFox(火狐浏览器) 自家开发的内核，不过新推出的Brave,已经采用BLink/v8，不知道是不是要搞事情；Webkit(Safari内核,Chrome内核原型,开源)，目前safari和google自家安卓都在用，市场份额逐年提升，移动端和pc端的大佬。<br>当然在进前端开发的时候，并不是所有浏览器都需要一一兼容的，大体上可以分为IE9-和其他浏览器这么两类，部分属性需要比如getClassName需要考虑IE6~8，还有的属性比如clientWidth则需要考虑IE8（IE8的clientWidth是直接包括了双边框的）等等，css3的样式则需要考虑各浏览器的内核，这里只讨论lowIE版本和所谓的标准浏览器的js方面的判断</p>
+<h4 id="几个属性判断"><a href="#几个属性判断" class="headerlink" title="几个属性判断"></a>几个属性判断</h4><p>可以考虑几个标准浏览器有而lowIE没有的属性进行判断，比如：JSON/getComputedStyle等<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">JSON</span> <span class="keyword">in</span> <span class="built_in">window</span>|| <span class="built_in">window</span>.getComputedStyle;</div></pre></td></tr></table></figure></p>
+<p>用in和 .attr的方式都可以判断成功则可以直接用标准方法，否则特殊处理</p>
+<h4 id="navigator-userAgent"><a href="#navigator-userAgent" class="headerlink" title="navigator.userAgent"></a>navigator.userAgent</h4><p>调用大招：window.navigator.userAgent判断浏览器详细信息，该属性记录了浏览器版本、内核等非常多的信息。通过正则判断即可。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="built_in">window</span>.navigator.userAgent;</div><div class="line"><span class="built_in">console</span>.log(str);<span class="comment">//==&gt;'mozilla/5.0 (windows nt 10.0; wow64) applewebkit/537.36 (khtml, like gecko) chrome/58.0.3000.4 safari/537.36'</span></div></pre></td></tr></table></figure></p>
+<p>返回的信息头，说实话我也没有完全看懂，但几个关键部分，chrome/58.0.3000 safari/537.36 mozilla，就是我们想要的，当然先判断特殊的低版本浏览器<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/(MSIE) ((6|7|8)\.\d)/</span>;</div><div class="line">reg.test(<span class="built_in">window</span>.navigator.userAgent);<span class="comment">//==&gt;true时进行IElow的特殊操作</span></div></pre></td></tr></table></figure></p>
+<h4 id="条件注释语句判断"><a href="#条件注释语句判断" class="headerlink" title="条件注释语句判断"></a>条件注释语句判断</h4><p>这是一种写在html中的浏览器判断问题，非常简单，但是判断的目的时引入正确的js脚本文件，在这里渲染和读取对网页的性能有挑战，一般会用在Bootstrap等不支持低版本IE的框架引用时<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!--[if !IE]&gt;&lt;!--&gt; 除IE外都可识别 &lt;!--&lt;![endif]--&gt;</div><div class="line">&lt;!--[if IE]&gt; 所有的IE可识别 &lt;![endif]--&gt;</div><div class="line">&lt;!--[if IE 6]&gt; 仅IE6可识别 &lt;![endif]--&gt;</div><div class="line">&lt;!--[if lt IE 6]&gt; IE6以及IE6以下版本可识别 &lt;![endif]--&gt;</div><div class="line">&lt;!--[if gte IE 6]&gt; IE6以及IE6以上版本可识别 &lt;![endif]--&gt;</div><div class="line">&lt;!--[if IE 7]&gt; 仅IE7可识别 &lt;![endif]--&gt;</div><div class="line">&lt;!--[if lt IE 7]&gt; IE7以及IE7以下版本可识别 &lt;![endif]--&gt;</div><div class="line">&lt;!--[if gte IE 7]&gt; IE7以及IE7以上版本可识别 &lt;![endif]--&gt;</div><div class="line">&lt;!--[if IE 8]&gt; 仅IE8可识别 &lt;![endif]--&gt;</div><div class="line">&lt;!--[if IE 9]&gt; 仅IE9可识别 &lt;![endif]--&gt;</div></pre></td></tr></table></figure></p>
+<p>在两个条件注释之间加入满足条件时应该导入的js文件即可，这里面有几个单词需要解释下：</p>
+<ol>
+<li>lt:less than 低于；</li>
+<li>gt：greater-than 高于</li>
+<li>gte:greater-than or equal 高于或等于</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Technology</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/11/浏览器兼容写法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-几个动画效果的导航栏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -800,101 +873,9 @@
 
 
   
-    <article id="post-HTML-5-1新特新" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/16/HTML-5-1新特新/">HTML 5.1特性</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/16/HTML-5-1新特新/" class="archive-article-date">
-  	<time datetime="2017-02-16T01:57:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="HTML-5"><a href="#HTML-5" class="headerlink" title="HTML 5"></a>HTML 5</h4><p>w3c已经好久没有更新HTML的最新标准了，据传2017年年底，HTML5.2将推出，不知道又会有哪些惊喜之处。只要获得浏览器厂商支持，HTML从源头上就可以帮助多数前端工程师省去费力写JavaScript的麻烦，写到这，我默默看了看浏览器市场报告，IE76~8还存在15%以上的市场额，只能感慨生不逢时。<br>逢年初，记录下H5的部分新特性，等年底5.2推出有个对照。</p>
-<h4 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h4><p>Brave的流行，从另方面烘托了网页安全性已经成为用户目前关注的重要性能之一。5.1同样不甘落后。</p>
-<ol>
-<li><p>防止钓鱼<br>a标签target=’_blank’,新打开的页面可以更改window.opener.location加载到钓鱼网站，通过恶意js代码，做一些不可见人的勾当。5.1中rel=‘noopener’属性，则隔离了这一行为。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:"</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">rel</span>=<span class="string">"noopener"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>脚本和样式文件随机数加密<br>5.1提供的另外一项安全措施则是通过nonce添加在script或者style引入标签中，通过一组随机数，仅针对一次页面请求有效。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">nonce</span>=<span class="string">""</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h4><ol>
-<li><p>header/footer/article/aside/section/nav…<br>这些标签的出现，代替只有div可用的HTML4，更加语义化.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">article</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">header</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>this is a header<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">aside</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">header</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>this is a aside<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:"</span>&gt;</span>well well well<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">header</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">aside</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">footer</span>&gt;</span>made by mickeyZaku <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>全屏<br>H5的另一个特性，引入声光电，可以播放音视频，因此有一个大众化的问题，是否支持全屏(allowfullscreen)播放。这个特性将会被保留。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">title</span>=<span class="string">"Video"</span> <span class="attr">src</span>=<span class="string">"http://mickeyZaku.github.io"</span> <span class="attr">allowfullscreen</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>响应<br>一听这两字就激动了，may the force with w3c！不需要css就能响应了。当然还只是再图片中，而且仔细一看代码，除了让html代码变得臃肿外，也没少敲几个字</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--使用src-set,x也可以用w替代--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img/low-res.jpg"</span> <span class="attr">srcset</span>=<span class="string">"</span></span></div><div class="line">  img/low-res.jpg 1x,</div><div class="line">  img/medium-res.jpg 2x,</div><div class="line">  img/high-res.jpg 3x"</div><div class="line">&gt;</div><div class="line"><span class="comment">&lt;!--常用的判断尺寸加载图片--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img/low-res.jpg"</span> </span></div><div class="line"><span class="attr">sizes</span>=<span class="string">"(max-width: 25em) 60vw, 100vw"</span></div><div class="line"><span class="attr">srcset</span>=<span class="string">"</span></div><div class="line">  img/low-res.jpg 1x,</div><div class="line">  img/medium-res.jpg 2x,</div><div class="line">  img/high-res.jpg 3x"</div><div class="line">&gt;</div><div class="line"><span class="comment">&lt;!--使用picture，更加像css的html，wtf，我再说什们呢--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">picture</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">media</span>=<span class="string">"(max-width: 25em)"</span> <span class="attr">srcset</span>=<span class="string">"</span></span></div><div class="line">    img/small/low-res.jpg 1x,</div><div class="line">    img/small/medium-res.jpg 2x,</div><div class="line">    img/small/high-res.jpg 3x</div><div class="line">  "&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">media</span>=<span class="string">"(max-width: 60em)"</span> <span class="attr">srcset</span>=<span class="string">"</span></span></div><div class="line">    img/large/low-res.jpg 1x,</div><div class="line">    img/large/medium-res.jpg 2x,</div><div class="line">    img/large/high-res.jpg 3x</div><div class="line">  "&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img/default/medium-res.jpg"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">picture</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="更加人性化的部分特性"><a href="#更加人性化的部分特性" class="headerlink" title="更加人性化的部分特性"></a>更加人性化的部分特性</h4><ol>
-<li><p>图片<br>5.1中图片的操作更加灵活</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--零宽度，至少不用再让浏览器reset了,img也可以用来进行计数了--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">""</span> <span class="attr">alt</span>=<span class="string">""</span> <span class="attr">width</span>=<span class="string">"0"</span> <span class="attr">height</span>=<span class="string">"0"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--图片标题的灵活运用，figcaption标签已经可以用在任何图片中了--&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">figure</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">""</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">figcaption</span>&gt;</span>pic1<span class="tag">&lt;/<span class="name">figcaption</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">figure</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>表单<br>多了几项比较人性化的，更加人机交互的功能</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--required 校验表单--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">required</span> /&gt;</span></div><div class="line"><span class="comment">&lt;!--空选项,用于用户友好--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">""</span> &gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"null"</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div><div class="line">添加扩展信息，信息本身再页面中时隐藏的，但可大大加大table等的语义化</div><div class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">sumamary</span>&gt;</span>this is description for table<span class="tag">&lt;/<span class="name">sumamary</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--日历选项--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"week"</span> <span class="attr">name</span>=<span class="string">"year_week"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"month"</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>拼写检查<br>不多说，属性spellcheck 取值可以为空字符串、true 和 false 。如果指定其状态为 true，就表示元素将会接受对其的拼写和语法检查。element.forceSpellCheck() 将强制用户代理在文本元素上报告检查出来的拼写和语法错误，即使用户从来没将输入聚焦在该元素上。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">spellcheck</span>=<span class="string">"true"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTML</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/16/HTML-5-1新特新/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -985,11 +966,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -997,11 +978,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Technology</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color1">Technology</a>
               </li>
              
               <li class="article-tag-list-item">
