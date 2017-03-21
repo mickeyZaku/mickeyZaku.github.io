@@ -134,6 +134,93 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-js事件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/21/js事件/">js事件</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/21/js事件/" class="archive-article-date">
+  	<time datetime="2017-03-21T15:18:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><h4 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h4><ol>
+<li><p>鼠标事件对象<br>向上标准浏览器中的，可以在js事件绑定的函数中找到事件对象，其中非常系统的罗列了你可以使用的事件。事件对象在绑定事件对应的函数中，并且可以作为参数传递，其实原理还是作用域。低版本ie浏览器中（8-），事件对象则在window.event上</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> div1 = <span class="built_in">document</span>.getElementById(<span class="string">'div1'</span>);</div><div class="line">div1.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123; </div><div class="line">    e = e||<span class="built_in">window</span>.event;<span class="comment">//window.event是为了兼容ie8-,其没有事件对象，但油event属性代替</span></div><div class="line">    <span class="built_in">console</span>.log(e[<span class="number">0</span>]);<span class="comment">//将打印出事件对象</span></div><div class="line">    foo(e[<span class="number">0</span>]);<span class="comment">//还是打印出事件对象</span></div><div class="line"> &#125;</div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">w</span>) </span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(w);</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>事件对象解析<br>事件对象中大量的属性包括：</p>
+</li>
+</ol>
+<ul>
+<li>clientX/clientY<br>即鼠标相对于(可视窗口)的坐标（clientX,clientY）</li>
+<li><p>pageX/pageY<br>即鼠标相对于(页面)的坐标（clientX,clientY），！！ie8-不兼容</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//兼容处理</span></div><div class="line">e.pageX = e.pageX || e.clientX+(<span class="built_in">document</span>.documentElement.scrollTop||<span class="built_in">document</span>.body.scrollTop); </div><div class="line">e.pageY = e.pageY || e.clientY+(<span class="built_in">document</span>.documentElement.scrollLeft||<span class="built_in">document</span>.body.scrollLeft);</div></pre></td></tr></table></figure>
+</li>
+<li><p>阻止默认行为<br>e.preventDefault(),阻止一些标签元素的默认行为,！！！ie8-不兼容，ie里他就变成了e.returnValue = false;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//兼容处理</span></div><div class="line">e.preventDefault? e.preventDefault():e.returnValue  = <span class="literal">false</span>;</div><div class="line"><span class="comment">//点击事件里可以直接return　false;取消事件的提交/跳转等</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>type<br>当前事件的类型，比如点击事件时e.type == ‘click’；</p>
+</li>
+</ul>
+<h4 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h4><p>点击当前元素会触发所有父+级元素的相同对应事件，直到document。</p>
+<ol>
+<li><p>事件源：e.target,表示冒泡事件中的事件处理。！！！！ie8-不兼容</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//兼容处理</span></div><div class="line">e.target = e.target || e.srcElement;</div></pre></td></tr></table></figure>
+</li>
+<li><p>阻止冒泡事件<br>e.stopPropagation(),!!!!!不兼容</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//兼容处理</span></div><div class="line">e.stopPropagation()? e.stopPropagation():e.cancelBubble = <span class="literal">true</span>;</div></pre></td></tr></table></figure></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/21/js事件/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-浏览器兼容写法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -791,88 +878,6 @@
 
 
   
-    <article id="post-boostrap模态框简述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/boostrap模态框简述/">boostrap模态框简述</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/17/boostrap模态框简述/" class="archive-article-date">
-  	<time datetime="2017-02-17T03:23:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h4><p>Bootstrap是一个现在还比较流行的框架，如同大众UI框架一样，封装了大量的样式和组件，虽然Bootstrap还是多用于移动开发，但目前已经有很多公司的网页仅使用Bootstrap制作。<br>Bootstrap是一个比较成熟且存在较长（2015年发布）的框架，可直接使用类似flex一样的响应式布局。不过，在兼容性上，Bootstrap团队发布的alpha第一版就已经移除了对IE8的支持，并且在beta版发布之前，alpha最后一版直接将IE9的支持移除，flex默认开启，这就说明，你甚至不能再通过Sass变量对flex布局禁用，所有网格文档均整合至一个grid.md里。嗯，有点扯远了。</p>
-<h4 id="模态框"><a href="#模态框" class="headerlink" title="模态框"></a>模态框</h4><p>模态框（Modal）是覆盖在父窗体上的子窗体。通常，目的是显示来自一个单独的源的内容，可以在不离开父窗体的情况下有一些互动。子窗体可提供信息、交互等模态框目前再前端项目中使用量不断上升，模态框再页面弹出时不允许用户进行其他操作的浏览器对话框，再美观和交互上有自己的优点。<br>Bootstrap插件提供了模态框的样式以及部分模态框操作js</p>
-<h4 id="模态框引入"><a href="#模态框引入" class="headerlink" title="模态框引入"></a>模态框引入</h4><p>如果只是单纯的引入模态框，可以直接引入Bootstrap的modal.js/css包即可，如果进行操作，你可能需要jquery.min.js和bootstrap.min.js。</p>
-<h4 id="使用模态框"><a href="#使用模态框" class="headerlink" title="使用模态框"></a>使用模态框</h4><h5 id="基本上，你可以直接建立一个模态框，并在html中按钮等控制元素中设置data-toggle-’modal’-data-target-’modalId’"><a href="#基本上，你可以直接建立一个模态框，并在html中按钮等控制元素中设置data-toggle-’modal’-data-target-’modalId’" class="headerlink" title="基本上，你可以直接建立一个模态框，并在html中按钮等控制元素中设置data-toggle=’modal’,data-target=’modalId’;"></a>基本上，你可以直接建立一个模态框，并在html中按钮等控制元素中设置data-toggle=’modal’,data-target=’modalId’;</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-primary btn-lg "</span> <span class="attr">data-toggle</span>=<span class="string">"modal"</span> <span class="attr">data-target</span>=<span class="string">"#Modal_1"</span>&gt;</span></div><div class="line">    开始演示模态框</div><div class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 模态框（Modal） --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modal fade"</span> <span class="attr">id</span>=<span class="string">"Modal_1"</span>  <span class="attr">aria-labelledby</span>=<span class="string">"myModalLabel"</span> <span class="attr">aria-hidden</span>=<span class="string">"true"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modal-dialog"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modal-content"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modal-header"</span>&gt;</span></div><div class="line">                <span class="comment">&lt;!--模态框右上角小叉子--&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"close"</span> <span class="attr">data-dismiss</span>=<span class="string">"modal"</span> <span class="attr">aria-hidden</span>=<span class="string">"true"</span>&gt;</span></div><div class="line">                    &amp;times;</div><div class="line">                <span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">                <span class="comment">&lt;!--模态框标题--&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">h4</span> <span class="attr">class</span>=<span class="string">"modal-title"</span> <span class="attr">id</span>=<span class="string">"myModalLabel"</span>&gt;</span></div><div class="line">                    模态框好看又好用</div><div class="line">                <span class="tag">&lt;/<span class="name">h4</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">            <span class="comment">&lt;!--模态框内容--&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modal-body"</span>&gt;</span></div><div class="line">                你喜欢模态框吗</div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">            <span class="comment">&lt;!--模态框状态按钮--&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modal-footer"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-default"</span> <span class="attr">data-dismiss</span>=<span class="string">"modal"</span>&gt;</span>喜欢</div><div class="line">                <span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">data-dismiss</span>=<span class="string">"modal"</span>&gt;</span></div><div class="line">                    不喜欢</div><div class="line">                <span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>上述代码部分属性解读:</p>
-<ol>
-<li>button按钮中的btn/btn-primary/btn-lg/btn-default,这是一个按钮/主按钮样式蓝色/大按钮/按钮默认样式</li>
-<li>modal fade，声明一个模态框，采用fade（淡显示动画）弹出，这就不多说了，熟悉动画库的都知道。</li>
-<li>aria-labelledby/aria-hidden，aria-labelledby该属性引用模态框的标题。再弹出时阅读器会读出用户名，这时为盲人设定的，模态框主要用在一些关键的地方，提供此种交互是应该的，aria-hidden，表示一开始模态框不显示。</li>
-<li>modal-dialog/modal-content/modal-title/modal-body/modal-footer声明modal对话框/modal住内容/modal标题/modal文本/modal脚</li>
-<li>data-dismiss=”modal”，表示点击时模态框关闭<br>有提交需求的模态框，也可以将按钮改为<a href="xxx.php" role="button" class="btn btn-primary btn-lg"><h5 id="js调用-modal"><a href="#js调用-modal" class="headerlink" title="js调用.modal()"></a>js调用.modal()</h5>这个比较简单，直接采用js调用模态框即可,还是上面的例子<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    $(<span class="string">'#myModal'</span>).modal(&#123;</div><div class="line">        <span class="attr">keyboard</span>: <span class="literal">true</span></div><div class="line">    &#125;)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</a></li>
-</ol>
-<p>modal()方法的参数可以是个方法，同时可是个事件：</p>
-<ol>
-<li>.modal(options)，把内容作为模态框激活。接受一个可选的选项对象，如上面的代码，选项对象包括（backdrop，指定一个静态的背景，当用户点击模态框外部时不会关闭模态框/keyboard，默认当按下 escape 键时关闭模态框，设置为 false 时则按键无效/show，当初始化时显示模态框/remote，使用 jQuery .load 方法，为模态框的主体注入内容。如果添加了一个带有有效 URL 的 href，则会加载其中的内容）</li>
-<li>.modal(‘toggle’)手动切换模态框</li>
-<li>.modal(‘show’)手动打开模态框</li>
-<li>.modal(‘hide’)手动隐藏模态框。</li>
-<li>事件,分为show/shown/hide/hiden,分别再show激发时/show激发后/hide激发时/hide激发后，比如下面的代码就表示了id为ModalId的模态框再激发关闭模态框的同时，弹出hi！。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    $(<span class="string">'#ModalId'</span>).on(<span class="string">'hide.bs.modal'</span>,</div><div class="line">    <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        alert(<span class="string">'hi!'</span>);</div><div class="line">    &#125;)</div><div class="line">&#125;);</div></pre></td></tr></table></figure></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Bootstrap</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/17/boostrap模态框简述/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -974,15 +979,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Technology</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -990,15 +987,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Technology</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Css</a>
+                <a href="javascript:void(0)" class="js-tag color5">life</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">life</a>
+                <a href="javascript:void(0)" class="js-tag color4">Css</a>
               </li>
             
             <div class="clearfix"></div>
