@@ -8,22 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>js事件 | 不怎么写博客的橘子的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="事件事件对象
-鼠标事件对象向上标准浏览器中的，可以在js事件绑定的函数中找到事件对象，其中非常系统的罗列了你可以使用的事件。事件对象在绑定事件对应的函数中，并且可以作为参数传递，其实原理还是作用域。低版本ie浏览器中（8-），事件对象则在window.event上
-123456789var div1 = document.getElementById(&apos;div1&apos;);div1.onclick =">
+  <meta name="description" content="事件一. 鼠标事件对象向上标准浏览器中的，可以在js事件绑定的函数中找到事件对象，其中非常系统的罗列了你可以使用的事件。事件对象在绑定事件对应的函数中，并且可以作为参数传递，其实原理还是作用域。低版本ie浏览器中（8-），事件对象则在window.event上123456789var div1 = document.getElementById(&apos;div1&apos;);div1.onclick = fun">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js事件">
 <meta property="og:url" content="http://yoursite.com/2017/03/21/js事件/index.html">
 <meta property="og:site_name" content="不怎么写博客的橘子的博客">
-<meta property="og:description" content="事件事件对象
-鼠标事件对象向上标准浏览器中的，可以在js事件绑定的函数中找到事件对象，其中非常系统的罗列了你可以使用的事件。事件对象在绑定事件对应的函数中，并且可以作为参数传递，其实原理还是作用域。低版本ie浏览器中（8-），事件对象则在window.event上
-123456789var div1 = document.getElementById(&apos;div1&apos;);div1.onclick =">
-<meta property="og:updated_time" content="2017-03-21T15:19:22.878Z">
+<meta property="og:description" content="事件一. 鼠标事件对象向上标准浏览器中的，可以在js事件绑定的函数中找到事件对象，其中非常系统的罗列了你可以使用的事件。事件对象在绑定事件对应的函数中，并且可以作为参数传递，其实原理还是作用域。低版本ie浏览器中（8-），事件对象则在window.event上123456789var div1 = document.getElementById(&apos;div1&apos;);div1.onclick = fun">
+<meta property="og:updated_time" content="2017-03-22T09:06:59.898Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js事件">
-<meta name="twitter:description" content="事件事件对象
-鼠标事件对象向上标准浏览器中的，可以在js事件绑定的函数中找到事件对象，其中非常系统的罗列了你可以使用的事件。事件对象在绑定事件对应的函数中，并且可以作为参数传递，其实原理还是作用域。低版本ie浏览器中（8-），事件对象则在window.event上
-123456789var div1 = document.getElementById(&apos;div1&apos;);div1.onclick =">
+<meta name="twitter:description" content="事件一. 鼠标事件对象向上标准浏览器中的，可以在js事件绑定的函数中找到事件对象，其中非常系统的罗列了你可以使用的事件。事件对象在绑定事件对应的函数中，并且可以作为参数传递，其实原理还是作用域。低版本ie浏览器中（8-），事件对象则在window.event上123456789var div1 = document.getElementById(&apos;div1&apos;);div1.onclick = fun">
   
     <link rel="alternative" href="/atom.xml" title="不怎么写博客的橘子的博客" type="application/atom+xml">
   
@@ -159,12 +153,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><h4 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h4><ol>
-<li><p>鼠标事件对象<br>向上标准浏览器中的，可以在js事件绑定的函数中找到事件对象，其中非常系统的罗列了你可以使用的事件。事件对象在绑定事件对应的函数中，并且可以作为参数传递，其实原理还是作用域。低版本ie浏览器中（8-），事件对象则在window.event上</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> div1 = <span class="built_in">document</span>.getElementById(<span class="string">'div1'</span>);</div><div class="line">div1.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123; </div><div class="line">    e = e||<span class="built_in">window</span>.event;<span class="comment">//window.event是为了兼容ie8-,其没有事件对象，但油event属性代替</span></div><div class="line">    <span class="built_in">console</span>.log(e[<span class="number">0</span>]);<span class="comment">//将打印出事件对象</span></div><div class="line">    foo(e[<span class="number">0</span>]);<span class="comment">//还是打印出事件对象</span></div><div class="line"> &#125;</div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">w</span>) </span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(w);</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>事件对象解析<br>事件对象中大量的属性包括：</p>
-</li>
+        <h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><h3 id="一-鼠标事件对象"><a href="#一-鼠标事件对象" class="headerlink" title="一. 鼠标事件对象"></a>一. 鼠标事件对象</h3><p>向上标准浏览器中的，可以在js事件绑定的函数中找到事件对象，其中非常系统的罗列了你可以使用的事件。事件对象在绑定事件对应的函数中，并且可以作为参数传递，其实原理还是作用域。低版本ie浏览器中（8-），事件对象则在window.event上<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> div1 = <span class="built_in">document</span>.getElementById(<span class="string">'div1'</span>);</div><div class="line">div1.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123; </div><div class="line">    e = e||<span class="built_in">window</span>.event;<span class="comment">//window.event是为了兼容ie8-,其没有事件对象，但油event属性代替</span></div><div class="line">    <span class="built_in">console</span>.log(e[<span class="number">0</span>]);<span class="comment">//将打印出事件对象</span></div><div class="line">    foo(e[<span class="number">0</span>]);<span class="comment">//还是打印出事件对象</span></div><div class="line"> &#125;</div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">w</span>) </span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(w);</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>事件对象解析<br>事件对象中大量的属性包括：</li>
 </ol>
 <ul>
 <li>clientX/clientY<br>即鼠标相对于(可视窗口)的坐标（clientX,clientY）</li>
@@ -183,8 +174,23 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//兼容处理</span></div><div class="line">e.target = e.target || e.srcElement;</div></pre></td></tr></table></figure>
 </li>
 <li><p>阻止冒泡事件<br>e.stopPropagation(),!!!!!不兼容</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//兼容处理</span></div><div class="line">e.stopPropagation()? e.stopPropagation():e.cancelBubble = <span class="literal">true</span>;</div></pre></td></tr></table></figure></li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//兼容处理</span></div><div class="line">e.stopPropagation? e.stopPropagation():e.cancelBubble = <span class="literal">true</span>;</div><div class="line"></div><div class="line"><span class="comment">//利用冒泡事件进行事件委托，完成按需删除li</span></div><div class="line"><span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementById(<span class="string">'ul'</span>);</div><div class="line">ul.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123; </div><div class="line">    e = e || <span class="built_in">window</span>.event;</div><div class="line">    e.target = e.target || e.srcElement;</div><div class="line">    <span class="keyword">if</span>(e.target.nodeName == <span class="string">'SPAN'</span> &amp;&amp; e.target.getAttribute(<span class="string">'btn'</span>)==<span class="string">'del'</span>)&#123;<span class="comment">//符合删除属性的span按钮获取</span></div><div class="line">        <span class="keyword">this</span>.removeChild(e.target.parentNode);<span class="comment">//this为ul</span></div><div class="line">    &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+</li>
 </ol>
+<h3 id="二、键盘事件"><a href="#二、键盘事件" class="headerlink" title="二、键盘事件"></a>二、键盘事件</h3><p>键盘事件包括了。onfocus onblur oninput onkeyup onkeydown等,同样的键盘的事件对象需要作兼容处理，然后可以分析其上所存的属性<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">input.onkeyup = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  e = e|| <span class="built_in">window</span>.event;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>键盘的事件对象为KeyboardEvent，其中的属性包括</li>
+</ol>
+<ul>
+<li>key:所有按键的键值，比如你按了‘1’,e.key == ‘1’;</li>
+<li>keyCode:键值对应的键码，特殊包括：Enter-&gt;13/Backspace-&gt;8/space-&gt;32/up,down,left,right-&gt;37,38,39,40/0-9-&gt;48-57<h3 id="三、DOM二级事件"><a href="#三、DOM二级事件" class="headerlink" title="三、DOM二级事件"></a>三、DOM二级事件</h3>DOM0事件其实就是原来常见的绑定方式，js还有另外一种绑定事件的方式DOM2级，不过DOM1去哪儿了，我也不知道。DOM2级<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//DOM2的绑定方式如下</span></div><div class="line">div1.addEventListener(<span class="string">'click'</span>,fn,<span class="literal">false</span>);</div><div class="line">div1.addEventListener(<span class="string">'click'</span>,fn1,<span class="literal">false</span>);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>第一个参数为事件类型，第二个为事件执行函数，第三个参数则为是否捕获（这也是DOM2的特点，不过基本不用，！！！低版本浏览器也不支持）。<br>同时，事件一般的执行顺序为先触发绑定在捕获阶段的函数，然后触发target，最后在触发绑定在冒泡阶段的函数。</p>
+<ul>
+<li>DOM2兼容<br>标准浏览器中，：<br>同上面代码，DOM2可以绑定多个方法，标准浏览器在执行时会按照绑定的顺序进行执行；<br>其中的this为绑定事件时的源（同DOM0一样）；<br>重复绑定的函数执行一次。</li>
+</ul>
+<p>！！！！！IE8-中：<br>首先绑定DOM2级事件，处理的方法不一样，需要使用：div1.attachEvent()；<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">* ele:绑定元素对象</div><div class="line">* type：事件类型</div><div class="line">* fn:回调函数</div><div class="line">*/</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">on</span>(<span class="params">ele,type,fn</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(ele.addEventListener)&#123;</div><div class="line">        ele.addEventListener(type,fn);<span class="comment">//绑定DOM2</span></div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">if</span>(!ele[<span class="string">'AAA'</span>+type])&#123;<span class="comment">//每个事件只能进行一次</span></div><div class="line">            ele[<span class="string">'AAA'</span>+type] = [];</div><div class="line">            ele.attachEvent(<span class="string">'on'</span>+type,<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                run.call(ele);</div><div class="line">            &#125;);<span class="comment">//绑定DOM2,只能绑定一个run,run将数组里的方法顺序执行，IE8-中，事件类型要全面，比如click事件要写为'onclick',同时调用匿名函数，将run中的this变为ele。</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">var</span> a = ele[<span class="string">'AAA'</span>+type];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;a.length;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(a[i]==fn)&#123;</div><div class="line">                <span class="keyword">return</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        a.push(fn);<span class="comment">//塞事件，以便于按照数组中的顺序执行</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">run</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">    e = <span class="built_in">window</span>.event;</div><div class="line">    e.target = e.srcElement;</div><div class="line">    <span class="keyword">var</span> a = <span class="keyword">this</span>[<span class="string">'AAA'</span>+e.type];</div><div class="line">    <span class="keyword">if</span>(a &amp;&amp; a.length)&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;a.length;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(<span class="keyword">typeof</span> a[i] == <span class="string">"function"</span>)&#123;</div><div class="line">                a[i].call(<span class="keyword">this</span>);</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                a.splice(i,<span class="number">1</span>);</div><div class="line">                i--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">off</span>(<span class="params">ele,type,fn</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span>(ele.removeEvent)&#123;</div><div class="line">      ele.removeEvent(type,fn);<span class="comment">//标准浏览器移除事件</span></div><div class="line">  &#125;<span class="keyword">else</span>&#123;</div><div class="line">      <span class="keyword">var</span> a = ele[<span class="string">'AAA'</span>+type];</div><div class="line">      <span class="keyword">if</span>(a)&#123;</div><div class="line">          <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;a.length;i++)&#123;</div><div class="line">              <span class="keyword">if</span>(a[i] == fn)&#123;</div><div class="line">                  a.splice(i,<span class="number">1</span>);</div><div class="line">                  <span class="keyword">break</span>;</div><div class="line">              &#125;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
 
@@ -395,11 +401,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color1">Technology</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -407,15 +417,11 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Technology</a>
               </li>
              
               <li class="article-tag-list-item">
