@@ -134,6 +134,72 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-浏览器版本判断" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/20/浏览器版本判断/">浏览器版本判断</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/20/浏览器版本判断/" class="archive-article-date">
+  	<time datetime="2017-02-20T02:48:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="浏览器版本"><a href="#浏览器版本" class="headerlink" title="浏览器版本"></a>浏览器版本</h4><p>大多搞后台/数据库开发的，每当你劝他们改干前端的时候，他们的理由必须包含“不喜欢前端开发各种浏览器的兼容问题，我们就一套代码。”有没有无言以对，这句戳中前端小伙伴们膝盖的话，道出了前端开发日常中最需要解决的问题，至少再完成浏览器大一统前，你只得这样做。</p>
+<h4 id="常见浏览器版本"><a href="#常见浏览器版本" class="headerlink" title="常见浏览器版本"></a>常见浏览器版本</h4><p>浏览器版本其实不能按照厂家来分，因为最重要的是要看浏览器的内核，主要有那么几种：IE的Trident(IE6、IE7、IE8（Trident 4.0）、IE9（Trident 5.0）、IE10（Trident 6.0）； 360安全浏览器（1.0-5.0为Trident，6.0为Trident+Webkit，7.0为Trident+Blink）猎豹极轻浏览器，360极速浏览器（7.5之前为Trident+Webkit，7.5为Trident+Blink）),早起版本与w3c有些脱节，某种意义上，IE10以下都需要考虑兼容；Gecko，Mozilla FireFox(火狐浏览器) 自家开发的内核，不过新推出的Brave,已经采用BLink/v8，不知道是不是要搞事情；Webkit(Safari内核,Chrome内核原型,开源)，目前safari和google自家安卓都在用，市场份额逐年提升，移动端和pc端的大佬。<br>当然，现阶段blink/v8（排版+脚本加载）双引擎是个趋势，好多浏览器已经开始选择了。<br>生在这个时代就要有这个时代的作为，判断浏览器版本，从而做到兼容是前端的一大责任，套用一句广告词，‘原来生活可以更美的’</p>
+<h4 id="pc端"><a href="#pc端" class="headerlink" title="pc端"></a>pc端</h4><p>js中非常重要的方法：window.navigator.userAgent，这个属性可以将浏览器信息返回，详细过程再代码中进行注释<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getBrowserInfo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> oInfo = &#123;&#125;;<span class="comment">//Info:对象，存储浏览器信息</span></div><div class="line">    <span class="keyword">var</span> str = <span class="built_in">window</span>.navigator.userAgent.toLowerCase();<span class="comment">//str:userAgent获取相关信息</span></div><div class="line">    <span class="comment">//bReg:浏览器信息匹配正则,小正则1是浏览器类型，小正则2版本号</span></div><div class="line">    <span class="keyword">var</span> bReg = <span class="regexp">/(msie|firefox|chrome|opera|version).*?([\d.]+)/</span>;</div><div class="line">    <span class="keyword">var</span> infoArr = str.match(bReg);</div><div class="line">    oInfo.browser = infoArr[<span class="number">1</span>].replace(<span class="regexp">/version/</span>, <span class="string">"safari"</span>);<span class="comment">//小正则1正确输出safari的处理</span></div><div class="line">    oInfo.ver = infoArr[<span class="number">2</span>];</div><div class="line">    <span class="keyword">return</span> oInfo;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> broInfo = getBrowserInfo();</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"浏览器："</span>+broInfo.browser);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">" 版本："</span>+broInfo.ver);</div></pre></td></tr></table></figure></p>
+<p>上述运行结果，以上述运行结果，chrome 58.0.3000.4为例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">浏览器：chrome</div><div class="line">版本：58.0.3000.4</div></pre></td></tr></table></figure></p>
+<h4 id="加上移动端"><a href="#加上移动端" class="headerlink" title="加上移动端"></a>加上移动端</h4><p>如果不只是判断兼容，甚至手机操作系统等信息，或者用于初步安全控制，可以将上述代码中添加更多信息，核心依然是 navigator,还未作进一步封装和优化。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> browser = &#123;</div><div class="line">    <span class="attr">versions</span>: ~<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> broInfo = navigator.userAgent;</div><div class="line">        <span class="keyword">return</span> &#123; <span class="comment">//移动终端浏览器版本信息</span></div><div class="line">            trident: broInfo.indexOf(<span class="string">'Trident'</span>) &gt; <span class="number">-1</span>, <span class="comment">//IE内核</span></div><div class="line">            presto: broInfo.indexOf(<span class="string">'Presto'</span>) &gt; <span class="number">-1</span>, <span class="comment">//opera老版本内核</span></div><div class="line">            webKit: broInfo.indexOf(<span class="string">'AppleWebKit'</span>) &gt; <span class="number">-1</span>, <span class="comment">//苹果、谷歌内核</span></div><div class="line">            gecko: broInfo.indexOf(<span class="string">'Gecko'</span>) &gt; <span class="number">-1</span> &amp;&amp; broInfo.indexOf(<span class="string">'KHTML'</span>) == <span class="number">-1</span>, <span class="comment">//火狐内核</span></div><div class="line">            mobile: !!broInfo.match(<span class="regexp">/AppleWebKit.*Mobile.*/</span>), <span class="comment">//是否为移动终端</span></div><div class="line">            ios: !!broInfo.match(<span class="regexp">/\(i[^;]+;( U;)? CPU.+Mac OS X/</span>), <span class="comment">//ios终端</span></div><div class="line">            android: broInfo.indexOf(<span class="string">'Android'</span>) &gt; <span class="number">-1</span> || broInfo.indexOf(<span class="string">'Linux'</span>) &gt; <span class="number">-1</span>, <span class="comment">//android终端或uc浏览器</span></div><div class="line">            iPhone: broInfo.indexOf(<span class="string">'iPhone'</span>) &gt; <span class="number">-1</span>, <span class="comment">//是否为iPhone</span></div><div class="line">            iPad: broInfo.indexOf(<span class="string">'iPad'</span>) &gt; <span class="number">-1</span>, <span class="comment">//是否iPad</span></div><div class="line">            webApp: broInfo.indexOf(<span class="string">'Safari'</span>) == <span class="number">-1</span> <span class="comment">//是否web应该程序，没有头部与底部</span></div><div class="line">        &#125;;</div><div class="line">    &#125;(),</div><div class="line">    <span class="attr">language</span>: (navigator.browserLanguage || navigator.language).toLowerCase()</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"语言版本: "</span> + browser.language);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">" 是否为移动终端: "</span> + browser.versions.mobile);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">" ios终端: "</span> + browser.versions.ios);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">" android终端: "</span> + browser.versions.android);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">" 是否为iPhone: "</span> + browser.versions.iPhone);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">" 是否iPad: "</span> + browser.versions.iPad);</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Technology</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/20/浏览器版本判断/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-boostrap模态框简述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -842,70 +908,6 @@
 
 
   
-    <article id="post-Brave曝安全问题？如今浏览器市场啥样子了" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/31/Brave曝安全问题？如今浏览器市场啥样子了/">Brave曝安全问题？如今浏览器市场啥样子了</a>
-    </h1>
-  
-
-        
-        <a href="/2017/01/31/Brave曝安全问题？如今浏览器市场啥样子了/" class="archive-article-date">
-  	<time datetime="2017-01-31T08:41:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>近日，自发布以来就备受关注和青睐的Brave浏览器，被曝出存在安全问题漏洞——攻击者可以通过利用该漏洞伪造网页进行欺骗，一旦用户点击访问，将可能出现个人相关信息的泄露，同时攻击者还可再虚拟页面实施木马植入和钓鱼等行为。这对一直以广告拦截、防cookie及像素追踪等安全性特点而著称的Brave造成一定的负面影响。不过，最早曝出该问题的地点是在Brave开发人员再Hackerone平台上设立的安全问题有奖征集项目，该项目本身就在于鼓励广大网络安全工作相关人员参与到Brave安全性能提升中，这也是Brave作为开源软件，不断进化的必要措施。</p>
-<h4 id="Brave"><a href="#Brave" class="headerlink" title="Brave"></a>Brave</h4><p>据悉，Brave由JavaScript创建者兼Mozilla联合创始人Brendan Eich成立的Brave Software公司于2016年初发布。特色为能够屏蔽程序化广告，并换成自家的“广告库”，以快速呈现网站，这样可阻止所有第三方追踪的cookies、所有的指纹识别技术以及所有试图注入广告的脚本，兼具快速与安全。目前，该浏览器已经推出了面向Mac、Windows、iOS和Android四大平台的版本。该浏览器其实基于开源的Chromium打造，并且用到了GitHub Atom文本编辑器中的Electron工具。<br><img src="http://p1.bqimg.com/4851/0255f3a663a25aa9.jpg" alt="Brave"></p>
-<h4 id="助推了Chrome"><a href="#助推了Chrome" class="headerlink" title="助推了Chrome"></a>助推了Chrome</h4><p>上述不可忽视的一点，无论Brave如何好，其仍然是基于Chromium的，也就是说其实Brave的流行从侧面给Chromium好好的宣传了一把。Chromium在架构上使用了Apple发展出来的WebKit排版引擎、Safari的部份源代码与Firefox的成果，并采用Google自家的V8引擎，提升解译JavaScript的效率，同时设计“沙盒”、“黑名单”、“无痕浏览”等功能来实现稳定与安全的网页浏览环境。Chromium开放源代码，借助Google Developer以及其他开发者的力量，Chromium的版本更新速度甚至可以快到没几个小时就有新版本，不过Chromium意在作为Chrome浏览器的实验版或者工程版，因此只有成熟的Chromium技术才会搬到Chrome上使用。<br>从<a href="http://tongji.baidu.com/data/browser" target="_blank" rel="external">百度统计的国内浏览器市场份额</a>来看，Chromium的不断进化和提升为Chrome的市场推进提供了强大的力量，Opera的PC版以及Mozilla的Brave,都是基于开源的Chromium。<br><img src="http://p1.bqimg.com/4851/8c95a88310deb233.png" alt="数据"><br>“兼容头疼的”IE8总份额从15年的36%减少到16年底的14.2%,Chrome则超过40.52%,搜狗,猎豹,QQ等其他Chromium内核浏览器则也还有近10%的市场份额.不过IE7和IE10总共还有5%左右，IE6+IE7还有Edge已经被列入其他，不单独计数。偏向IE特性的360目前也退出了主流（得，现在打开360已经有不兼容某些显示了）。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Technology</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/31/Brave曝安全问题？如今浏览器市场啥样子了/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1011,10 +1013,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
@@ -1023,15 +1021,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">life</a>
+                <a href="javascript:void(0)" class="js-tag color4">Css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Css</a>
+                <a href="javascript:void(0)" class="js-tag color5">life</a>
               </li>
             
             <div class="clearfix"></div>
