@@ -134,6 +134,110 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ES6新手使用指南" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/21/ES6新手使用指南/">ES6新手使用指南</a>
+    </h1>
+  
+
+        
+        <a href="/2017/01/21/ES6新手使用指南/" class="archive-article-date">
+  	<time datetime="2017-01-21T08:31:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>表达式写法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let fn0 = ()=&gt; console.log(&apos;xxxx&apos;);</div><div class="line">let fn = a=&gt;a;//箭头函数</div><div class="line">let fn1 = (a,b)=&gt;console.log(a+b);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<ul>
+<li>函数体的写法：函数体代码多了就用他呗，显示写法<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let fn3 = ()=&gt;&#123;</div><div class="line">    console.log(&apos;ss&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<ul>
+<li>实例化和继承<h5 id="es5写法"><a href="#es5写法" class="headerlink" title="es5写法"></a>es5写法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">     function Fn() &#123;</div><div class="line">         this.name = &apos;cat&apos;;</div><div class="line">     &#125;</div><div class="line">     Fn.prototype.getX = function () &#123;</div><div class="line">         console.log(this.x);</div><div class="line">      &#125;</div><div class="line">     var fn = new Fn();</div><div class="line">//继承</div><div class="line">     var s = function () &#123;</div><div class="line">         </div><div class="line">      &#125;</div><div class="line">      s.prototype = new Fn();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="es6写法"><a href="#es6写法" class="headerlink" title="es6写法"></a>es6写法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">    class Fn&#123;</div><div class="line">        constructor()&#123;</div><div class="line">        this.x = 100;</div><div class="line">        this.y = 100;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    //es6中constructor外的都为公有</div><div class="line">        getX()&#123;</div><div class="line">        alert(this.x);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    var f = new Fn(1);</div><div class="line">//Es6中的继承，像极了java</div><div class="line">    class s extends Fn&#123;</div><div class="line">        ``super()要写，因为没他不行``</div><div class="line">        constructor()&#123;super();this.z = &apos;memeda&apos;;&#125;</div><div class="line">        happy()&#123;</div><div class="line">            alert(&apos;happy&apos;);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>对象字面量<h5 id="作用1：写法简化："><a href="#作用1：写法简化：" class="headerlink" title="作用1：写法简化："></a>作用1：写法简化：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//文艺青年之普通写法</div><div class="line">    var a =1,b=2;</div><div class="line">    var obj=&#123;</div><div class="line">        a:a,b:b</div><div class="line">    &#125;</div><div class="line"></div><div class="line">//es6写法</div><div class="line">    let a =1,b=2;</div><div class="line">    let obj = &#123;a,b&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="作用2：牛x之处在于es6可以方便继承啊！再原型属性中添加要继承的，这样可以直接继承。"><a href="#作用2：牛x之处在于es6可以方便继承啊！再原型属性中添加要继承的，这样可以直接继承。" class="headerlink" title="作用2：牛x之处在于es6可以方便继承啊！再原型属性中添加要继承的，这样可以直接继承。"></a>作用2：牛x之处在于es6可以方便继承啊！再原型属性中添加要继承的，这样可以直接继承。</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let obj1 = &#123;__proto__:obj&#125;;</div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>模板字符串</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//显然es6再字符串拼接时可以使用``再里面进行类似jquery的选择器进行拼接</div><div class="line">var str = &apos;lisong&apos;;</div><div class="line">var str2 = `lala,$&#123;str&#125;`;</div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>解构赋值，主要用于react native,作用为将复杂框架对象中需要的组件引入后付给对象.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;a:10,b:11,fn:function () &#123;&#125;&#125;</div><div class="line">var obj2 = &#123;a:9,b:12,fn:function () &#123;&#125;&#125;</div><div class="line">var obj3 =&#123;aa:obj,bb:obj2 &#125;;</div><div class="line">var &#123;aa,bb&#125; = obj3;//解构，对象略复杂了,将obj3解构赋值给简单的对象</div><div class="line">alert(aa.a);</div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li><p>默认赋值,任意赋值,扩展运算符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//默认参数</div><div class="line">function sum(a=3,b=4) &#123;</div><div class="line">    console.log(a+b);//此时调用sum(),没实参，则走默认参数，弹出7</div><div class="line">&#125;</div><div class="line"></div><div class="line">//参数不确定,使用...+arr，可以直接用了。</div><div class="line">function sum(a,b,...ary) &#123;</div><div class="line">    console.log(...ary);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//扩展运算符,有点像concat</div><div class="line">var ary = [1,2,3,4];</div><div class="line">var ary1 = [...ary,3,3];//此时已经将ary放在了ary1里面</div></pre></td></tr></table></figure>
+</li>
+<li><p>let const</p>
+<ul>
+<li>let:不能进行预解释，会形成块级作用域，块级作用域中的this就会变为上级作用域的this</li>
+<li>const:不能进行预解释，无法二次赋值<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for(let i = 0;i&lt;xx.length;i++)&#123;</div><div class="line">//此时再循环中就会形成一个块级作用域，每一次i就会单独作为作用域参数使用。</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/01/21/ES6新手使用指南/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-css的一些新特性脑图汇总" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -451,15 +555,11 @@ branch: master
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Technology</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -467,11 +567,15 @@ branch: master
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -134,6 +134,82 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-再网上看到的，试着敲了一遍，弥补我不堪的css" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/06/再网上看到的，试着敲了一遍，弥补我不堪的css/">再网上看到的，试着敲了一遍，弥补我不堪的css</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/06/再网上看到的，试着敲了一遍，弥补我不堪的css/" class="archive-article-date">
+  	<time datetime="2017-02-06T01:52:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Css底子不行，看人家用css搭建了一个macBook，甚是不错，模仿敲了一遍。<br>首先有些图标并没有添加，只做到大概和基本键位，其次并没有实现键位的功能，日后如果有时间，还可添加笔记本盖打开的效果。<br>实现仅用HTML和CSS/CSS3,其中使用了伪类及CSS3的选择器nth-Child,整体代码没有难度。</p>
+<h4 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">&lt;!--平板--&gt;</div><div class="line">&lt;div class=&quot;board&quot;&gt;</div><div class="line">    &lt;!--macBar--&gt;</div><div class="line">    &lt;div class=&quot;bar&quot;&gt;&lt;/div&gt;</div><div class="line">    &lt;!--键盘--&gt;</div><div class="line">    &lt;div class=&quot;keyboard&quot;&gt;</div><div class="line">        &lt;!--按键--&gt;</div><div class="line">        &lt;ul&gt;&lt;/ul&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;!--触摸区--&gt;</div><div class="line">    &lt;div class=&quot;touch&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure>
+<h4 id="添加按键"><a href="#添加按键" class="headerlink" title="添加按键"></a>添加按键</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">        ....省略</div><div class="line">        &lt;li&gt;&lt;span&gt;!&lt;/span&gt;&lt;span&gt;1&lt;/span&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt;&lt;span&gt;@&lt;/span&gt;&lt;span&gt;2&lt;/span&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt;&lt;span&gt;#&lt;/span&gt;&lt;span&gt;3&lt;/span&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt;Q&lt;/li&gt;</div><div class="line">          ....省略</div><div class="line">    &lt;/ul&gt;</div></pre></td></tr></table></figure>
+<p>多个span嵌套表示某个有两个值的按键。</p>
+<h4 id="board-的实现"><a href="#board-的实现" class="headerlink" title="board 的实现"></a>board 的实现</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.board&#123;</div><div class="line">    margin: 50px auto;</div><div class="line">    padding: 0 auto;</div><div class="line">    height: 450px;</div><div class="line">    width: 600px;</div><div class="line">    background: #D2D2D2;</div><div class="line">    border-radius: 20px;</div><div class="line">    position: relative;</div><div class="line">    box-shadow: 0px 5px 6px rgb(160,160,160);</div><div class="line">    background: -webkit-linear-gradient(60deg,#fafafa 25%,#d2d2d2);/*不考虑ie6~9兼容*/</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="电脑盖"><a href="#电脑盖" class="headerlink" title="电脑盖"></a>电脑盖</h4><p>用伪类进行设置.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">.board:before&#123;</div><div class="line">    content: &quot;&quot;;</div><div class="line">    width:780px;</div><div class="line">    height: 20px;</div><div class="line">    display: block;</div><div class="line">    background:#d2d2d2;</div><div class="line">    position: absolute;</div><div class="line">    top:-20px;</div><div class="line">    left:-90px;</div><div class="line">    /**</div><div class="line">    上面左右两个大圆角，下面两个小圆角</div><div class="line">     */</div><div class="line">    border-radius: 0 0 3px 3px;</div><div class="line">    border-top-left-radius: 390px 18px;</div><div class="line">    border-top-right-radius: 390px 18px;</div><div class="line">    border-bottom: 2px solid ;</div><div class="line">    background: -webkit-linear-gradient(top,#d2d2d2 50%,#fafafa)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="bar"><a href="#bar" class="headerlink" title="bar"></a>bar</h4><p>盖和主机的链接部分<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#125;</div><div class="line">.board .bar&#123;</div><div class="line">    width: 450px;</div><div class="line">    height: 20px;</div><div class="line">    position: absolute;</div><div class="line">    left:75px;</div><div class="line">    top:2px;</div><div class="line">    border-radius: 2px;</div><div class="line">    /**</div><div class="line">    留空白，更像那么回事</div><div class="line">     */</div><div class="line">    border: 2px solid #fff;</div><div class="line">    border-top: 0;</div><div class="line">    background:-webkit-linear-gradient(top,rgb(30,30,30) ,rgb(60,60,60) 35%,rgb(100,100,100) 50%,rgb(30,30,30) 65%);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="键盘"><a href="#键盘" class="headerlink" title="键盘"></a>键盘</h4><p>绘制键盘区,就是画个框子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">.board .keyboard&#123;</div><div class="line">    position: absolute;</div><div class="line">    left:35px;</div><div class="line">    top:35px;</div><div class="line">    width: 530px;</div><div class="line">    height: 216px;</div><div class="line">    border:1px solid #b4b4b4;</div><div class="line">    border-radius: 8px;</div><div class="line">    background: #fafafa;</div><div class="line">    /**</div><div class="line">    阴影增加立体感，分分钟3d起来</div><div class="line">     */</div><div class="line">    box-shadow:2px 0px 2px #b4b4b4 inset,</div><div class="line">    0px 3px 3px #b4b4b4 inset,</div><div class="line">    -2px -0px 1px #b4b4b4 inset,</div><div class="line">    0px -3px 3px #b4b4b4 inset;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="按键"><a href="#按键" class="headerlink" title="按键"></a>按键</h4><p>1 对按键做统一格式安排如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">ul,li&#123;</div><div class="line">    list-style: none;</div><div class="line">    padding: 0 auto;</div><div class="line">    margin: 0 auto;</div><div class="line">    display: block;</div><div class="line">    font-family: Verdana;</div><div class="line">    cursor: pointer;</div><div class="line">    /**</div><div class="line">    按键处理为文本不可选择</div><div class="line">     */</div><div class="line">    -webkit-user-select: none;</div><div class="line">    -moz-user-select: none;</div><div class="line">    -ms-user-select: none;</div><div class="line">    user-select: none;</div><div class="line">&#125;</div><div class="line">ul&#123;</div><div class="line">    width:530px;</div><div class="line">    margin-top:8px;</div><div class="line">    padding-left: 8px;</div><div class="line">&#125;</div><div class="line">li&#123;</div><div class="line">    width: 29px;</div><div class="line">    height: 29px;</div><div class="line">    line-height: 29px;</div><div class="line">    float:left;</div><div class="line">    margin-right: 5px;</div><div class="line">    margin-bottom: 5px;</div><div class="line">    color: #fff;</div><div class="line">    background: #000;</div><div class="line">    text-align: center;</div><div class="line">    font-size:12px;</div><div class="line">    border: 1px solid #464646;</div><div class="line">    border-radius: 4px;</div><div class="line">    box-shadow: 1px 0px 0px #000,</div><div class="line">    0px 1px 0px #000,</div><div class="line">    -1px 0px 0px #000,</div><div class="line">    0px -1px 0px #000;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2 对第一排的功能按键进行大小调整<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">利用nth-Child选择器,选择前14个功能键</div><div class="line"> */</div><div class="line">li:nth-child(-n+14) &#123;</div><div class="line">    width: 30px;</div><div class="line">    height: 15px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>3 拥有换挡多功能的按键<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">拥有换挡功能的键</div><div class="line"> */</div><div class="line">li:nth-child(-n+27):nth-child(n+16) span,li:nth-child(40) span,li:nth-child(41) span,li:nth-child(42) span,</div><div class="line">li:nth-child(53) span,li:nth-child(54) span,li:nth-child(-n+66):nth-child(n+64) span&#123;</div><div class="line">    display: block;</div><div class="line">    margin-top: 5px;</div><div class="line">    line-height: 0.7;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>4 方向键<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">li:nth-child(75),li:nth-child(77),li:nth-child(78)&#123;</div><div class="line">    margin-top: 18px;</div><div class="line">    height: 14px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">li:nth-child(76)&#123;</div><div class="line">    height: 13px;</div><div class="line">    margin-top: 19px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">li:nth-child(78)&#123;</div><div class="line">    position: absolute;</div><div class="line">    bottom: 22px;</div><div class="line">    right:38px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>5 其他乱七八糟大小的键,只需要调整宽度即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">li:nth-child(28), li:nth-child(29) &#123;</div><div class="line">    width: 45px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">li:nth-child(43), li:nth-child(55) &#123;</div><div class="line">    width: 55px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">li:nth-child(56), li:nth-child(67) &#123;</div><div class="line">    width: 73px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">li:nth-child(-n+74):nth-child(n+68) &#123;</div><div class="line">    height: 33px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">li:nth-child(72) &#123;</div><div class="line">    width: 173px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">li:nth-child(71), li:nth-child(73) &#123;</div><div class="line">    width: 37px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="最后，将touch区放上"><a href="#最后，将touch区放上" class="headerlink" title="最后，将touch区放上"></a>最后，将touch区放上</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">.touch&#123;</div><div class="line">    position: absolute;</div><div class="line">    width: 200px;</div><div class="line">    height: 150px;</div><div class="line">    border:2px solid #bebebe;</div><div class="line">    bottom:23px;</div><div class="line">    left:200px;</div><div class="line">    border-radius: 8px;</div><div class="line">    background: #d6d6d6;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>ok了，最终图如下<br><img src="http://i1.piimg.com/4851/c033380a4867b522.png" alt="效果图"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/06/再网上看到的，试着敲了一遍，弥补我不堪的css/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Brave曝安全问题？如今浏览器市场啥样子了" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -853,110 +929,6 @@
 
 
   
-    <article id="post-ES6新手使用指南" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/21/ES6新手使用指南/">ES6新手使用指南</a>
-    </h1>
-  
-
-        
-        <a href="/2017/01/21/ES6新手使用指南/" class="archive-article-date">
-  	<time datetime="2017-01-21T08:31:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>表达式写法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let fn0 = ()=&gt; console.log(&apos;xxxx&apos;);</div><div class="line">let fn = a=&gt;a;//箭头函数</div><div class="line">let fn1 = (a,b)=&gt;console.log(a+b);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<ul>
-<li>函数体的写法：函数体代码多了就用他呗，显示写法<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let fn3 = ()=&gt;&#123;</div><div class="line">    console.log(&apos;ss&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<ul>
-<li>实例化和继承<h5 id="es5写法"><a href="#es5写法" class="headerlink" title="es5写法"></a>es5写法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">     function Fn() &#123;</div><div class="line">         this.name = &apos;cat&apos;;</div><div class="line">     &#125;</div><div class="line">     Fn.prototype.getX = function () &#123;</div><div class="line">         console.log(this.x);</div><div class="line">      &#125;</div><div class="line">     var fn = new Fn();</div><div class="line">//继承</div><div class="line">     var s = function () &#123;</div><div class="line">         </div><div class="line">      &#125;</div><div class="line">      s.prototype = new Fn();</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h5 id="es6写法"><a href="#es6写法" class="headerlink" title="es6写法"></a>es6写法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">    class Fn&#123;</div><div class="line">        constructor()&#123;</div><div class="line">        this.x = 100;</div><div class="line">        this.y = 100;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    //es6中constructor外的都为公有</div><div class="line">        getX()&#123;</div><div class="line">        alert(this.x);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    var f = new Fn(1);</div><div class="line">//Es6中的继承，像极了java</div><div class="line">    class s extends Fn&#123;</div><div class="line">        ``super()要写，因为没他不行``</div><div class="line">        constructor()&#123;super();this.z = &apos;memeda&apos;;&#125;</div><div class="line">        happy()&#123;</div><div class="line">            alert(&apos;happy&apos;);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<hr>
-<ul>
-<li>对象字面量<h5 id="作用1：写法简化："><a href="#作用1：写法简化：" class="headerlink" title="作用1：写法简化："></a>作用1：写法简化：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//文艺青年之普通写法</div><div class="line">    var a =1,b=2;</div><div class="line">    var obj=&#123;</div><div class="line">        a:a,b:b</div><div class="line">    &#125;</div><div class="line"></div><div class="line">//es6写法</div><div class="line">    let a =1,b=2;</div><div class="line">    let obj = &#123;a,b&#125;;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h5 id="作用2：牛x之处在于es6可以方便继承啊！再原型属性中添加要继承的，这样可以直接继承。"><a href="#作用2：牛x之处在于es6可以方便继承啊！再原型属性中添加要继承的，这样可以直接继承。" class="headerlink" title="作用2：牛x之处在于es6可以方便继承啊！再原型属性中添加要继承的，这样可以直接继承。"></a>作用2：牛x之处在于es6可以方便继承啊！再原型属性中添加要继承的，这样可以直接继承。</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let obj1 = &#123;__proto__:obj&#125;;</div></pre></td></tr></table></figure>
-<hr>
-<ul>
-<li>模板字符串</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//显然es6再字符串拼接时可以使用``再里面进行类似jquery的选择器进行拼接</div><div class="line">var str = &apos;lisong&apos;;</div><div class="line">var str2 = `lala,$&#123;str&#125;`;</div></pre></td></tr></table></figure>
-<hr>
-<ul>
-<li>解构赋值，主要用于react native,作用为将复杂框架对象中需要的组件引入后付给对象.</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;a:10,b:11,fn:function () &#123;&#125;&#125;</div><div class="line">var obj2 = &#123;a:9,b:12,fn:function () &#123;&#125;&#125;</div><div class="line">var obj3 =&#123;aa:obj,bb:obj2 &#125;;</div><div class="line">var &#123;aa,bb&#125; = obj3;//解构，对象略复杂了,将obj3解构赋值给简单的对象</div><div class="line">alert(aa.a);</div></pre></td></tr></table></figure>
-<hr>
-<ul>
-<li><p>默认赋值,任意赋值,扩展运算符</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//默认参数</div><div class="line">function sum(a=3,b=4) &#123;</div><div class="line">    console.log(a+b);//此时调用sum(),没实参，则走默认参数，弹出7</div><div class="line">&#125;</div><div class="line"></div><div class="line">//参数不确定,使用...+arr，可以直接用了。</div><div class="line">function sum(a,b,...ary) &#123;</div><div class="line">    console.log(...ary);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//扩展运算符,有点像concat</div><div class="line">var ary = [1,2,3,4];</div><div class="line">var ary1 = [...ary,3,3];//此时已经将ary放在了ary1里面</div></pre></td></tr></table></figure>
-</li>
-<li><p>let const</p>
-<ul>
-<li>let:不能进行预解释，会形成块级作用域，块级作用域中的this就会变为上级作用域的this</li>
-<li>const:不能进行预解释，无法二次赋值<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for(let i = 0;i&lt;xx.length;i++)&#123;</div><div class="line">//此时再循环中就会形成一个块级作用域，每一次i就会单独作为作用域参数使用。</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/21/ES6新手使用指南/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1050,15 +1022,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Technology</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1066,11 +1034,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
               </li>
              
               <li class="article-tag-list-item">
