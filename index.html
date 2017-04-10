@@ -134,6 +134,74 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-swiper制作移动端轮播图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/10/swiper制作移动端轮播图/">swiper制作移动端轮播图</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/10/swiper制作移动端轮播图/" class="archive-article-date">
+  	<time datetime="2017-04-10T05:10:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="swiper-js"><a href="#swiper-js" class="headerlink" title="swiper.js"></a>swiper.js</h4><p>Swiper(前称Swiper master)是一款免费以及轻量级的移动设备触控滑块的js框架，使用硬件加速过渡（translate），主要应用在移动端开发轮播图等，虽主要是为ios开发的，但在android以及部分pc端有着较好的用户体验。<br>使用swiper较为简单，其包含主要两个包，swiper.css和swiper.js，通过添加类，控制轮播图等各种效果。</p>
+<h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>首先，要有swiper的结构<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-container"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--轮播内容集合--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-wrapper"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-slide"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">""</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-slide"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">""</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--分页器--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-pagination"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--左右切换按钮--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-button-prev"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-button-next"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--进度条--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-scrollbar"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>一般的轮播图最多也就这些组件了，移动端一般更是切换和进度条都不需要,有了html，接下来看看js，Swiper采用的是面向对象，实例化走起<a href="http://www.swiper.com.cn/api/index.html" target="_blank" rel="external">Swiper的API</a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> mSwiper = <span class="keyword">new</span> Swiper(<span class="string">'.swiper-container'</span> ,&#123;</div><div class="line">    <span class="comment">//这里是精髓,Swiper第二个对象参数里提供了大量操作轮播图的属性，这里不一一细说，可以查阅api：</span></div><div class="line">    loop:<span class="literal">true</span>,</div><div class="line">    <span class="attr">speed</span>:<span class="number">1000</span>,</div><div class="line">    <span class="attr">autoplay</span>:<span class="number">1000</span>,</div><div class="line">    <span class="attr">pagination</span>:<span class="string">'.swiper-pagination'</span>,</div><div class="line">    <span class="attr">paginationType</span>:<span class="string">'bullet'</span>,<span class="comment">//bullets圆点（默认）‘fraction’  分式 ；‘progress’  进度条；‘custom’ 自定义</span></div><div class="line">    effect:<span class="string">'slide'</span>,<span class="comment">//也可设置为"fade"（淡入）"cube"（方块）"coverflow"（3d流）"flip"（3d翻转）</span></div><div class="line">    onInit:<span class="function"><span class="keyword">function</span> (<span class="params">swiper</span>) </span>&#123;<span class="comment">//回调函数，包括onTouchStart/onTouchEnd etc.</span></div><div class="line">                <span class="built_in">console</span>.log(swiper.activeIndex);<span class="comment">//2，</span></div><div class="line">            &#125;<span class="comment">//还提供了事件和回掉函数已经部分可操作属性</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h4 id="swiper-图片延迟加载"><a href="#swiper-图片延迟加载" class="headerlink" title="swiper 图片延迟加载"></a>swiper 图片延迟加载</h4><p>Swiper还提供了图片延迟加载，在新闻/购物类较复杂的webapp等推荐使用,只需三步<br>第一步，图片加载路径变更src==&gt; data-src<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-slide"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">data-src</span>=<span class="string">""</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>第二步，添加加载背景<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-lazy-preloading"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>第三步，实例化时添加属性<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> mSwiper = <span class="keyword">new</span> Swiper(<span class="string">'.swiper-container'</span>,&#123;</div><div class="line">    <span class="comment">//......</span></div><div class="line">    lazyLoading:<span class="literal">true</span></div><div class="line">    <span class="comment">//.......</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>不过在实际应用中，常会碰到样式问题，无须担心啊，直接进swiper.css修改样式即可。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/10/swiper制作移动端轮播图/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-有趣的算法2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -817,84 +885,6 @@
 
 
   
-    <article id="post-js严格模式简述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/28/js严格模式简述/">js严格模式简述</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/28/js严格模式简述/" class="archive-article-date">
-  	<time datetime="2017-02-28T05:37:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h4><p>严格模式是浏览器根据web标准去解析页面，是一种要求严格的DTD，不允许使用任何表现层的语法。为了消除js语法中一些不严谨，不严格的地方，同时消除代码的安全隐患，浏览器为js提供严格模式的执行。</p>
-<h4 id="引入严格模式"><a href="#引入严格模式" class="headerlink" title="引入严格模式"></a>引入严格模式</h4><p>ES5中的严格模式，只需要在脚本文件中，添加：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div></pre></td></tr></table></figure></p>
-<p>而ES6则将他坐实，不需要添加开头，默认为严格模式，这也是导致严格模式开始越来越受到重视的原因之一。因此需要或者至少指导严格模式下和非严格模式下的区别，参考大量资源简要介绍如下：</p>
-<ol>
-<li>取消直接使用变量，必须声明后使用；</li>
-<li>函数参数不得有重名属性；</li>
-<li>不能使用with语句；</li>
-<li>不能对只读属性赋值；</li>
-<li>八进制数据不得采用0开头；</li>
-<li>不可删除的属性不能被任何方法删除；</li>
-<li>同时，变量也变得不可删除；</li>
-<li>eval不会在外层作用域引入变量；</li>
-<li>eval和arguments不能被重新赋值//！这点需要注意</li>
-<li>arguments不会自动反应函数参数的变化，callee和caller方法不可用，也不能用函数.caller和函数.arguments找到函数堆栈；</li>
-<li>禁止this指向全局；如果没有指定this，则为undefined；</li>
-<li>增加了些关键词：interface/static/protect，java中有关私有安全的几个关键词。</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/28/js严格模式简述/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -988,10 +978,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Technology</a>
               </li>
              
@@ -1004,6 +990,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
@@ -1012,19 +1002,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">life</a>
+                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">life</a>
               </li>
             
             <div class="clearfix"></div>
