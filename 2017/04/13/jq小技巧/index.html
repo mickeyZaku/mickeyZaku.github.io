@@ -8,25 +8,34 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>jq小技巧 | 不怎么写博客的橘子的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="以下是几个别人收集我用到了的jQuery小技巧
+  <meta name="description" content="小技巧以下是几个别人收集我用到了的jQuery小技巧
 
 禁止右键点击,即绑定右键目录放回false
-12345$(document).ready(function() &amp;#123;  $(document).bind(&quot;contextmenu&quot;,function(e) &amp;#123;    return false;  &amp;#125;)&amp;#125;)">
+12345$(document).ready(function() &amp;#123;  $(document).bind(&quot;contextmenu&quot;,function(e) &amp;#123;    return false;  &amp;#125;)&amp;#125;)
+
+监测浏览器以mozilla为例
+12345$(d">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jq小技巧">
 <meta property="og:url" content="http://yoursite.com/2017/04/13/jq小技巧/index.html">
 <meta property="og:site_name" content="不怎么写博客的橘子的博客">
-<meta property="og:description" content="以下是几个别人收集我用到了的jQuery小技巧
+<meta property="og:description" content="小技巧以下是几个别人收集我用到了的jQuery小技巧
 
 禁止右键点击,即绑定右键目录放回false
-12345$(document).ready(function() &amp;#123;  $(document).bind(&quot;contextmenu&quot;,function(e) &amp;#123;    return false;  &amp;#125;)&amp;#125;)">
-<meta property="og:updated_time" content="2017-04-13T05:36:56.357Z">
+12345$(document).ready(function() &amp;#123;  $(document).bind(&quot;contextmenu&quot;,function(e) &amp;#123;    return false;  &amp;#125;)&amp;#125;)
+
+监测浏览器以mozilla为例
+12345$(d">
+<meta property="og:updated_time" content="2017-04-28T09:17:18.203Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jq小技巧">
-<meta name="twitter:description" content="以下是几个别人收集我用到了的jQuery小技巧
+<meta name="twitter:description" content="小技巧以下是几个别人收集我用到了的jQuery小技巧
 
 禁止右键点击,即绑定右键目录放回false
-12345$(document).ready(function() &amp;#123;  $(document).bind(&quot;contextmenu&quot;,function(e) &amp;#123;    return false;  &amp;#125;)&amp;#125;)">
+12345$(document).ready(function() &amp;#123;  $(document).bind(&quot;contextmenu&quot;,function(e) &amp;#123;    return false;  &amp;#125;)&amp;#125;)
+
+监测浏览器以mozilla为例
+12345$(d">
   
     <link rel="alternative" href="/atom.xml" title="不怎么写博客的橘子的博客" type="application/atom+xml">
   
@@ -162,14 +171,42 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>以下是几个别人收集我用到了的jQuery小技巧</p>
+        <h4 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h4><p>以下是几个别人收集我用到了的jQuery小技巧</p>
 <ol>
 <li><p>禁止右键点击,即绑定右键目录放回false</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  $(<span class="built_in">document</span>).bind(<span class="string">"contextmenu"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">  &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 </li>
-<li></li>
+<li><p>监测浏览器<br>以mozilla为例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </div><div class="line">    <span class="comment">// Target Firefox 2 and above </span></div><div class="line"> <span class="keyword">if</span> ($.browser.mozilla &amp;&amp; $.browser.version &gt;= <span class="string">"1.8"</span> )&#123; </div><div class="line">     <span class="comment">// do something </span></div><div class="line"> &#125;&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>预加载图片</p>
+</li>
 </ol>
-
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$.preloadImages = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="built_in">arguments</span>.length; i++) &#123; $(<span class="string">'&lt;img&gt;'</span>).attr(<span class="string">'src'</span>, <span class="built_in">arguments</span>[i]);</div><div class="line">&#125;&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>简单的手风琴效果</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'#accordion'</span>).find(<span class="string">'.content'</span>).hide(); </div><div class="line">$(<span class="string">'#accordion'</span>).find(<span class="string">'.accordion-header'</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> next = $(<span class="keyword">this</span>).next(); </div><div class="line">    next.slideToggle(<span class="string">'fast'</span>); </div><div class="line">    $(<span class="string">'.content'</span>).not(next).slideUp(<span class="string">'fast'</span>); </div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>; &#125;);</div></pre></td></tr></table></figure>
+<ol>
+<li>验证元素是否为空</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span>($(<span class="string">'#id'</span>).html())&#123;</div><div class="line">      <span class="comment">//doSomething</span></div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol>
+<li>替换元素</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  $(<span class="string">'#id'</span>).replaceWith(<span class="string">'&lt;DIV&gt;I have benn good&lt;/DIV&gt;'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol>
+<li>克隆对象</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  $(<span class="string">'#div'</span>).clone().prepentTo(<span class="string">'p'</span>);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<ol>
+<li>自己的选择器</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  $.extend($.expr[<span class="string">':'</span>],&#123;</div><div class="line">      <span class="attr">moreThan1000px</span>:<span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> $(a).width()&gt;<span class="number">1000</span></div><div class="line">      &#125;</div><div class="line">  &#125;)</div><div class="line">  $(<span class="string">'box:moreThan1000px'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//doSomething</span></div><div class="line">  &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<ol>
+<li>禁用Jquery(动画)效果</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$.fx.off = <span class="literal">true</span>;</div></pre></td></tr></table></figure>
       
 
       
@@ -272,6 +309,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/04/28/toString/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          toString
+        
+      </div>
+    </a>
   
   
     <a href="/2017/04/10/swiper制作移动端轮播图/" id="article-nav-older" class="article-nav-link-wrap">
@@ -379,7 +425,7 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -395,7 +441,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -403,11 +449,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
               </li>
              
               <li class="article-tag-list-item">

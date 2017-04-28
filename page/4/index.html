@@ -134,6 +134,168 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ES6数组扩展" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/26/ES6数组扩展/">ES6数组扩展</a>
+    </h1>
+  
+
+        
+        <a href="/2017/01/26/ES6数组扩展/" class="archive-article-date">
+  	<time datetime="2017-01-26T02:20:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="ES5中几个常用的数组方法"><a href="#ES5中几个常用的数组方法" class="headerlink" title="ES5中几个常用的数组方法"></a>ES5中几个常用的数组方法</h4><ul>
+<li><p>增：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">push(item1,item2,item3...),数组末尾增加项;参数为多个添加项;返回添加后的数组长度；原数组改变</div><div class="line">unshift(item1,item2,item3..),数组开头增加项；参数为多个添加项；返回添加后的数组长度；原数组改变</div></pre></td></tr></table></figure>
+</li>
+<li><p>删</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pop(),删除数组末尾一项；无参数；返回删除项，其数据类型为删除项对应的数据类型；原数组改变</div><div class="line">shift(),删除数组起始项；无参数；返回删除项，其数据类型为删除项对应的数据类型；原数组改变</div></pre></td></tr></table></figure>
+</li>
+<li><p>改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">splice(index,howMany,item1,item2....),从index开始删除howMany项，并用item1,item2开始替换掉删除的项；返回值为被删除的数组</div><div class="line">concat(),参数为拼接数组,返回修改后的数组，原数组改变</div><div class="line">reverse();翻转原数组，数组改变,返回数组</div><div class="line">sort();从小到大排，数组改变：ary.sort(function(a,b)&#123;return a-b;Or return b-a;&#125;)，返回改后的数组</div></pre></td></tr></table></figure>
+</li>
+<li><p>查</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//查看全部数组</div><div class="line">toString(),将数组转为字符串，以逗号分隔</div><div class="line">john(),参数为分隔符，返回字符串---结合eval(),将字符串作为js代码执行，实现数学运算</div><div class="line">forEach(function(item,index)&#123;log(a),属性值；log(b),索引&#125;),遍历数组，没有返回值</div><div class="line">map()，遍历数组，有返回值</div><div class="line">//查看一部分</div><div class="line">slice(n,m),从n开始找到m,(n,m],负值截取并返回该数组。</div><div class="line">//点查看</div><div class="line">indexOf(),从前往后找/lastIndexOf(),从后往前找，IE不兼容，可以转为字符串后再执行indexOf；</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="ES6数组方法扩展"><a href="#ES6数组方法扩展" class="headerlink" title="ES6数组方法扩展"></a>ES6数组方法扩展</h4><ul>
+<li><p>改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">fill(item，start,end),用item来填充数组中的值，方便用于数组的初始化，单一参数时表示全部替换，同slice()类似，可以接受第二个第三个参数，不同的是，后面表示替换从何开始,从何结束。</div><div class="line">    [1,1,1].fill(7,1,2)=&gt;[1,7,2]</div><div class="line">copyWithin(target,start,end),见名知意，复制数组中的元素[start,end)从target开始复制替换</div><div class="line">    [1,2,3,4,5].copyWithin(0,3,4)=&gt;[4,2,3,4,5]</div></pre></td></tr></table></figure>
+</li>
+<li><p>查</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//查看全部</div><div class="line">entries()/keys()/values(),用于ES6的数组遍历，均返回遍历器对象，可用for..of循环遍历，区别entries遍历键值对，keys遍历键，values遍历值。</div><div class="line">    for(let index/elem/[index,elem] of [&apos;a&apos;,&apos;b&apos;].keys()/.values()/.entries())&#123;</div><div class="line">        console.log(index/elem/(index,elem))</div><div class="line">    &#125;</div><div class="line">//点查看</div><div class="line">find()/findindex(),均为找出第一个符合条件的数组成员，参数为回掉函数，所有数组成员依次执行，找出返回true,区别在于,没有满足函数的数组成员时，find()将返回undefinde，findindex()将返回-1;</div><div class="line">    [1,3,4,5,-2].find(function(value,index,arr)&#123;</div><div class="line">        return value &lt;0;</div><div class="line">    &#125;)=&gt;-2</div></pre></td></tr></table></figure>
+</li>
+<li><p>Array类的两个扩展方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Array.from()，将对象转为真正的数组，类数组何迭代对象均可使用。</div><div class="line">    let arrayLike = &#123;&apos;0&apos;,&apos;a&apos;,&apos;1&apos;:&apos;b&apos;&#125;;</div><div class="line">    let arr = Array.from(arrayLike);=&gt;[&apos;a&apos;,&apos;b&apos;,&apos;c&apos;];</div><div class="line"></div><div class="line">Array.of(),将一组值转换为数组，其主要为弥补Array()构造时，再参数不足2位默认位数组长度的不足，</div><div class="line">    Array(3)=&gt;[, , ,]</div><div class="line">    Array.of(3)=&gt;[3];</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/01/26/ES6数组扩展/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-js的继承" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/25/js的继承/">js的继承</a>
+    </h1>
+  
+
+        
+        <a href="/2017/01/25/js的继承/" class="archive-article-date">
+  	<time datetime="2017-01-25T02:07:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="先要有那么一个父类"><a href="#先要有那么一个父类" class="headerlink" title="先要有那么一个父类"></a>先要有那么一个父类</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dad</span> (<span class="params">x,y</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.x = <span class="number">100</span>;</div><div class="line">    <span class="keyword">this</span>.y = <span class="number">200</span>;</div><div class="line">    <span class="keyword">this</span>.sleep = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'zzzzzz'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">Dad.prototype.eat = <span class="function"><span class="keyword">function</span>(<span class="params">food</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'I am eating'</span>+food;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="一-ES5下可以这么多的继承"><a href="#一-ES5下可以这么多的继承" class="headerlink" title="一. ES5下可以这么多的继承"></a>一. ES5下可以这么多的继承</h2><h4 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h4><p>将父类的实例作为子类的原型，较为简单，但无法实现多继承，子类实例化时，无法向父类的构造函数传值。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>)</span>&#123;</div><div class="line">&#125;</div><div class="line">Child.prototype = <span class="keyword">new</span> Dad();</div><div class="line">Child.prototype.constructor = Child;<span class="comment">//构造函数指向自己而不是默认的指向父类，避免继承紊乱</span></div><div class="line">Child.protoytpe.name = <span class="string">'Son'</span>;</div><div class="line"><span class="comment">//实例</span></div><div class="line"><span class="keyword">var</span> son = <span class="keyword">new</span> Child();</div></pre></td></tr></table></figure></p>
+<h4 id="构造继承"><a href="#构造继承" class="headerlink" title="构造继承"></a>构造继承</h4><p>使用父类的构造函数来增强子类，等同复制父类实例属性给子类,引入call()方法.<br>这个方法可以实现多继承，但无法继承父类的实例属性和方法，无法复用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params">x,y,name</span>)</span>&#123;</div><div class="line">    Dad.call(<span class="keyword">this</span>);</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line"> </div><div class="line">&#125;</div><div class="line">Child.prototype.constructor = Child;</div><div class="line"><span class="comment">//实例</span></div><div class="line"><span class="keyword">var</span> son = <span class="keyword">new</span> Child(son);</div></pre></td></tr></table></figure>
+<h4 id="实例继承"><a href="#实例继承" class="headerlink" title="实例继承"></a>实例继承</h4><p>这个比较有意思，为父类添加新特性，作为子类实例返回。<br>不限制调用方法，但是不支持多继承<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> instance = <span class="keyword">new</span> Dad();</div><div class="line">    instance.name = name;</div><div class="line">    <span class="keyword">return</span> instance;</div><div class="line">&#125;</div><div class="line"><span class="comment">//实例</span></div><div class="line"><span class="keyword">var</span> son = <span class="keyword">new</span> Child(son);</div></pre></td></tr></table></figure></p>
+<h4 id="拷贝继承"><a href="#拷贝继承" class="headerlink" title="拷贝继承"></a>拷贝继承</h4><p>即通过for in循环，将父类属性枚举并拷贝，但该方法无法获取父类不可枚举的方法,且太耗性能，基本不推荐<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> dad = <span class="keyword">new</span> Dad();</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> dad)&#123;</div><div class="line">        Child.protoytpe[key] = dad[key];</div><div class="line">    &#125;</div><div class="line">    Child.prototype.name = name;</div><div class="line">&#125;</div><div class="line"><span class="comment">//实例</span></div><div class="line"><span class="keyword">var</span> son = <span class="keyword">new</span> Child(son);</div></pre></td></tr></table></figure></p>
+<h4 id="组合继承（常用方法）"><a href="#组合继承（常用方法）" class="headerlink" title="组合继承（常用方法）"></a>组合继承（常用方法）</h4><p>调用父类构造，继承父类属性，父类实例作为子类原型，可复用，可传参，但调用了两次父类构造函数，内存会消耗一点。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">    Dad.call(<span class="keyword">this</span>);</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">&#125;</div><div class="line">Child.prototype = <span class="keyword">new</span> Dad();</div><div class="line">Child.prototype.constructor = Child;</div><div class="line"><span class="comment">//实例</span></div><div class="line"><span class="keyword">var</span> son = <span class="keyword">new</span> Child(son);</div></pre></td></tr></table></figure></p>
+<h4 id="寄生"><a href="#寄生" class="headerlink" title="寄生"></a>寄生</h4><p>寄生的形式，砍掉父类的实例属性，节省了组合继承的内存消耗问题，但实现较为复杂<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">    Dad.call(<span class="keyword">this</span>);</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">&#125;</div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> Super = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">    Super.prototype = Dad.prototype;</div><div class="line">    Child.prototype = <span class="keyword">new</span> Super();</div><div class="line">&#125;)()</div><div class="line">    Super = <span class="literal">null</span>;<span class="comment">//节省内存</span></div><div class="line">    <span class="keyword">var</span> son = <span class="keyword">new</span> Child(son);</div></pre></td></tr></table></figure></p>
+<h4 id="proto继承"><a href="#proto继承" class="headerlink" title="proto继承"></a><strong>proto</strong>继承</h4><p>ES6可以直接再定义对象时直接通过属性进行继承<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">     <span class="keyword">this</span>.name = name;</div><div class="line">     Dad.call(<span class="keyword">this</span>);</div><div class="line"> &#125;</div><div class="line"><span class="comment">//实例</span></div><div class="line"><span class="keyword">var</span> son = <span class="keyword">new</span> Child(<span class="string">'son'</span>);</div><div class="line">son.__proto__ = Dad.prototype;</div></pre></td></tr></table></figure></p>
+<h2 id="二-ES6下可以这样继承"><a href="#二-ES6下可以这样继承" class="headerlink" title="二. ES6下可以这样继承"></a>二. ES6下可以这样继承</h2><p>ES5的继承实质上是先创造子类的实例对象this,然后将父类的方法添加到子类this上，但是由于ES6的继承机制不同，是先创造父类的实例this,然后用子类的构造修改this.</p>
+<h4 id="EXTENDS-关键词继承"><a href="#EXTENDS-关键词继承" class="headerlink" title="EXTENDS 关键词继承"></a>EXTENDS 关键词继承</h4><p>ES6将使用关键词extends，熟悉java编程的应该不陌生，对ES6的样子很像java.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Dad</span></span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(x,y,name)&#123;<span class="comment">//直接给一个construor方法作为构造方法</span></div><div class="line">        <span class="keyword">super</span>(x,y);<span class="comment">//父类的构造函数，只有调用super方法才能使用this,因为子类没有自己的this.换句话说，this必须再super方法调用之后使用</span></div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">    &#125;</div><div class="line">    eat()&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name+<span class="keyword">super</span>.eat();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//实例</span></div><div class="line"><span class="keyword">let</span> son = <span class="keyword">new</span> Child(son);</div></pre></td></tr></table></figure></p>
+<h4 id="PROTO继承"><a href="#PROTO继承" class="headerlink" title="PROTO继承"></a>PROTO继承</h4><p>ES6可以直接再定义对象时直接通过属性进行继承</p>
+<pre><code class="javascript">son = {<span class="attr">__proto__</span>:Dad};
+</code></pre>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/01/25/js的继承/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-ES6箭头函数需要注意的地方" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -708,7 +870,7 @@ branch: master
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -724,7 +886,7 @@ branch: master
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -732,11 +894,11 @@ branch: master
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
               </li>
              
               <li class="article-tag-list-item">

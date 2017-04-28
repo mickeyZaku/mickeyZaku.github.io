@@ -134,6 +134,161 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Boostrap响应式导航栏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/07/Boostrap响应式导航栏/">Bootstrap响应式导航栏</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/07/Boostrap响应式导航栏/" class="archive-article-date">
+  	<time datetime="2017-03-07T05:45:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Bootstrap-响应式导航栏"><a href="#Bootstrap-响应式导航栏" class="headerlink" title="Bootstrap 响应式导航栏"></a>Bootstrap 响应式导航栏</h4><p>作为Bootstrap具有代表性的导航栏组件，其可以是响应式的，折叠式的或者面包屑式的。<br>向容器中添加‘navbar’的类名即可，同时可扩展向其中添加表单等元素，操作方法也非常简单。简单举个例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">"navbar navbar-default"</span> <span class="attr">role</span>=<span class="string">"navigation"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container-fluid"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"navbar-header"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"navbar-brand"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>菜鸟教程<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"navbar-form navbar-left"</span> <span class="attr">role</span>=<span class="string">"search"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">placeholder</span>=<span class="string">"Search"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-default"</span>&gt;</span>提交按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-default navbar-btn"</span>&gt;</span></div><div class="line">            导航栏按钮</div><div class="line">        <span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>上述的效果即是一个包含了form的一个导航栏，其中，navbar-导航栏，navbar-default-默认导航栏样式，container-fluid-流式布局，nav-header-导航栏头，nav-brand-导航栏标题，navbar-form-导航栏表单，form-control-form内部组件样式，navbar-btn-导航栏按钮。<br>当然一切运行成功的基础是你导入了正确的Bootstrap包。</p>
+<h4 id="响应式导航栏"><a href="#响应式导航栏" class="headerlink" title="响应式导航栏"></a>响应式导航栏</h4><p>Bootstrap的响应式导航栏有特定的书写格式，基本如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">"navbar navbar-default"</span> <span class="attr">role</span>=<span class="string">"navigation"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container-fluid"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"navbar-header"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"navbar-toggle"</span> <span class="attr">data-toggle</span>=<span class="string">"collapse"</span></span></div><div class="line">                    <span class="attr">data-target</span>=<span class="string">"#example-navbar-collapse"</span>&gt;</div><div class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sr-only"</span>&gt;</span>切换导航<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"navbar-brand"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>菜鸟教程<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"collapse navbar-collapse"</span> <span class="attr">id</span>=<span class="string">"example-navbar-collapse"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav navbar-nav"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"active"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>iOS<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>SVN<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"dropdown"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"dropdown-toggle"</span> <span class="attr">data-toggle</span>=<span class="string">"dropdown"</span>&gt;</span></div><div class="line">                        Java <span class="tag">&lt;<span class="name">b</span> <span class="attr">class</span>=<span class="string">"caret"</span>&gt;</span><span class="tag">&lt;/<span class="name">b</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"dropdown-menu"</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>jmeter<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>EJB<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Jasper Report<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"divider"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>分离的链接<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"divider"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>另一个分离的链接<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>其中起到关键作用的包括： class .collapse、.navbar-collapse 的 <div> 中。折叠起来的导航栏实际上是一个带有 class .navbar-toggle 及两个 data- 元素的按钮。第一个是 data-toggle，用于告诉 JavaScript 需要对按钮做什么，第二个是 data-target，指示要切换到哪一个元素。三个带有 class .icon-bar 的 <span> 创建所谓的汉堡按钮。这些会切换为 .nav-collapse <div> 中的元素。<br>当然前提也是必须包含正确的Bootstrap包</div></span></div></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Bootstrap</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/07/Boostrap响应式导航栏/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-ES5-ES6正则比较及简述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/05/ES5-ES6正则比较及简述/">ES5/ES6正则比较及简述</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/05/ES5-ES6正则比较及简述/" class="archive-article-date">
+  	<time datetime="2017-03-05T03:41:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><p>regExp(regular expression),即规则表达式的英文缩写其一般的用法是：</p>
+<ol>
+<li>验证字符串是否符合正则所制定的规则，比如注册表单中各项填写规则的验证；</li>
+<li>把符合规则的字符串部分从字符串捕获；<br>由于正则为引用数据类型，所以声明方式可以是字面量也可以是实例声明：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/\d/</span>;</div><div class="line"><span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\d'</span>);<span class="comment">//es5中参数必须是字符串，</span></div><div class="line"><span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="regexp">/\d/</span>);<span class="comment">/// Es6中可以直接放正则了</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="正则的常用方法"><a href="#正则的常用方法" class="headerlink" title="正则的常用方法"></a>正则的常用方法</h4><p>基本有两个：test()/exec()</p>
+<ol>
+<li>test()表示匹配</li>
+<li>exec()表示捕获</li>
+<li>属性：flags 正则的修饰符（ES6）；source 返回正则的正文；lastIndex 下一次匹配正则时的位置，exec用；$n:再RegExp上可以使用的属性，n为第几个小正则最后被使用（包括匹配和捕获）的分组的内容,再replace等方法中，直接用$n简写；</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/\d/.test(<span class="string">'124'</span>);<span class="comment">//true</span></div><div class="line">/\d/.exec(<span class="string">'123'</span>)<span class="comment">//["1", index: 0, input: "123"]</span></div></pre></td></tr></table></figure>
+<h4 id="String-方法与正则一起使用"><a href="#String-方法与正则一起使用" class="headerlink" title="String 方法与正则一起使用"></a>String 方法与正则一起使用</h4><ol>
+<li>match:返回一个数组，一次性捕获所有符合规则的，配合小正则；<br>分组引用，小正则后面跟\n\n\n\n,表示对第n个小正则的再次引用，但以括号左半边为准；</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/(\d)(\d)\1\2/==&gt;匹配abab，</div><div class="line">/(\d(2))(\d)\1\2/==&gt;匹配\d2\d\d2;</div></pre></td></tr></table></figure>
+<ol>
+<li>split：返回一个数组，按照一个正则来拆分字符串，忽略g和lastindex属性</li>
+<li>replace：参数1 正则表达式，参数2 要替换的项目,如果是函数，则替换为函数返回值<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">"firefox chrome msie"</span>;</div><div class="line">str = str.replace(<span class="string">'/^msie$/'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">a,b,c,d</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">'ie'</span>;</div><div class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);<span class="comment">//参数2中的arguments:[大正则匹配返回，小正则返回，index,input]</span></div><div class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[n]);<span class="comment">//可用于遍历</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="正则表达式特殊字符"><a href="#正则表达式特殊字符" class="headerlink" title="正则表达式特殊字符"></a>正则表达式特殊字符</h4><p>正则需要使用特殊字符，来控制(为啥不支持mk表格语法呢？):<br>|字符|描述|<br>|-|-|<br>|\d|0~9之间的任意一个数字|<br>|\D|非0~9之间的任意一个数字|<br>|\w|任何非单词字符（a-zA-Z0-9<em>）|<br>|\W|非任何非单词字符（a-zA-Z0-9</em>）|<br>|\s|空格或者空白|<br>|\S|非空格或者空白|<br>|\b|边界,包括双引号和空格和‘—’‘%’等等特殊字符也会视为边界（数字结尾/\d\b/）|<br>|\B|非边界,包括双引号和空格和‘—’‘%’等等特殊字符也会视为边界|<br>|\n|换行付|<br>|\r|匹配回车|<br>|\R|陪陪非回车|<br>|.|匹配除换行以外的任意字符|<br>|^|范围限制起始|<br>|$|范围限制结尾|<br>|.|转义.|<br>|||转义|<br>|{n}|出现n个|<br>|{n,}|至少出现n个|<br>|{n，m}|出现n-m个|<br>|*|0到多个|<br>|+|1到多个|<br>|？|0或者1个|<br>|x|y|x或者y中的一个|<br>|()|包含的小正则表达式，提升优先级|<br>|[xyz]|x或者y或者z中的一个|<br>|[^xyz]|只要有一个非x/y/z就行|<br>|[0-9a-zA-Z]|0-9中的一个，或者a-z及A-Z中的一个|<br>|[.]|代表’.’本身|<br>|g|全局|<br>|i|忽略大小写|<br>|m|多行匹配|<br>点击查看<a href="https://mickeyzaku.github.io/2017/02/09/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" target="_blank" rel="external">常用正则表达式</a></p>
+<h4 id="ES6正则补充"><a href="#ES6正则补充" class="headerlink" title="ES6正则补充"></a>ES6正则补充</h4><h4 id="‘u’修饰符"><a href="#‘u’修饰符" class="headerlink" title="‘u’修饰符"></a>‘u’修饰符</h4><p>Es6中增加‘u’修饰符，主要为了补充ES5中大于‘\uFFFF’的Unicode字符,‘u’的出现使得中文的匹配中更加合理<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^.&amp;<span class="regexp">/u.test('李')/</span><span class="regexp">/true，ES5下或者不加‘u’时为false</span></div></pre></td></tr></table></figure></p>
+<p>包括‘.’、量词、预定义，使用修饰符‘u’之后可以较好的匹配大unicode。</p>
+<h4 id="‘y’修饰符"><a href="#‘y’修饰符" class="headerlink" title="‘y’修饰符"></a>‘y’修饰符</h4><p>‘y’修饰符不好理解，其作用与‘g’相似，表示全局匹配，不同在于‘y’修饰符有粘连的意思，‘g’只要剩余位置中存在匹配就行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">"aa_a"</span>;</div><div class="line"><span class="keyword">var</span> reg1 = <span class="regexp">/a+/g</span>;</div><div class="line"><span class="keyword">var</span> reg2 = <span class="regexp">/a+/y</span>;</div><div class="line"><span class="keyword">var</span> reg3 = <span class="regexp">/a+\w/y</span>;</div><div class="line"></div><div class="line">reg1.exec(s);<span class="comment">//‘aa’</span></div><div class="line">reg2.exec(s);<span class="comment">//'aa'</span></div><div class="line">reg3.exec(s);<span class="comment">//'aa_'</span></div><div class="line"></div><div class="line">reg1.exec(s);<span class="comment">//'a'</span></div><div class="line">reg2.exec(s);<span class="comment">//null</span></div><div class="line">reg3.exec(s);<span class="comment">//'a_'</span></div></pre></td></tr></table></figure></p>
+<p>上述中，使用g修饰的reg1，第二次执行exec时，因为后续有a可以输出，但加y修饰的reg2则会直接从‘_’开始查找，所以返回null;</p>
+<h4 id="‘flags’"><a href="#‘flags’" class="headerlink" title="‘flags’"></a>‘flags’</h4><p>ES6中的新属性，可以获取到正则的修饰符</p>
+<h4 id="escape（）"><a href="#escape（）" class="headerlink" title="escape（）"></a>escape（）</h4><p>escape方法的主要作用是将字符串转为正则，其中需要转义的直接转义，该方法并未列入ES6/7的提案中，但如果有需求可以直接使用：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str.replace(<span class="regexp">/[\-\[\]\/\&#123;\&#125;\+\*\?\\\^\$\|]/g</span>,<span class="string">'\\$&amp;'</span>);</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/05/ES5-ES6正则比较及简述/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-改变你的this" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -753,148 +908,6 @@
 
 
   
-    <article id="post-CSS3-动画效果简要描述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/10/CSS3-动画效果简要描述/">CSS3 动画效果简要描述</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/10/CSS3-动画效果简要描述/" class="archive-article-date">
-  	<time datetime="2017-02-10T02:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>其实本来想直接放我的动画库的，这里先做基础只是的奠基，H5的动画其实一直被认为有些问题，使用CSS3可以实现的动画就不用H5吧。首先需要声明的是CSS动画（animation）再IE6~9是不兼容的，怎么办，静态背景图替代之</p>
-<h4 id="最基本结构，你懂的"><a href="#最基本结构，你懂的" class="headerlink" title="最基本结构，你懂的"></a>最基本结构，你懂的</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">i</span>&gt;</span>今天吃点啥<span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<h4 id="首先写动画过程"><a href="#首先写动画过程" class="headerlink" title="首先写动画过程"></a>首先写动画过程</h4><p>关键词keyframes,构建动画的语法是<br>@keyframes name{ 0%{code}~100%{code}}，具体keyframes声明（注意多引擎声明），改动画效果的名字name,代码体里，从0%~100%，元素的变化过程，具体看代码<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">keyframes</span> _t &#123;</div><div class="line">    0% &#123;<span class="attribute">background</span>: <span class="number">#bebebe</span>;<span class="attribute">left</span>: <span class="number">0px</span>;<span class="attribute">top</span>: <span class="number">0px</span>;<span class="attribute">transform</span>: <span class="built_in">rotate</span>(0deg);&#125;</div><div class="line">    25% &#123;<span class="attribute">background</span>: <span class="number">#464646</span>;<span class="attribute">left</span>: <span class="number">100px</span>;<span class="attribute">top</span>: <span class="number">0px</span>;<span class="attribute">transform</span>: <span class="built_in">rotate</span>(10deg);&#125;</div><div class="line">    50% &#123;<span class="attribute">background</span>: <span class="number">#d6d6d6</span>;<span class="attribute">left</span>: <span class="number">150px</span>;<span class="attribute">top</span>: <span class="number">0px</span>;<span class="attribute">transform</span>: <span class="built_in">rotate</span>(20deg);&#125;</div><div class="line">    55% &#123;<span class="attribute">background</span>: <span class="number">#fafafa</span>;<span class="attribute">left</span>: <span class="number">200px</span>;<span class="attribute">top</span>: <span class="number">0px</span>;<span class="attribute">transform</span>: <span class="built_in">rotate</span>(40deg);&#125;</div><div class="line">    60% &#123;<span class="attribute">background</span>: <span class="number">#fafafa</span>;<span class="attribute">left</span>: <span class="number">200px</span>;<span class="attribute">top</span>: <span class="number">50px</span>;<span class="attribute">transform</span>: <span class="built_in">rotate</span>(0deg);&#125;</div><div class="line">    70% &#123;<span class="attribute">background</span>: <span class="number">#d6d6d6</span>;<span class="attribute">left</span>: <span class="number">200px</span>;<span class="attribute">top</span>: <span class="number">100px</span>;<span class="attribute">transform</span>: <span class="built_in">rotate</span>(0deg);&#125;</div><div class="line">    80% &#123;<span class="attribute">background</span>: <span class="number">#464646</span>;<span class="attribute">left</span>: <span class="number">200px</span>;<span class="attribute">top</span>: <span class="number">50px</span>;<span class="attribute">transform</span>: <span class="built_in">rotate</span>(-40deg);&#125;</div><div class="line">    95% &#123;<span class="attribute">background</span>: <span class="number">#b4b4b4</span>;<span class="attribute">left</span>: <span class="number">50px</span>;<span class="attribute">top</span>: <span class="number">50px</span>;<span class="attribute">transform</span>: <span class="built_in">rotate</span>(-360deg);&#125;</div><div class="line">    100% &#123;<span class="attribute">background</span>: <span class="number">#bebebe</span>;<span class="attribute">left</span>: <span class="number">0px</span>;<span class="attribute">top</span>: <span class="number">0px</span>;<span class="attribute">transform</span>: <span class="built_in">rotate</span>(0deg);&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*剩下的@-webkit-keyframes /-o-keyframes/-moz-keyframse等省略了就*/</span></div></pre></td></tr></table></figure></p>
-<p>简要说一下上面的代码，即刚开始的时候，元素背景色为#bebebe,定位为左上角，transform为变形，rotate（旋转）角度0deg；当动画进行到25%时，背景色变为#464646，位置水平移动100px,角度10deg.依次类推。知道100%时恢复为初始，这么一个循环过程，当然你可以设定无限个进度节点，大量的动画效果。</p>
-<h4 id="元素引入动画"><a href="#元素引入动画" class="headerlink" title="元素引入动画"></a>元素引入动画</h4><p>构建好动画后，为元素引入动画即可，基本语法为<br>ele{animation: name duration timing-function delay iteration-count direction;}<br>animation声明，当然一贯的，你同时要有私有声明-webkit-animation/-moz/-o，name就是引入的动画名，本案例为_t，duration(规定动画时长，ms计量)，timing-function（速度曲线，linear/ease-in-out等），delay（延迟执行动画时间），iteration-count（重复动画默认为1，可以为多次，infinite则表示无限循环），direction(value:normal正常播放/alternate次轮反向播放 )<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="selector-tag">div</span>&#123;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">background</span>: <span class="number">#bebebe</span>;</div><div class="line">    <span class="attribute">text-align</span>: center;</div><div class="line">    <span class="comment">/*引入动画_t,单轮7s执行结束，执行曲线ease-in-out，延迟2s 反复播放，次轮反向*/</span></div><div class="line">    <span class="attribute">-moz-animation</span>: _t <span class="number">7s</span> ease-in-out <span class="number">2s</span> infinite alternate;</div><div class="line">    <span class="attribute">-webkit-animation</span>:_t <span class="number">7s</span> ease-in-out <span class="number">2s</span> infinite alternate;</div><div class="line">    <span class="attribute">-o-animation</span>: _t <span class="number">7s</span> ease-in-out <span class="number">2s</span> infinite alternate;</div><div class="line">    <span class="attribute">animation</span>: _t <span class="number">7s</span> ease-in-out <span class="number">2s</span> infinite alternate;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>恕在下没有制作gif图，所以這里没有效果图展示。</p>
-<h4 id="嵌套动画"><a href="#嵌套动画" class="headerlink" title="嵌套动画"></a>嵌套动画</h4><p>动画效果可以元素嵌套，比如建立动画效果_i<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">keyframes</span> _i &#123;0% &#123;<span class="attribute">color</span>:<span class="number">#fafafa</span>&#125;25% &#123;<span class="attribute">color</span>:red&#125;50% &#123;<span class="attribute">color</span>: burlywood&#125;55% &#123;<span class="attribute">color</span>:aquamarine&#125;60% &#123;<span class="attribute">color</span>:aqua&#125;70% &#123;<span class="attribute">color</span>: aquamarine&#125;80% &#123;<span class="attribute">color</span>:burlywood&#125;95% &#123;<span class="attribute">color</span>:red&#125;100% &#123;<span class="attribute">color</span>:<span class="number">#fafafa</span>&#125;&#125;</div></pre></td></tr></table></figure></p>
-<p>再div所含i元素中嵌套<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">i</span>&#123;</div><div class="line">    <span class="attribute">font-family</span>: <span class="string">"Microsoft YaHei"</span>;</div><div class="line">    <span class="attribute">font-size</span>:<span class="number">14px</span>;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#fafafa</span>;</div><div class="line">    <span class="attribute">animation</span>: _i <span class="number">7s</span> ease-in-out <span class="number">2s</span> infinite alternate;</div><div class="line">    <span class="attribute">-moz-animation</span>: _i <span class="number">7s</span> ease-in-out <span class="number">2s</span> infinite alternate;</div><div class="line">    <span class="attribute">-webkit-animation</span>:_i <span class="number">7s</span> ease-in-out <span class="number">2s</span> infinite alternate;</div><div class="line">    <span class="attribute">-o-animation</span>: _i <span class="number">7s</span> ease-in-out <span class="number">2s</span> infinite alternate;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>恕在下没有制作gif图，所以這里没有效果图展示。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/10/CSS3-动画效果简要描述/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-常用正则表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/09/常用正则表达式/">常用正则表达式</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/09/常用正则表达式/" class="archive-article-date">
-  	<time datetime="2017-02-09T04:19:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>记录几个常用的正则表达式，备用，一直updating $ adding</p>
-<h4 id="匹配中文字符"><a href="#匹配中文字符" class="headerlink" title="匹配中文字符"></a>匹配中文字符</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 匹配中文字符的标准写法，肯定记不住，用的是unicode。</span></div><div class="line">/[\u4e00-\u9fa5]/</div><div class="line"><span class="comment">//同样的引申一下，匹配中文姓名的正则为</span></div><div class="line">/^[\u4e00-\u9fa5]&#123;<span class="number">2</span>,<span class="number">4</span>&#125;/</div></pre></td></tr></table></figure>
-<p>值得一提的是，ES5之前的并不能完全支持unicode值，ES6中添加了u字符，使得这成为了可能</p>
-<h4 id="匹配双字节字符，包括中文"><a href="#匹配双字节字符，包括中文" class="headerlink" title="匹配双字节字符，包括中文"></a>匹配双字节字符，包括中文</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/[^\x00-\xff]/</div></pre></td></tr></table></figure>
-<h4 id="匹配空白行"><a href="#匹配空白行" class="headerlink" title="匹配空白行"></a>匹配空白行</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/\n\s*\r/</div></pre></td></tr></table></figure>
-<h4 id="匹配email地址"><a href="#匹配email地址" class="headerlink" title="匹配email地址"></a>匹配email地址</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//一般写法</div><div class="line"> /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]&#123;2,4&#125;)+$/</div><div class="line">//详细大神写法，这个更加详细，?:表示不会被捕捉。</div><div class="line">/[\w!#$%&amp;'*+/=?^_`&#123;|&#125;~-]+(?:\.[\w!#$%&amp;'*+/=?^_`&#123;|&#125;~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/</div></pre></td></tr></table></figure>
-<h4 id="匹配网址url"><a href="#匹配网址url" class="headerlink" title="匹配网址url"></a>匹配网址url</h4><p>url比较复杂，这里只写匹配普通http协议的网址<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;amp;:<span class="regexp">/~\+#]*[\w\-\@?^=%&amp;amp;/~\+#])?/</span></div></pre></td></tr></table></figure></p>
-<h4 id="匹配有效数字"><a href="#匹配有效数字" class="headerlink" title="匹配有效数字"></a>匹配有效数字</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^[+-]?(\d|([<span class="number">1</span><span class="number">-9</span>]+))(\.\d+)?$/</div></pre></td></tr></table></figure>
-<h4 id="匹配国内电话"><a href="#匹配国内电话" class="headerlink" title="匹配国内电话"></a>匹配国内电话</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/\d&#123;<span class="number">3</span>&#125;-\d&#123;<span class="number">8</span>&#125;|\d&#123;<span class="number">4</span>&#125;-\&#123;<span class="number">7</span>,<span class="number">8</span>&#125;/</div></pre></td></tr></table></figure>
-<h4 id="匹配qq"><a href="#匹配qq" class="headerlink" title="匹配qq"></a>匹配qq</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/[<span class="number">1</span><span class="number">-9</span>][<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">4</span>,&#125;/</div></pre></td></tr></table></figure>
-<h4 id="身份证号"><a href="#身份证号" class="headerlink" title="身份证号"></a>身份证号</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^(\d&#123;<span class="number">6</span>&#125;)(\d&#123;<span class="number">4</span>&#125;)(\d&#123;<span class="number">2</span>&#125;)(\d&#123;<span class="number">2</span>&#125;)(\d&#123;<span class="number">3</span>&#125;)([<span class="number">0</span><span class="number">-9</span>]|X)$/</div></pre></td></tr></table></figure>
-<h4 id="匹配年月日"><a href="#匹配年月日" class="headerlink" title="匹配年月日"></a>匹配年月日</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/([<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">3</span>&#125;[<span class="number">1</span><span class="number">-9</span>]|[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">2</span>&#125;[<span class="number">1</span><span class="number">-9</span>][<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">1</span>&#125;|[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">1</span>&#125;[<span class="number">1</span><span class="number">-9</span>][<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">2</span>&#125;|[<span class="number">1</span><span class="number">-9</span>][<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">3</span>&#125;)-(((<span class="number">0</span>[<span class="number">13578</span>]|<span class="number">1</span>[<span class="number">02</span>])-(<span class="number">0</span>[<span class="number">1</span><span class="number">-9</span>]|[<span class="number">12</span>][<span class="number">0</span><span class="number">-9</span>]|<span class="number">3</span>[<span class="number">01</span>]))|((<span class="number">0</span>[<span class="number">469</span>]|<span class="number">11</span>)-(<span class="number">0</span>[<span class="number">1</span><span class="number">-9</span>]|[<span class="number">12</span>][<span class="number">0</span><span class="number">-9</span>]|<span class="number">30</span>))|(<span class="number">02</span>-(<span class="number">0</span>[<span class="number">1</span><span class="number">-9</span>]|[<span class="number">1</span>][<span class="number">0</span><span class="number">-9</span>]|<span class="number">2</span>[<span class="number">0</span><span class="number">-8</span>])))/</div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/09/常用正则表达式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -988,7 +1001,7 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1004,7 +1017,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1012,11 +1025,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
               </li>
              
               <li class="article-tag-list-item">

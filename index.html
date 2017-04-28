@@ -134,6 +134,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-toString" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/28/toString/">toString</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/28/toString/" class="archive-article-date">
+  	<time datetime="2017-04-28T09:11:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString"></a>toString</h4><p>toString方法是多种程序语言中较为常见的方法，本意是将该类型转为字符串类型，今天突发奇想，看看各种数据类型toString之后能呈现的是不是一样</p>
+<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>也许会说，字符串还能用toString呢？字符串转字符串什么鬼，然后String类确实有这个方法，且返回的确实就是原始字符串值，只是一般不会调用罢了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">'juju'</span>.toString();<span class="comment">//==&gt;"juju"</span></div></pre></td></tr></table></figure></p>
+<h4 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h4><p>Nmuber.toString() 方法可把一个 Number 对象转换为一个字符串,没什么特殊<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">12</span>;</div><div class="line">a.toString();<span class="comment">//==&gt;"12"</span></div></pre></td></tr></table></figure></p>
+<h4 id="布尔"><a href="#布尔" class="headerlink" title="布尔"></a>布尔</h4><p>Boolean.toString(),将布尔值转为字符串，没什么特殊<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="literal">true</span>.toString();<span class="comment">//==&gt;"true"</span></div></pre></td></tr></table></figure></p>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><p>数组的toString方法与没有参数的join方法一样，将各项拼接为字符串，只是如果每一项有引用类型，则执行Object原型上的toString方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="string">'j'</span>,<span class="string">'u'</span>,<span class="string">'j'</span>,<span class="string">'u'</span>];</div><div class="line">arr.toString();<span class="comment">//==&gt;"j,u,j,u"</span></div><div class="line"><span class="keyword">var</span> arr2 = [<span class="string">'j'</span>,<span class="string">'u'</span>,&#123;<span class="attr">juju</span>:<span class="string">'miao'</span>&#125;];</div><div class="line">arr2.toString();<span class="comment">//==&gt;j,u,[object Object]"</span></div></pre></td></tr></table></figure></p>
+<h4 id="date"><a href="#date" class="headerlink" title="date"></a>date</h4><p>date类型比较特殊，他可以toStirng，还可以tolocalString,都是将日期对象转为字符串，只是一个是标准一个是本地时间<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line"><span class="built_in">console</span>.log(data.toString());<span class="comment">//==&gt;Fri Apr 28 2017 17:37:52 GMT+0800 (中国标准时间)</span></div><div class="line"><span class="built_in">console</span>.log(date.toLocaleString());<span class="comment">//==&gt;2017-4-28 17:37:52</span></div></pre></td></tr></table></figure></p>
+<h4 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h4><p>引用数据类型都是对象类型的，作为父类，Object原型上的toString比较独特，可以测试类型哈<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj=&#123;<span class="attr">juju</span>:<span class="string">"juju"</span>&#125;;</div><div class="line">obj.toString();<span class="comment">//==&gt;"[object Object]"</span></div><div class="line">obj.toString.call([<span class="number">1</span>,<span class="number">2</span>]);<span class="comment">//==&gt;"[object Array]"</span></div><div class="line">obj.toString.call(<span class="keyword">new</span> <span class="built_in">Date</span>());<span class="comment">//==&gt;"[object Date]"</span></div><div class="line">obj.toString.call(<span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;&#125;);<span class="comment">//==&gt;"[object Function]"</span></div></pre></td></tr></table></figure></p>
+<h4 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h4><p>函数则会将函数体转为字符串<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span> (<span class="params"></span>)</span>&#123;&#125;</div><div class="line">fn.toString();<span class="comment">//==&gt;"function fn()&#123;&#125;"</span></div></pre></td></tr></table></figure></p>
+<h4 id="String-方法"><a href="#String-方法" class="headerlink" title="String()方法"></a>String()方法</h4><p>该方法是Function类方法，可再全局调用，将对象转为字符串<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">String</span>(<span class="number">1</span>);<span class="comment">//==&gt;"1"</span></div><div class="line"><span class="built_in">String</span>(obj)<span class="comment">//==&gt;"[object Object]"</span></div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/28/toString/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-jq小技巧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -154,14 +224,42 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>以下是几个别人收集我用到了的jQuery小技巧</p>
+        <h4 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h4><p>以下是几个别人收集我用到了的jQuery小技巧</p>
 <ol>
 <li><p>禁止右键点击,即绑定右键目录放回false</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  $(<span class="built_in">document</span>).bind(<span class="string">"contextmenu"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">  &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 </li>
-<li></li>
+<li><p>监测浏览器<br>以mozilla为例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </div><div class="line">    <span class="comment">// Target Firefox 2 and above </span></div><div class="line"> <span class="keyword">if</span> ($.browser.mozilla &amp;&amp; $.browser.version &gt;= <span class="string">"1.8"</span> )&#123; </div><div class="line">     <span class="comment">// do something </span></div><div class="line"> &#125;&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>预加载图片</p>
+</li>
 </ol>
-
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$.preloadImages = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="built_in">arguments</span>.length; i++) &#123; $(<span class="string">'&lt;img&gt;'</span>).attr(<span class="string">'src'</span>, <span class="built_in">arguments</span>[i]);</div><div class="line">&#125;&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>简单的手风琴效果</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'#accordion'</span>).find(<span class="string">'.content'</span>).hide(); </div><div class="line">$(<span class="string">'#accordion'</span>).find(<span class="string">'.accordion-header'</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> next = $(<span class="keyword">this</span>).next(); </div><div class="line">    next.slideToggle(<span class="string">'fast'</span>); </div><div class="line">    $(<span class="string">'.content'</span>).not(next).slideUp(<span class="string">'fast'</span>); </div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>; &#125;);</div></pre></td></tr></table></figure>
+<ol>
+<li>验证元素是否为空</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span>($(<span class="string">'#id'</span>).html())&#123;</div><div class="line">      <span class="comment">//doSomething</span></div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol>
+<li>替换元素</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  $(<span class="string">'#id'</span>).replaceWith(<span class="string">'&lt;DIV&gt;I have benn good&lt;/DIV&gt;'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol>
+<li>克隆对象</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  $(<span class="string">'#div'</span>).clone().prepentTo(<span class="string">'p'</span>);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<ol>
+<li>自己的选择器</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  $.extend($.expr[<span class="string">':'</span>],&#123;</div><div class="line">      <span class="attr">moreThan1000px</span>:<span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> $(a).width()&gt;<span class="number">1000</span></div><div class="line">      &#125;</div><div class="line">  &#125;)</div><div class="line">  $(<span class="string">'box:moreThan1000px'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//doSomething</span></div><div class="line">  &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<ol>
+<li>禁用Jquery(动画)效果</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$.fx.off = <span class="literal">true</span>;</div></pre></td></tr></table></figure>
       
 
       
@@ -315,6 +413,68 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/04/09/有趣的算法2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-几个有趣的js算法题目" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/04/几个有趣的js算法题目/">几个有趣的js算法题目</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/04/几个有趣的js算法题目/" class="archive-article-date">
+  	<time datetime="2017-04-04T15:29:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="其实就是freeCodeCamp上的小编程挑战"><a href="#其实就是freeCodeCamp上的小编程挑战" class="headerlink" title="其实就是freeCodeCamp上的小编程挑战"></a>其实就是freeCodeCamp上的小编程挑战</h4><p>还是几个简单的js算法题，但方法啊什么的，对逻辑训练挺好。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//阶乘</span></div><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">factorialize</span>(<span class="params">num</span>) </span>&#123;</div><div class="line">       <span class="keyword">return</span> num &gt; <span class="number">1</span> ? num * factorialize(num - <span class="number">1</span>) : <span class="number">1</span>;</div><div class="line">   &#125;</div><div class="line">   <span class="comment">//回文验证</span></div><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">palindrome</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">       <span class="keyword">var</span> reg = <span class="regexp">/[\W_\s]/g</span>;</div><div class="line">       str = str.replace(reg, <span class="string">""</span>);</div><div class="line">       <span class="built_in">console</span>.log(str);</div><div class="line">       <span class="keyword">return</span> str.toLowerCase() === str.split(<span class="string">""</span>).reverse().join(<span class="string">""</span>).toLowerCase();</div><div class="line">   &#125;</div><div class="line">   <span class="comment">//Find the Longest Word in a String</span></div><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">findLongestWord</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">       <span class="keyword">var</span> strAry = str.split(<span class="string">" "</span>);</div><div class="line">       <span class="keyword">var</span> longest = strAry[<span class="number">0</span>];</div><div class="line">       <span class="built_in">console</span>.log(strAry);</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; strAry.length; i++) &#123;</div><div class="line">           <span class="keyword">if</span> (strAry[i].length &gt; longest.length) &#123;</div><div class="line">               longest = strAry[i];</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> longest.length;</div><div class="line">   &#125;</div><div class="line">   <span class="comment">//Title Case a Sentence</span></div><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">titleCase</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">       <span class="keyword">var</span> strAry = str.split(<span class="string">" "</span>);</div><div class="line">       <span class="keyword">var</span> ary = [];</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; strAry.length; i++) &#123;</div><div class="line">           <span class="keyword">var</span> curStr = strAry[i].toLowerCase();</div><div class="line">           ary.push(curStr.charAt(<span class="number">0</span>).toUpperCase() + curStr.split(<span class="string">""</span>).splice(<span class="number">1</span>).join(<span class="string">""</span>));</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> ary.join(<span class="string">" "</span>);</div><div class="line">   &#125;</div><div class="line">   <span class="comment">//Return Largest Numbers in Arrays</span></div><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">largestOfFour</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">       <span class="keyword">var</span> aryNew = [];</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</div><div class="line">           <span class="keyword">var</span> max = <span class="number">0</span>;</div><div class="line">           <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; arr[i].length; j++) &#123;</div><div class="line">               <span class="keyword">if</span> (arr[i][j] &gt; max) &#123;</div><div class="line">                   max = arr[i][j];</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">           aryNew.push(max);</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> aryNew;</div><div class="line">   &#125;</div><div class="line">   <span class="comment">//Confirm the Ending</span></div><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">confirmEnding</span>(<span class="params">str, target</span>) </span>&#123;</div><div class="line">       <span class="comment">//return str.charAt(str.length-1)===target?true:false;</span></div><div class="line">       str = str.split(<span class="string">""</span>).reverse().join(<span class="string">""</span>);</div><div class="line">       target = target.split(<span class="string">""</span>).reverse().join(<span class="string">""</span>);</div><div class="line">       <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"^"</span> + target + <span class="string">""</span>);</div><div class="line">       <span class="keyword">return</span> reg.test(str);</div><div class="line">   &#125;</div><div class="line">   <span class="comment">//Repeat a string repeat a string</span></div><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">repeat</span>(<span class="params">str, num</span>) </span>&#123;</div><div class="line">       <span class="keyword">if</span> (num &lt; <span class="number">0</span>) &#123;</div><div class="line">           <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">       &#125; <span class="keyword">else</span> &#123;</div><div class="line">           <span class="keyword">var</span> cur = str;</div><div class="line">           <span class="built_in">console</span>.log(cur);</div><div class="line">           <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; num; i++) &#123;</div><div class="line">               str += cur;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> str;</div><div class="line">   &#125;</div><div class="line">   <span class="comment">//Truncate a string</span></div><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">truncate</span>(<span class="params">str, num</span>) </span>&#123;</div><div class="line">       <span class="keyword">var</span> cur = <span class="string">""</span>;</div><div class="line">       <span class="keyword">if</span> (num &gt; <span class="number">0</span>) &#123;</div><div class="line">           cur = str.slice(<span class="number">0</span>, num);</div><div class="line">           <span class="built_in">console</span>.log(str.length);</div><div class="line">           <span class="keyword">if</span> (num &gt;= str.length) &#123;</div><div class="line">               <span class="built_in">console</span>.log(<span class="number">1</span>);</div><div class="line">               <span class="keyword">return</span> str;</div><div class="line">           &#125;</div><div class="line">           <span class="keyword">if</span> (str.length&gt; num &amp;&amp; num &gt; <span class="number">3</span>) &#123;</div><div class="line">               <span class="built_in">console</span>.log(<span class="number">1</span>);</div><div class="line">               cur = cur.split(<span class="string">""</span>).reverse();</div><div class="line">               cur.splice(<span class="number">0</span>, <span class="number">3</span>, <span class="string">"..."</span>);</div><div class="line">               cur = cur.reverse().join(<span class="string">""</span>);</div><div class="line">           &#125;</div><div class="line">           <span class="keyword">if</span> (num &lt;= <span class="number">3</span>) &#123;</div><div class="line">               cur += <span class="string">"..."</span>;</div><div class="line">           &#125;</div><div class="line">       &#125; <span class="keyword">else</span> &#123;</div><div class="line">           cur = str;</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> cur;</div><div class="line">   &#125;</div><div class="line">   <span class="comment">//Chunky Monkey</span></div><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">chunk</span>(<span class="params">arr, size</span>) </span>&#123;</div><div class="line">       <span class="comment">// Break it up.</span></div><div class="line">       <span class="keyword">var</span> ary = [];<span class="keyword">var</span> ary2 = arr.slice();</div><div class="line">       <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;arr.length;i= i+size)&#123;</div><div class="line">           ary.push(ary2.splice(<span class="number">0</span>,size));</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> ary;</div><div class="line">   &#125;</div><div class="line">   <span class="comment">//Slasher Flick</span></div><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">slasher</span>(<span class="params">arr, howMany</span>) </span>&#123;</div><div class="line">       arr.splice(<span class="number">0</span>,howMany);</div><div class="line">       <span class="keyword">return</span> arr;</div><div class="line">   &#125;</div><div class="line">  <span class="comment">//Mutations如果数组第一个字符串元素包含了第二个字符串元素的所有字符，函数返回true。</span></div><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">mutation</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">       <span class="keyword">var</span> flag = <span class="number">0</span>;</div><div class="line">       <span class="keyword">if</span>(arr &amp;&amp; arr.length&gt;<span class="number">1</span>)&#123;</div><div class="line">           <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;arr[<span class="number">1</span>].length;i++)&#123;</div><div class="line">               <span class="keyword">if</span>(flag === <span class="number">-1</span>)&#123;</div><div class="line">                   <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">               &#125;</div><div class="line">               flag = arr[<span class="number">0</span>].toLowerCase().indexOf(arr[<span class="number">1</span>].charAt(i).toLowerCase());</div><div class="line">               <span class="built_in">console</span>.log(flag);</div><div class="line">           &#125;</div><div class="line">           <span class="keyword">return</span> flag==<span class="number">-1</span>?<span class="literal">false</span>:<span class="literal">true</span>;</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">   <span class="comment">//Falsy Bouncer</span></div><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">bouncer</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">       <span class="keyword">return</span> arr.filter(<span class="built_in">Boolean</span>);</div><div class="line">   &#125;</div><div class="line">   <span class="comment">//Seek and Destroy</span></div><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">destroyer</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">       <span class="keyword">var</span> args = [].splice.call(<span class="built_in">arguments</span>,<span class="number">1</span>);</div><div class="line">       <span class="function"><span class="keyword">function</span> <span class="title">isFalse</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">           <span class="keyword">return</span> !args.some(<span class="function"><span class="keyword">function</span> (<span class="params">b</span>) </span>&#123; <span class="keyword">return</span> a===b; &#125;);</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> arr.filter(isFalse);</div><div class="line">   &#125;</div><div class="line">   <span class="comment">//Where do I belong;</span></div><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">where</span>(<span class="params">arr, num</span>) </span>&#123;</div><div class="line">       arr.push(num);</div><div class="line">       arr.sort(<span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>) </span>&#123;</div><div class="line">           <span class="keyword">return</span> a-b;</div><div class="line">       &#125;);</div><div class="line">       <span class="keyword">return</span> arr.indexOf(num);</div><div class="line">   &#125;</div><div class="line">   <span class="comment">//凯撒密码</span></div><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">rot13</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">       <span class="keyword">var</span> newString = [];</div><div class="line">       <span class="comment">// charCodeAt()返回0-65535之间的整数</span></div><div class="line">       <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; str.length; i++) &#123;</div><div class="line">           <span class="keyword">var</span> temp = str.charCodeAt(i);</div><div class="line">           <span class="comment">// 如果字符是非大写英文字母(序号小于65或大于91)，将该字符直接放到newString中，并使用continue进入下一个循环</span></div><div class="line">           <span class="keyword">if</span> (temp &lt; <span class="number">65</span> || temp &gt; <span class="number">91</span>) &#123;</div><div class="line">               <span class="comment">// 返回字符串指定位置的字符</span></div><div class="line">               newString.push(str.charAt(i));</div><div class="line">               <span class="keyword">continue</span>;</div><div class="line">               <span class="comment">// 如果序号大于77(N-Z字母)，使用String.fromCharCode()转找成该序号减13的字符，并且放入newString</span></div><div class="line">           &#125; <span class="keyword">else</span> <span class="keyword">if</span> (temp &gt; <span class="number">77</span>) &#123;</div><div class="line">               <span class="comment">// String.fromCharCode()根据序号(指定的Unicode编码中的序号)值来返回一个字符串</span></div><div class="line">               newString.push(<span class="built_in">String</span>.fromCharCode(temp - <span class="number">13</span>));</div><div class="line">               <span class="comment">// 如果序号小于78(N-Z字母)，使用String.fromCharCode()转找成该序号减13的字符，并且放入newString</span></div><div class="line">           &#125; <span class="keyword">else</span> &#123;</div><div class="line">               newString.push(<span class="built_in">String</span>.fromCharCode(temp + <span class="number">13</span>));</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> newString.join(<span class="string">""</span>);</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/04/几个有趣的js算法题目/">展开全文 >></a>
         </p>
       
 
@@ -710,161 +870,6 @@
 
 
   
-    <article id="post-Boostrap响应式导航栏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/07/Boostrap响应式导航栏/">Bootstrap响应式导航栏</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/07/Boostrap响应式导航栏/" class="archive-article-date">
-  	<time datetime="2017-03-07T05:45:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Bootstrap-响应式导航栏"><a href="#Bootstrap-响应式导航栏" class="headerlink" title="Bootstrap 响应式导航栏"></a>Bootstrap 响应式导航栏</h4><p>作为Bootstrap具有代表性的导航栏组件，其可以是响应式的，折叠式的或者面包屑式的。<br>向容器中添加‘navbar’的类名即可，同时可扩展向其中添加表单等元素，操作方法也非常简单。简单举个例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">"navbar navbar-default"</span> <span class="attr">role</span>=<span class="string">"navigation"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container-fluid"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"navbar-header"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"navbar-brand"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>菜鸟教程<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"navbar-form navbar-left"</span> <span class="attr">role</span>=<span class="string">"search"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">placeholder</span>=<span class="string">"Search"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-default"</span>&gt;</span>提交按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-default navbar-btn"</span>&gt;</span></div><div class="line">            导航栏按钮</div><div class="line">        <span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>上述的效果即是一个包含了form的一个导航栏，其中，navbar-导航栏，navbar-default-默认导航栏样式，container-fluid-流式布局，nav-header-导航栏头，nav-brand-导航栏标题，navbar-form-导航栏表单，form-control-form内部组件样式，navbar-btn-导航栏按钮。<br>当然一切运行成功的基础是你导入了正确的Bootstrap包。</p>
-<h4 id="响应式导航栏"><a href="#响应式导航栏" class="headerlink" title="响应式导航栏"></a>响应式导航栏</h4><p>Bootstrap的响应式导航栏有特定的书写格式，基本如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">"navbar navbar-default"</span> <span class="attr">role</span>=<span class="string">"navigation"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container-fluid"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"navbar-header"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"navbar-toggle"</span> <span class="attr">data-toggle</span>=<span class="string">"collapse"</span></span></div><div class="line">                    <span class="attr">data-target</span>=<span class="string">"#example-navbar-collapse"</span>&gt;</div><div class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sr-only"</span>&gt;</span>切换导航<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"navbar-brand"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>菜鸟教程<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"collapse navbar-collapse"</span> <span class="attr">id</span>=<span class="string">"example-navbar-collapse"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav navbar-nav"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"active"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>iOS<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>SVN<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"dropdown"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"dropdown-toggle"</span> <span class="attr">data-toggle</span>=<span class="string">"dropdown"</span>&gt;</span></div><div class="line">                        Java <span class="tag">&lt;<span class="name">b</span> <span class="attr">class</span>=<span class="string">"caret"</span>&gt;</span><span class="tag">&lt;/<span class="name">b</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"dropdown-menu"</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>jmeter<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>EJB<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Jasper Report<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"divider"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>分离的链接<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"divider"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>另一个分离的链接<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>其中起到关键作用的包括： class .collapse、.navbar-collapse 的 <div> 中。折叠起来的导航栏实际上是一个带有 class .navbar-toggle 及两个 data- 元素的按钮。第一个是 data-toggle，用于告诉 JavaScript 需要对按钮做什么，第二个是 data-target，指示要切换到哪一个元素。三个带有 class .icon-bar 的 <span> 创建所谓的汉堡按钮。这些会切换为 .nav-collapse <div> 中的元素。<br>当然前提也是必须包含正确的Bootstrap包</div></span></div></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Bootstrap</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/07/Boostrap响应式导航栏/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-ES5-ES6正则比较及简述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/05/ES5-ES6正则比较及简述/">ES5/ES6正则比较及简述</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/05/ES5-ES6正则比较及简述/" class="archive-article-date">
-  	<time datetime="2017-03-05T03:41:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><p>regExp(regular expression),即规则表达式的英文缩写其一般的用法是：</p>
-<ol>
-<li>验证字符串是否符合正则所制定的规则，比如注册表单中各项填写规则的验证；</li>
-<li>把符合规则的字符串部分从字符串捕获；<br>由于正则为引用数据类型，所以声明方式可以是字面量也可以是实例声明：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/\d/</span>;</div><div class="line"><span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\d'</span>);<span class="comment">//es5中参数必须是字符串，</span></div><div class="line"><span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="regexp">/\d/</span>);<span class="comment">/// Es6中可以直接放正则了</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="正则的常用方法"><a href="#正则的常用方法" class="headerlink" title="正则的常用方法"></a>正则的常用方法</h4><p>基本有两个：test()/exec()</p>
-<ol>
-<li>test()表示匹配</li>
-<li>exec()表示捕获</li>
-<li>属性：flags 正则的修饰符（ES6）；source 返回正则的正文；lastIndex 下一次匹配正则时的位置，exec用；$n:再RegExp上可以使用的属性，n为第几个小正则最后被使用（包括匹配和捕获）的分组的内容,再replace等方法中，直接用$n简写；</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/\d/.test(<span class="string">'124'</span>);<span class="comment">//true</span></div><div class="line">/\d/.exec(<span class="string">'123'</span>)<span class="comment">//["1", index: 0, input: "123"]</span></div></pre></td></tr></table></figure>
-<h4 id="String-方法与正则一起使用"><a href="#String-方法与正则一起使用" class="headerlink" title="String 方法与正则一起使用"></a>String 方法与正则一起使用</h4><ol>
-<li>match:返回一个数组，一次性捕获所有符合规则的，配合小正则；<br>分组引用，小正则后面跟\n\n\n\n,表示对第n个小正则的再次引用，但以括号左半边为准；</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/(\d)(\d)\1\2/==&gt;匹配abab，</div><div class="line">/(\d(2))(\d)\1\2/==&gt;匹配\d2\d\d2;</div></pre></td></tr></table></figure>
-<ol>
-<li>split：返回一个数组，按照一个正则来拆分字符串，忽略g和lastindex属性</li>
-<li>replace：参数1 正则表达式，参数2 要替换的项目,如果是函数，则替换为函数返回值<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">"firefox chrome msie"</span>;</div><div class="line">str = str.replace(<span class="string">'/^msie$/'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">a,b,c,d</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">'ie'</span>;</div><div class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);<span class="comment">//参数2中的arguments:[大正则匹配返回，小正则返回，index,input]</span></div><div class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[n]);<span class="comment">//可用于遍历</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="正则表达式特殊字符"><a href="#正则表达式特殊字符" class="headerlink" title="正则表达式特殊字符"></a>正则表达式特殊字符</h4><p>正则需要使用特殊字符，来控制(为啥不支持mk表格语法呢？):<br>|字符|描述|<br>|-|-|<br>|\d|0~9之间的任意一个数字|<br>|\D|非0~9之间的任意一个数字|<br>|\w|任何非单词字符（a-zA-Z0-9<em>）|<br>|\W|非任何非单词字符（a-zA-Z0-9</em>）|<br>|\s|空格或者空白|<br>|\S|非空格或者空白|<br>|\b|边界,包括双引号和空格和‘—’‘%’等等特殊字符也会视为边界（数字结尾/\d\b/）|<br>|\B|非边界,包括双引号和空格和‘—’‘%’等等特殊字符也会视为边界|<br>|\n|换行付|<br>|\r|匹配回车|<br>|\R|陪陪非回车|<br>|.|匹配除换行以外的任意字符|<br>|^|范围限制起始|<br>|$|范围限制结尾|<br>|.|转义.|<br>|||转义|<br>|{n}|出现n个|<br>|{n,}|至少出现n个|<br>|{n，m}|出现n-m个|<br>|*|0到多个|<br>|+|1到多个|<br>|？|0或者1个|<br>|x|y|x或者y中的一个|<br>|()|包含的小正则表达式，提升优先级|<br>|[xyz]|x或者y或者z中的一个|<br>|[^xyz]|只要有一个非x/y/z就行|<br>|[0-9a-zA-Z]|0-9中的一个，或者a-z及A-Z中的一个|<br>|[.]|代表’.’本身|<br>|g|全局|<br>|i|忽略大小写|<br>|m|多行匹配|<br>点击查看<a href="https://mickeyzaku.github.io/2017/02/09/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" target="_blank" rel="external">常用正则表达式</a></p>
-<h4 id="ES6正则补充"><a href="#ES6正则补充" class="headerlink" title="ES6正则补充"></a>ES6正则补充</h4><h4 id="‘u’修饰符"><a href="#‘u’修饰符" class="headerlink" title="‘u’修饰符"></a>‘u’修饰符</h4><p>Es6中增加‘u’修饰符，主要为了补充ES5中大于‘\uFFFF’的Unicode字符,‘u’的出现使得中文的匹配中更加合理<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^.&amp;<span class="regexp">/u.test('李')/</span><span class="regexp">/true，ES5下或者不加‘u’时为false</span></div></pre></td></tr></table></figure></p>
-<p>包括‘.’、量词、预定义，使用修饰符‘u’之后可以较好的匹配大unicode。</p>
-<h4 id="‘y’修饰符"><a href="#‘y’修饰符" class="headerlink" title="‘y’修饰符"></a>‘y’修饰符</h4><p>‘y’修饰符不好理解，其作用与‘g’相似，表示全局匹配，不同在于‘y’修饰符有粘连的意思，‘g’只要剩余位置中存在匹配就行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">"aa_a"</span>;</div><div class="line"><span class="keyword">var</span> reg1 = <span class="regexp">/a+/g</span>;</div><div class="line"><span class="keyword">var</span> reg2 = <span class="regexp">/a+/y</span>;</div><div class="line"><span class="keyword">var</span> reg3 = <span class="regexp">/a+\w/y</span>;</div><div class="line"></div><div class="line">reg1.exec(s);<span class="comment">//‘aa’</span></div><div class="line">reg2.exec(s);<span class="comment">//'aa'</span></div><div class="line">reg3.exec(s);<span class="comment">//'aa_'</span></div><div class="line"></div><div class="line">reg1.exec(s);<span class="comment">//'a'</span></div><div class="line">reg2.exec(s);<span class="comment">//null</span></div><div class="line">reg3.exec(s);<span class="comment">//'a_'</span></div></pre></td></tr></table></figure></p>
-<p>上述中，使用g修饰的reg1，第二次执行exec时，因为后续有a可以输出，但加y修饰的reg2则会直接从‘_’开始查找，所以返回null;</p>
-<h4 id="‘flags’"><a href="#‘flags’" class="headerlink" title="‘flags’"></a>‘flags’</h4><p>ES6中的新属性，可以获取到正则的修饰符</p>
-<h4 id="escape（）"><a href="#escape（）" class="headerlink" title="escape（）"></a>escape（）</h4><p>escape方法的主要作用是将字符串转为正则，其中需要转义的直接转义，该方法并未列入ES6/7的提案中，但如果有需求可以直接使用：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str.replace(<span class="regexp">/[\-\[\]\/\&#123;\&#125;\+\*\?\\\^\$\|]/g</span>,<span class="string">'\\$&amp;'</span>);</div></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/05/ES5-ES6正则比较及简述/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -958,7 +963,7 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -974,7 +979,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -982,11 +987,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
               </li>
              
               <li class="article-tag-list-item">
