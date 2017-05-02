@@ -134,6 +134,141 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-git-命令大全" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/02/git-命令大全/">git 命令大全</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/02/git-命令大全/" class="archive-article-date">
+  	<time datetime="2017-05-02T04:59:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="git命令"><a href="#git命令" class="headerlink" title="git命令"></a>git命令</h3><ol>
+<li>git版本查询：git –version</li>
+<li>git配置：git config –global user.name””/user.email””</li>
+<li>git工作流程：<ul>
+<li>创建文件夹</li>
+<li>配置git</li>
+<li>git init  ，相当于建立本地仓库,初始化，但不能仓库套仓库，反初始化只需rm -rf .git，循环删除该文件即可，慎用</li>
+<li>登录<a href="github.com">github</a>上创建远程仓库</li>
+<li>git remote add pipeName +远程仓库地址，首次连接远程仓库</li>
+<li>git remote -v 查看已建立远程仓库</li>
+<li>git add .;git add -A,推送内容到远程仓库暂存区</li>
+<li>git status: 查看状态</li>
+<li>git commit -m”注释”，将内容推送到历史区(如果执行过一次版本库，可以连写git commit -a -m “注释””)</li>
+<li>git log :查看日志|git reflog:查看此前操作过的版本号|git log –grep=版本，单独查看某个版本</li>
+<li>git diff –cached:对比缓存区和版本库;git diff 对比工作区和缓存区|git diff branch对比工作区和版本库</li>
+<li>git checkout 从暂存区将文件拿回</li>
+<li>git reset –hard 版本号 ：将历史区直接回到之前的某个版本，覆盖工作区和暂存区</li>
+<li>git reset HEAD . 加入暂存区后，返回上一次的添加</li>
+<li>git push origin master,本地仓库内容推送到origin远程仓库master分支(可以使用 git push -u origin master,则下次可以使用简写 git push 即可)</li>
+<li>touch .gitignore:忽略文件，写入一般需要忽略上传的文件.iea node_module .DS_store bower_computed 等忽略上传。</li>
+</ul>
+</li>
+<li>拖拽他人项目</li>
+</ol>
+<ul>
+<li>fork,</li>
+<li>clone address</li>
+<li>文件加下 使用git clone+address</li>
+</ul>
+<ol>
+<li>更新<ul>
+<li>拖拽到本地之后，连接老师远程仓库 git remote add teacher +连接</li>
+<li>git remote update teacher,更新库</li>
+<li>git pull teacher master,更新teacher下的master分支的更新部分拉到本地</li>
+<li>将修改后的代码同步到个人远程库</li>
+<li>发送request 给teacher库</li>
+</ul>
+</li>
+<li>移除远程通道<ul>
+<li>git remote rm 通道名称</li>
+</ul>
+</li>
+<li>分支<ul>
+<li>git branch 查看分支</li>
+<li>git branch dev 创建分支名为dev</li>
+<li>git checkout dev 定位到dev分支</li>
+<li>git checkout -b dev创建并定位到dev分支</li>
+<li>git branch -D dev 删除dev分支</li>
+<li>git merge dev 将dev分支合并到当前分支；当两个分支改变了相同的文件，但是内容不同，这时会出现分支合并冲突，请手动打开文件将不需要的删掉，并再次提交（模块化开发，降低冲突）。</li>
+</ul>
+</li>
+<li>cmd命令扩展<ul>
+<li>创建文件夹：mkdir</li>
+<li>创建文档：touch</li>
+<li>查看文档：cat filename</li>
+<li>编辑文档：vi filename–&gt;输入i,开启插入模式—》esc:(不保存!q|保存并推出wq)</li>
+<li>print working directory 打印当前工作目录</li>
+</ul>
+</li>
+<li>读写库文件<ul>
+<li>echo ‘content’ &gt; filename 写入内容</li>
+<li>echo ‘content’ &gt;&gt; filename,追加内容</li>
+</ul>
+</li>
+<li>注意事项<ul>
+<li>git 不能提交空文件夹</li>
+</ul>
+</li>
+<li>发布静态网站<ul>
+<li>建立gh-pages<br>git checkout - b gh-pages</li>
+<li>提交项目推送到远端</li>
+</ul>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Technology</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/02/git-命令大全/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-toString" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -805,71 +940,6 @@
 
 
   
-    <article id="post-follow-me" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/10/follow-me/">follow me</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/10/follow-me/" class="archive-article-date">
-  	<time datetime="2017-03-10T01:43:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>随着CSS3的出现，许多功能都可以直接通过样式表实现，辅助简单的js操作，各种响应式组件营运而生。<br>‘follow me’组件，即屏幕中通过鼠标移动，该组件即可跟随做出相应的动作，目前该需求应用不是很广泛，但未来硬件的提高，交互性强的组件肯定应用越来越广泛。</p>
-<h4 id="html部分"><a href="#html部分" class="headerlink" title="html部分"></a>html部分</h4><p>html部分非常简单<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"moving-zone"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"popup"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"popup-content"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"popup-text"</span>&gt;</span></div><div class="line">                 所谓<span class="tag">&lt;<span class="name">b</span>&gt;</span>同性相吸<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></div><div class="line">                 所谓<span class="tag">&lt;<span class="name">b</span>&gt;</span>异性相斥<span class="tag">&lt;/<span class="name">b</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<h4 id="CSS部分"><a href="#CSS部分" class="headerlink" title="CSS部分"></a>CSS部分</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">html</span>, <span class="selector-tag">body</span> &#123; <span class="attribute">height</span>: <span class="number">100%</span>; &#125;</div><div class="line">       <span class="selector-tag">body</span> &#123;</div><div class="line">           <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">           <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(#666, #222);</div><div class="line">           <span class="attribute">overflow</span>: hidden;</div><div class="line">       &#125;</div><div class="line">       <span class="selector-class">.moving-zone</span> &#123;</div><div class="line">           <span class="attribute">position</span>: absolute;</div><div class="line">           <span class="attribute">top</span>:<span class="number">50%</span>; <span class="attribute">left</span>:<span class="number">50%</span>;</div><div class="line">           <span class="attribute">width</span>:<span class="number">300px</span>; <span class="attribute">height</span>:<span class="number">120px</span>;</div><div class="line">           <span class="attribute">margin</span>: -<span class="number">60px</span> <span class="number">0</span> <span class="number">0</span> -<span class="number">150px</span>;<span class="comment">/*居中操作，不解释*/</span></div><div class="line">           <span class="attribute">perspective</span>: <span class="number">800px</span>; <span class="comment">/*基础位置属性现在3d效果用的越来越多了*/</span></div><div class="line">       &#125;</div><div class="line">       <span class="selector-class">.popup</span> &#123;</div><div class="line">           <span class="attribute">position</span>: absolute;</div><div class="line">           <span class="attribute">width</span>:<span class="number">300px</span>;</div><div class="line">           <span class="attribute">padding</span>: <span class="number">10px</span>;</div><div class="line">           <span class="attribute">box-sizing</span>: border-box;</div><div class="line">           <span class="attribute">border-radius</span>: <span class="number">20px</span> <span class="number">0</span> <span class="number">20px</span> <span class="number">0</span>;</div><div class="line">           <span class="attribute">cursor</span>: pointer;</div><div class="line">           <span class="attribute">transform-style</span>: preserve-<span class="number">3</span>d;</div><div class="line">           <span class="comment">/*背景颜色*/</span></div><div class="line">           <span class="attribute">background</span>: <span class="built_in">-webkit-linear-gradient</span>(top left, #6d6d6d 50%, #ff3d6b 50%);</div><div class="line">           <span class="attribute">background</span>: <span class="built_in">-moz-linear-gradient</span>(top left, #6d6d6d 50%, #ff3d6b 50%);</div><div class="line">           <span class="attribute">background</span>: <span class="built_in">-ms-linear-gradient</span>(top left, #6d6d6d 50%, #ff3d6b 50%);</div><div class="line">           <span class="attribute">background</span>: <span class="built_in">-o-linear-gradient</span>(top left, #6d6d6d 50%, #ff3d6b 50%);</div><div class="line">           <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(top left, #6d6d6d 50%, #ff3d6b 50%);</div><div class="line">       &#125;</div><div class="line">       <span class="comment">/*阴影部分，更具3d效果*/</span></div><div class="line">       <span class="selector-class">.popup</span><span class="selector-pseudo">:before</span> &#123;</div><div class="line">           <span class="attribute">content</span>: <span class="string">''</span>;</div><div class="line">           <span class="attribute">position</span>: absolute;</div><div class="line">           <span class="attribute">left</span>:<span class="number">5%</span>; <span class="attribute">top</span>:<span class="number">5%</span>;</div><div class="line">           <span class="attribute">width</span>:<span class="number">90%</span>; <span class="attribute">height</span>:<span class="number">90%</span>;</div><div class="line">           <span class="attribute">border-radius</span>: inherit;</div><div class="line">           <span class="attribute">background</span>: <span class="number">#000</span>;</div><div class="line">           <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">40px</span> <span class="number">20px</span> <span class="number">#000</span>;</div><div class="line">           <span class="attribute">transform</span>: <span class="built_in">translateZ</span>(-100px);</div><div class="line">       &#125;</div><div class="line">       <span class="comment">/*没什么可说的*/</span></div><div class="line">       <span class="selector-class">.popup-content</span> &#123;</div><div class="line">           <span class="attribute">background</span>: <span class="number">#444</span>;</div><div class="line">           <span class="attribute">padding</span>: <span class="number">20px</span>;</div><div class="line">           <span class="attribute">box-sizing</span>: border-box;</div><div class="line">           <span class="attribute">border-radius</span>: <span class="number">20px</span> <span class="number">0</span> <span class="number">20px</span> <span class="number">0</span>;</div><div class="line">       &#125;</div><div class="line">       <span class="comment">/*文字部分*/</span></div><div class="line">       <span class="selector-class">.popup-text</span> &#123;</div><div class="line">           <span class="attribute">color</span>: white;</div><div class="line">           <span class="attribute">font-family</span>: <span class="string">'Roboto'</span>, sans-serif;</div><div class="line">           <span class="attribute">font-size</span>: <span class="number">20px</span>;</div><div class="line">           <span class="attribute">line-height</span>: <span class="number">30px</span>;</div><div class="line">           <span class="attribute">font-weight</span>: <span class="number">100</span>;</div><div class="line">           <span class="attribute">text-align</span>: center;</div><div class="line">           <span class="attribute">transform</span>: <span class="built_in">translateZ</span>(15px);</div><div class="line">           <span class="attribute">-webkit-transform</span>:<span class="built_in">translateZ</span>(15px);</div><div class="line">           <span class="attribute">-webkit-user-select</span>: none ;</div><div class="line">       &#125;</div><div class="line">       <span class="comment">/*为了同背景渐变有个呼应，作了b元素，作了同背景渐变类似的颜色*/</span></div><div class="line">       <span class="selector-class">.popup-text</span> <span class="selector-tag">b</span> &#123;</div><div class="line">           <span class="attribute">color</span>: <span class="number">#ff608f</span>;</div><div class="line">           <span class="attribute">font-weight</span>: <span class="number">300</span>;</div><div class="line">       &#125;</div></pre></td></tr></table></figure>
-<h4 id="关键js部分"><a href="#关键js部分" class="headerlink" title="关键js部分"></a>关键js部分</h4><p>引入了jQuery<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> moveForce = <span class="number">30</span>; <span class="comment">//限制偏移距离</span></div><div class="line"><span class="keyword">var</span> rotateForce = <span class="number">20</span>; <span class="comment">// 限制偏移角度</span></div><div class="line"><span class="comment">//DOM0级鼠标移动事件</span></div><div class="line">$(<span class="built_in">document</span>).mousemove(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> docX = $(<span class="built_in">document</span>).width();<span class="comment">//屏幕宽</span></div><div class="line">    <span class="keyword">var</span> docY = $(<span class="built_in">document</span>).height();<span class="comment">//屏幕高</span></div><div class="line">    <span class="comment">/**</span></div><div class="line">      * pageX|Y：鼠标的x|y坐标,用其减去屏幕一半可以探测是在左还是右，同时除以一半计算偏移系数，乘以限制最大偏移距离，得到组件的偏移距离</div><div class="line">      */</div><div class="line">    <span class="keyword">var</span> moveX = (e.pageX - docX/<span class="number">2</span>) / (docX/<span class="number">2</span>) * moveForce;</div><div class="line">    <span class="keyword">var</span> moveY = (e.pageY - docY/<span class="number">2</span>) / (docY/<span class="number">2</span>) * moveForce;</div><div class="line">    <span class="comment">/**同偏移距离相似*/</span></div><div class="line">    <span class="keyword">var</span> rotateY = (e.pageX / docX * rotateForce*<span class="number">2</span>) - rotateForce;</div><div class="line">    <span class="keyword">var</span> rotateX = -((e.pageY / docY * rotateForce*<span class="number">2</span>) - rotateForce);</div><div class="line">    <span class="comment">/**为组件设置偏移量*/</span></div><div class="line">    $(<span class="string">'.popup'</span>)</div><div class="line">        .css(<span class="string">'left'</span>, moveX+<span class="string">'px'</span>)</div><div class="line">        .css(<span class="string">'top'</span>, moveY+<span class="string">'px'</span>)</div><div class="line">        .css(<span class="string">'transform'</span>, <span class="string">'rotateX('</span>+rotateX+<span class="string">'deg) rotateY('</span>+rotateY+<span class="string">'deg)'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/10/follow-me/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -963,11 +1033,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -975,11 +1045,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Technology</a>
+                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
+                <a href="javascript:void(0)" class="js-tag color1">Technology</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -987,19 +1057,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Css</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">life</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Css</a>
               </li>
             
             <div class="clearfix"></div>
