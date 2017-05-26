@@ -134,6 +134,98 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-HTML-5-1新特新" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/16/HTML-5-1新特新/">HTML 5.1特性</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/16/HTML-5-1新特新/" class="archive-article-date">
+  	<time datetime="2017-02-16T01:57:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="HTML-5"><a href="#HTML-5" class="headerlink" title="HTML 5"></a>HTML 5</h4><p>w3c已经好久没有更新HTML的最新标准了，据传2017年年底，HTML5.2将推出，不知道又会有哪些惊喜之处。只要获得浏览器厂商支持，HTML从源头上就可以帮助多数前端工程师省去费力写JavaScript的麻烦，写到这，我默默看了看浏览器市场报告，IE76~8还存在15%以上的市场额，只能感慨生不逢时。<br>逢年初，记录下H5的部分新特性，等年底5.2推出有个对照。</p>
+<h4 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h4><p>Brave的流行，从另方面烘托了网页安全性已经成为用户目前关注的重要性能之一。5.1同样不甘落后。</p>
+<ol>
+<li><p>防止钓鱼<br>a标签target=’_blank’,新打开的页面可以更改window.opener.location加载到钓鱼网站，通过恶意js代码，做一些不可见人的勾当。5.1中rel=‘noopener’属性，则隔离了这一行为。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:"</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">rel</span>=<span class="string">"noopener"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>脚本和样式文件随机数加密<br>5.1提供的另外一项安全措施则是通过nonce添加在script或者style引入标签中，通过一组随机数，仅针对一次页面请求有效。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">nonce</span>=<span class="string">""</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h4><ol>
+<li><p>header/footer/article/aside/section/nav…<br>这些标签的出现，代替只有div可用的HTML4，更加语义化.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">article</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">header</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>this is a header<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">aside</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">header</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>this is a aside<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:"</span>&gt;</span>well well well<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">header</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">aside</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">footer</span>&gt;</span>made by mickeyZaku <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>全屏<br>H5的另一个特性，引入声光电，可以播放音视频，因此有一个大众化的问题，是否支持全屏(allowfullscreen)播放。这个特性将会被保留。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">title</span>=<span class="string">"Video"</span> <span class="attr">src</span>=<span class="string">"http://mickeyZaku.github.io"</span> <span class="attr">allowfullscreen</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>响应<br>一听这两字就激动了，may the force with w3c！不需要css就能响应了。当然还只是再图片中，而且仔细一看代码，除了让html代码变得臃肿外，也没少敲几个字</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--使用src-set,x也可以用w替代--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img/low-res.jpg"</span> <span class="attr">srcset</span>=<span class="string">"</span></span></div><div class="line">  img/low-res.jpg 1x,</div><div class="line">  img/medium-res.jpg 2x,</div><div class="line">  img/high-res.jpg 3x"</div><div class="line">&gt;</div><div class="line"><span class="comment">&lt;!--常用的判断尺寸加载图片--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img/low-res.jpg"</span> </span></div><div class="line"><span class="attr">sizes</span>=<span class="string">"(max-width: 25em) 60vw, 100vw"</span></div><div class="line"><span class="attr">srcset</span>=<span class="string">"</span></div><div class="line">  img/low-res.jpg 1x,</div><div class="line">  img/medium-res.jpg 2x,</div><div class="line">  img/high-res.jpg 3x"</div><div class="line">&gt;</div><div class="line"><span class="comment">&lt;!--使用picture，更加像css的html，wtf，我再说什们呢--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">picture</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">media</span>=<span class="string">"(max-width: 25em)"</span> <span class="attr">srcset</span>=<span class="string">"</span></span></div><div class="line">    img/small/low-res.jpg 1x,</div><div class="line">    img/small/medium-res.jpg 2x,</div><div class="line">    img/small/high-res.jpg 3x</div><div class="line">  "&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">media</span>=<span class="string">"(max-width: 60em)"</span> <span class="attr">srcset</span>=<span class="string">"</span></span></div><div class="line">    img/large/low-res.jpg 1x,</div><div class="line">    img/large/medium-res.jpg 2x,</div><div class="line">    img/large/high-res.jpg 3x</div><div class="line">  "&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img/default/medium-res.jpg"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">picture</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="更加人性化的部分特性"><a href="#更加人性化的部分特性" class="headerlink" title="更加人性化的部分特性"></a>更加人性化的部分特性</h4><ol>
+<li><p>图片<br>5.1中图片的操作更加灵活</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--零宽度，至少不用再让浏览器reset了,img也可以用来进行计数了--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">""</span> <span class="attr">alt</span>=<span class="string">""</span> <span class="attr">width</span>=<span class="string">"0"</span> <span class="attr">height</span>=<span class="string">"0"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--图片标题的灵活运用，figcaption标签已经可以用在任何图片中了--&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">figure</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">""</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">figcaption</span>&gt;</span>pic1<span class="tag">&lt;/<span class="name">figcaption</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">figure</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>表单<br>多了几项比较人性化的，更加人机交互的功能</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--required 校验表单--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">required</span> /&gt;</span></div><div class="line"><span class="comment">&lt;!--空选项,用于用户友好--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">""</span> &gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"null"</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div><div class="line">添加扩展信息，信息本身再页面中时隐藏的，但可大大加大table等的语义化</div><div class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">sumamary</span>&gt;</span>this is description for table<span class="tag">&lt;/<span class="name">sumamary</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--日历选项--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"week"</span> <span class="attr">name</span>=<span class="string">"year_week"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"month"</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>拼写检查<br>不多说，属性spellcheck 取值可以为空字符串、true 和 false 。如果指定其状态为 true，就表示元素将会接受对其的拼写和语法检查。element.forceSpellCheck() 将强制用户代理在文本元素上报告检查出来的拼写和语法错误，即使用户从来没将输入聚焦在该元素上。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">spellcheck</span>=<span class="string">"true"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTML</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/16/HTML-5-1新特新/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Date-parse的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -827,117 +919,9 @@
 
 
   
-    <article id="post-console的几个命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/30/console的几个命令/">console的几个命令（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/01/30/console的几个命令/" class="archive-article-date">
-  	<time datetime="2017-01-30T10:41:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="console–控制台"><a href="#console–控制台" class="headerlink" title="console–控制台"></a>console–控制台</h4><p>只要你会写代码，即使像前米总统奥巴马一样只会打印个‘hello world’，也说明你会使用控制台了。对于浏览器自带的控制台，则是调试前端代码的必备工具之一。console的各种命令，为程序猿们调试代码提供了方便，有那么几个命令总是很常用，有那么几个命令用起来挺装x。</p>
-<h4 id="几个常用的命令"><a href="#几个常用的命令" class="headerlink" title="几个常用的命令"></a>几个常用的命令</h4><ul>
-<li>console.log<br>这可能是目前最常用的命令了，原来这是安装了firebug的firefox浏览器的专利，目前浏览器都可以使用了</li>
-</ul>
-<p>chrome:</p>
-<p><img src="http://p1.bpimg.com/4851/58edb5d2c53bc108.png" alt="chrome"></p>
-<p>Edge:</p>
-<p><img src="http://p1.bpimg.com/4851/2640af5b82d9e7dc.png" alt="Micrsoft Edge"></p>
-<p>FireFox:</p>
-<p><img src="http://p1.bpimg.com/4851/73bb686b37b211c2.png" alt="FireFox"></p>
-<hr>
-<ul>
-<li>console.info/error/warm<br>这几个命令有时会用的，分别显示信息/报错/警告<br>chrome:</li>
-</ul>
-<p><img src="http://p1.bpimg.com/4851/bfab8482b41a7181.png" alt="chrome"></p>
-<p>Edge:</p>
-<p><img src="http://p1.bpimg.com/4851/f45087f20015b74b.png" alt="Micrsoft Edge"></p>
-<p>FireFox:</p>
-<p><img src="http://p1.bpimg.com/4851/4b8bad1d05c4ac38.png" alt="FireFox"></p>
-<ul>
-<li>console.dir<br>输出对象的详细信息</li>
-</ul>
-<p>chrome:</p>
-<p><img src="http://p1.bpimg.com/4851/5026683a7afd6226.png" alt="chrome"></p>
-<p>Edge:</p>
-<p><img src="http://p1.bpimg.com/4851/f9abd0b676530a87.png" alt="Micrsoft Edge"></p>
-<p>FireFox的dir的显示真的大方好看:</p>
-<p><img src="http://p1.bpimg.com/4851/7664a5a8f11aee59.png" alt="FireFox"><br><img src="http://p1.bpimg.com/4851/5e690a77b568fd81.png" alt="FireFox"></p>
-<h4 id="装x的命令"><a href="#装x的命令" class="headerlink" title="装x的命令"></a>装x的命令</h4><ul>
-<li>占位符<br>console的几个命令支持像c中的printf的占位符，比如：</li>
-</ul>
-<p>chrome:</p>
-<p><img src="http://i1.piimg.com/4851/fad63c84500e133a.png" alt="chrome"></p>
-<p>Edge:</p>
-<p><img src="http://i1.piimg.com/4851/21a9233396897211.png" alt="Micrsoft Edge"></p>
-<p>FireFox:</p>
-<p><img src="http://i1.piimg.com/4851/d6217e29e38137a5.png" alt="FireFox"></p>
-<hr>
-<ul>
-<li>信息分组显示<br>console.group这个命令还是挺不错的，分组显示信息，像本人这种特别顾及格式的人特别喜欢</li>
-</ul>
-<p>chrome:</p>
-<p><img src="http://p1.bpimg.com/4851/4c7cb4751d8a450b.png" alt="chrome"></p>
-<p>Edge:第二个分组会呈现为分组1的子分组，这个不大合理</p>
-<p><img src="http://p1.bpimg.com/4851/9e9115d888a87f02.png" alt="Micrsoft Edge"></p>
-<p>FireFox:</p>
-<p><img src="http://p1.bpimg.com/4851/a59b31db2b65b6b4.png" alt="FireFox"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Technology</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/30/console的几个命令/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
@@ -1028,7 +1012,7 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1036,15 +1020,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Technology</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1052,11 +1032,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
               </li>
              
               <li class="article-tag-list-item">
